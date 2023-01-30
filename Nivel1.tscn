@@ -68,7 +68,7 @@ position = Vector2(150, 475)
 shape = SubResource("RectangleShape2D_1f6ug")
 
 [node name="AsteroidsSpawner" type="Node2D" parent="."]
-position = Vector2(865, 537)
+position = Vector2(-506, 537)
 script = ExtResource("3_7ueoi")
 time_between_spawns_bounds = Vector2(0.2, 0.5)
 max_asteroid_points_in_screen = 20

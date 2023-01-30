@@ -1,7 +1,10 @@
 class_name Asteroid
 extends CharacterBody2D
-#
+
 @export var config: AsteroidConfig
+
+var current_health := 10.0
+var max_health := 10.0
 
 signal removed(asteroid)
 
@@ -18,6 +21,15 @@ func _ready():
 		config.origin_bounds.x,
 		get_viewport_rect().end.x * config.origin_bounds.y
 	)
+	max_health = size * 100
+	current_health = max_health
+
+func _process(delta):
+	var health_percentage = current_health / max_health
+	$Polygon2D.modulate = Color(health_percentage,
+								health_percentage,
+								health_percentage)
+
 
 func _physics_process(delta):
 	move_and_slide()
@@ -34,6 +46,11 @@ func vanish():
 
 func hit_with_spaceship(_spaceship):
 	vanish()
+
+func be_damaged(amount):
+	current_health -= amount
+	if(current_health <= 0):
+		vanish()
 
 func remove():
 	removed.emit(self)
