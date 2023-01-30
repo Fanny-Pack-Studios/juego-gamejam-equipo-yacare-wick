@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://b52m3kg7lo4r2"]
+
+[ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_qnpja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6ug"]
+size = Vector2(300, 1500)
+
+[node name="Nivel1" type="Node2D"]
+
+[node name="Spaceship" type="CharacterBody2D" parent="."]
+position = Vector2(1034, 155)
+rotation = 0.0916772
+motion_mode = 1
+script = ExtResource("1_qnpja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship"]
+shape = SubResource("CircleShape2D_ohwe6")
+
+[node name="Polygon2D" type="Polygon2D" parent="Spaceship"]
+rotation = 3.05218
+color = Color(0.443137, 1, 1, 1)
+polygon = PackedVector2Array(-12, -1, -12, -1, 1, -13, 1, -13, 1, -13, 12, 0, 12, 0, 12, 0, 12, 10, 12, 10, 12, 10, 1, 5, 1, 5, 1, 5, -13, 12, -13, 12, -13, 12)
+
+[node name="Asteroids" type="CharacterBody2D" parent="."]
+position = Vector2(931, 451)
+
+[node name="Polygon2D" type="Polygon2D" parent="Asteroids"]
+color = Color(0.486275, 0.270588, 0.188235, 1)
+polygon = PackedVector2Array(-8, 10, -8, 10, -15, -6, -15, -6, -15, -6, -15, -6, -15, -6, -15, -6, -8, -19, -8, -19, -8, -19, -8, -19, -8, -19, -8, -19, -1, -31, -1, -31, -1, -31, -1, -31, -1, -31, -1, -31, 7, -23, 7, -23, 7, -23, 7, -23, 7, -23, 7, -23, 7, -13, 7, -13, 7, -13, 7, -13, 7, -13, 7, -13, 12, -10, 12, -10, 12, -10, 12, -10, 12, -10, 12, -10, 20, -5, 20, -5, 20, -5, 20, -5, 20, -5, 20, -5, 14, 4, 14, 4, 14, 4, 14, 4, 14, 4, 14, 4, 5, 9, 5, 9, 5, 9, 5, 9, 5, 9, 5, 9)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Asteroids"]
+polygon = PackedVector2Array(-8, 10, -8, 10, -15, -6, -15, -6, -15, -6, -15, -6, -15, -6, -15, -6, -8, -19, -8, -19, -8, -19, -8, -19, -8, -19, -8, -19, -1, -31, -1, -31, -1, -31, -1, -31, -1, -31, -1, -31, 7, -23, 7, -23, 7, -23, 7, -23, 7, -23, 7, -23, 7, -13, 7, -13, 7, -13, 7, -13, 7, -13, 7, -13, 12, -10, 12, -10, 12, -10, 12, -10, 12, -10, 12, -10, 20, -5, 20, -5, 20, -5, 20, -5, 20, -5, 20, -5, 14, 4, 14, 4, 14, 4, 14, 4, 14, 4, 14, 4, 5, 9, 5, 9, 5, 9, 5, 9, 5, 9, 5, 9)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102)
+
+[node name="Walls2" type="StaticBody2D" parent="."]
+position = Vector2(1913, 1067)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls2"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102)
