@@ -6,6 +6,8 @@ extends CharacterBody2D
 var current_health := 10.0
 var max_health := 10.0
 
+@export var too_little_threshold := 0.5
+
 signal removed(asteroid)
 
 func asteroid_points():
@@ -21,15 +23,18 @@ func _ready():
 		config.origin_bounds.x,
 		get_viewport_rect().end.x * config.origin_bounds.y
 	)
+	rotation_degrees = rotation
 	max_health = size * 100
 	current_health = max_health
 
 func _process(delta):
 	var health_percentage = current_health / max_health
-	$Polygon2D.modulate = Color(health_percentage,
+	$Sprite2D.modulate = Color(health_percentage,
 								health_percentage,
 								health_percentage)
 
+func is_too_little():
+	return scale.x < too_little_threshold
 
 func _physics_process(delta):
 	move_and_slide()
