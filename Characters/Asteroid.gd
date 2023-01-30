@@ -22,6 +22,7 @@ func _ready():
 func _physics_process(delta):
 	move_and_slide()
 
+
 func _randf_bounds(bounds: Vector2):
 	return randf_range(bounds.x, bounds.y)
 
@@ -30,6 +31,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func vanish():
 	remove()
+
+func hit_with_spaceship(_spaceship):
+	vanish()
 
 func remove():
 	removed.emit(self)
