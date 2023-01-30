@@ -1,14 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://b52m3kg7lo4r2"]
+[gd_scene load_steps=8 format=3 uid="uid://b52m3kg7lo4r2"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_qnpja"]
-[ext_resource type="PackedScene" uid="uid://mf3xi1sqy23e" path="res://Characters/Asteroid.tscn" id="2_b4bhi"]
 [ext_resource type="Script" path="res://AsteroidsSpawner.gd" id="3_7ueoi"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="3_suq56"]
+[ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="4_fdci7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6ug"]
 size = Vector2(300, 1500)
+
+[sub_resource type="Resource" id="Resource_hfikw"]
+script = ExtResource("4_fdci7")
+speed_bounds = Vector2(100, 600)
+angle_bounds_degrees = Vector2(1, 2)
+scale_bounds = Vector2(0.1, 1)
+origin_bounds = Vector2(0.15, 0.15)
 
 [node name="Nivel1" type="Node2D"]
 
@@ -28,9 +35,6 @@ rotation = 3.05218
 color = Color(0.443137, 1, 1, 1)
 polygon = PackedVector2Array(-12, -1, -12, -1, 1, -13, 1, -13, 1, -13, 12, 0, 12, 0, 12, 0, 12, 10, 12, 10, 12, 10, 1, 5, 1, 5, 1, 5, -13, 12, -13, 12, -13, 12)
 
-[node name="Asteroids" parent="." instance=ExtResource("2_b4bhi")]
-position = Vector2(854, 491)
-
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 1
 collision_layer = 2147483648
@@ -45,7 +49,7 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102)
 
 [node name="VanishAsteroids" type="Area2D" parent="Walls"]
-position = Vector2(-107, 0)
+position = Vector2(-280, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_suq56")
@@ -70,7 +74,7 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102)
 
 [node name="VanishAsteroids2" type="Area2D" parent="Walls2"]
-position = Vector2(-107, 0)
+position = Vector2(-256, -3.00061)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_suq56")
@@ -80,8 +84,11 @@ position = Vector2(150, 475)
 shape = SubResource("RectangleShape2D_1f6ug")
 
 [node name="AsteroidsSpawner" type="Node2D" parent="."]
-position = Vector2(954, 769)
+position = Vector2(865, 537)
 script = ExtResource("3_7ueoi")
+time_between_spawns_bounds = Vector2(0.2, 0.5)
+max_asteroid_points_in_screen = 20
+asteroid_config = SubResource("Resource_hfikw")
 
 [connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]

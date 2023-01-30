@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AsteroidConfig" load_steps=2 format=3 uid="uid://bmwi0m1q3keee"]
+
+[ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="1_77su8"]
+
+[resource]
+script = ExtResource("1_77su8")
+speed_bounds = Vector2(300, 400)
+angle_bounds_degrees = Vector2(0, 360)
+scale_bounds = Vector2(0.33, 1)

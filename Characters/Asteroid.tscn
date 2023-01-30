@@ -1,12 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://mf3xi1sqy23e"]
+[gd_scene load_steps=4 format=3 uid="uid://mf3xi1sqy23e"]
 
 [ext_resource type="Script" path="res://Characters/Asteroid.gd" id="1_blshm"]
+[ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="2_7nnfm"]
+
+[sub_resource type="Resource" id="Resource_y44yl"]
+script = ExtResource("2_7nnfm")
+speed_bounds = Vector2(300, 400)
+angle_bounds_degrees = Vector2(0, 360)
+scale_bounds = Vector2(0.33, 1)
+origin_bounds = Vector2(0, 1)
 
 [node name="Asteroids" type="CharacterBody2D"]
 visibility_layer = 2
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_blshm")
+config = SubResource("Resource_y44yl")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2(5, 5)
