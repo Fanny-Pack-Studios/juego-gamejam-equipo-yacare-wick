@@ -1,3 +1,4 @@
+class_name Spaceship
 extends CharacterBody2D
 
 

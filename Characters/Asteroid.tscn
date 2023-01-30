@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://mf3xi1sqy23e"]
+
+[ext_resource type="Script" path="res://Characters/Asteroid.gd" id="1_blshm"]
+
+[node name="Asteroids" type="CharacterBody2D"]
+visibility_layer = 2
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_blshm")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(5, 5)
+color = Color(0.486275, 0.270588, 0.188235, 1)
+polygon = PackedVector2Array(-8, 10, -8, 10, -15, -6, -15, -6, -15, -6, -15, -6, -15, -6, -15, -6, -8, -19, -8, -19, -8, -19, -8, -19, -8, -19, -8, -19, -1, -31, -1, -31, -1, -31, -1, -31, -1, -31, -1, -31, 7, -23, 7, -23, 7, -23, 7, -23, 7, -23, 7, -23, 7, -13, 7, -13, 7, -13, 7, -13, 7, -13, 7, -13, 12, -10, 12, -10, 12, -10, 12, -10, 12, -10, 12, -10, 20, -5, 20, -5, 20, -5, 20, -5, 20, -5, 20, -5, 14, 4, 14, 4, 14, 4, 14, 4, 14, 4, 14, 4, 5, 9, 5, 9, 5, 9, 5, 9, 5, 9, 5, 9)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(5, 5)
+polygon = PackedVector2Array(-8, 10, -8, 10, -15, -6, -15, -6, -15, -6, -15, -6, -15, -6, -15, -6, -8, -19, -8, -19, -8, -19, -8, -19, -8, -19, -8, -19, -1, -31, -1, -31, -1, -31, -1, -31, -1, -31, -1, -31, 7, -23, 7, -23, 7, -23, 7, -23, 7, -23, 7, -23, 7, -13, 7, -13, 7, -13, 7, -13, 7, -13, 7, -13, 12, -10, 12, -10, 12, -10, 12, -10, 12, -10, 12, -10, 20, -5, 20, -5, 20, -5, 20, -5, 20, -5, 20, -5, 14, 4, 14, 4, 14, 4, 14, 4, 14, 4, 14, 4, 5, 9, 5, 9, 5, 9, 5, 9, 5, 9, 5, 9)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
