@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b52m3kg7lo4r2"]
+[gd_scene load_steps=9 format=3 uid="uid://b52m3kg7lo4r2"]
 
 [ext_resource type="PackedScene" uid="uid://dkjwx1r245n4" path="res://Characters/Spaceship.tscn" id="1_5e38l"]
 [ext_resource type="Script" path="res://AsteroidsSpawner.gd" id="3_7ueoi"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="3_suq56"]
 [ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="4_fdci7"]
+[ext_resource type="Script" path="res://GUI/HealthBar.gd" id="5_joka3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6ug"]
 size = Vector2(300, 1500)
@@ -15,9 +16,13 @@ angle_bounds_degrees = Vector2(1, 2)
 scale_bounds = Vector2(0.1, 1)
 origin_bounds = Vector2(0.15, 0.15)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u5esv"]
+size = Vector2(500, 30)
+
 [node name="Nivel1" type="Node2D"]
 
 [node name="Spaceship" parent="." instance=ExtResource("1_5e38l")]
+z_index = 1
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 1
@@ -73,6 +78,39 @@ script = ExtResource("3_7ueoi")
 time_between_spawns_bounds = Vector2(0.2, 0.5)
 max_asteroid_points_in_screen = 20
 asteroid_config = SubResource("Resource_hfikw")
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Control" type="Control" parent="HUDLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HealthBar" type="Control" parent="HUDLayer/Control" node_paths=PackedStringArray("texture_progress_bar", "player")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_joka3")
+texture_progress_bar = NodePath("MarginContainer/TextureProgressBar")
+player = NodePath("../../../Spaceship")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUDLayer/Control/HealthBar"]
+layout_mode = 0
+offset_right = 530.0
+offset_bottom = 60.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUDLayer/Control/HealthBar/MarginContainer"]
+layout_mode = 2
+value = 100.0
+texture_progress = SubResource("PlaceholderTexture2D_u5esv")
 
 [connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]

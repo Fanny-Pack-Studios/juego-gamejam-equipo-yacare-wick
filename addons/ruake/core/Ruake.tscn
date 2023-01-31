@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/ruake/core/Ruake.gd" id="2_4su81"]
 [ext_resource type="Script" path="res://addons/ruake/core/Prompt.gd" id="3_mef1q"]
 
-[sub_resource type="Theme" id="Theme_degv7"]
+[sub_resource type="Theme" id="Theme_yqire"]
 
 [node name="Ruake" type="Control"]
 process_mode = 3
@@ -38,7 +38,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 2
-theme = SubResource("Theme_degv7")
+theme = SubResource("Theme_yqire")
 bbcode_enabled = true
 scroll_following = true
 selection_enabled = true
