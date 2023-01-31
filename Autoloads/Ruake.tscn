@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://mxacc5a3d5rr"]
-
-[ext_resource type="Script" path="res://Autoloads/Ruake.gd" id="1_hepc6"]
-
-[node name="Ruake" type="Node2D"]
-process_mode = 3
-script = ExtResource("1_hepc6")
