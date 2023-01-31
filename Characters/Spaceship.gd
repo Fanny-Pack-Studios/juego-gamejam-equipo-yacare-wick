@@ -18,6 +18,7 @@ func should_blink() -> bool:
 
 func _ready():
 	$InvincibleTimer.wait_time = invincible_time
+	top_level = true
 
 func _physics_process(delta):
 	$Hitbox.monitoring = not is_invincible()

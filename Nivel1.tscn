@@ -1,13 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b52m3kg7lo4r2"]
+[gd_scene load_steps=13 format=3 uid="uid://btrro60kficv0"]
 
 [ext_resource type="PackedScene" uid="uid://dkjwx1r245n4" path="res://Characters/Spaceship.tscn" id="1_5e38l"]
+[ext_resource type="Script" path="res://Level.gd" id="1_aatks"]
 [ext_resource type="Script" path="res://AsteroidsSpawner.gd" id="3_7ueoi"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="3_suq56"]
 [ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="4_fdci7"]
 [ext_resource type="Script" path="res://GUI/HealthBar.gd" id="5_joka3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6ug"]
-size = Vector2(300, 1500)
+[ext_resource type="Texture2D" uid="uid://dubryrnp87jny" path="res://assets/spaceship_pixelart_256.png" id="6_hn4h5"]
+[ext_resource type="Script" path="res://TravelProgress.gd" id="6_x86rl"]
 
 [sub_resource type="Resource" id="Resource_hfikw"]
 script = ExtResource("4_fdci7")
@@ -16,10 +16,39 @@ angle_bounds_degrees = Vector2(1, 2)
 scale_bounds = Vector2(0.1, 1)
 origin_bounds = Vector2(0.15, 0.15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6ug"]
+size = Vector2(300, 1500)
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u5esv"]
 size = Vector2(500, 30)
 
-[node name="Nivel1" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2hlq"]
+border_width_left = 5
+border_width_right = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Nivel1" type="Node2D" node_paths=PackedStringArray("beginning", "end")]
+script = ExtResource("1_aatks")
+beginning = NodePath("Travel/Beginning")
+end = NodePath("Travel/End")
+travel_speed = 15.0
+
+[node name="Travel" type="Node2D" parent="."]
+
+[node name="Beginning" type="Node2D" parent="Travel"]
+
+[node name="End" type="Node2D" parent="Travel"]
+position = Vector2(0, 4000)
+
+[node name="AsteroidsSpawner" type="Node2D" parent="Travel"]
+position = Vector2(-431, 1110)
+script = ExtResource("3_7ueoi")
+time_between_spawns_bounds = Vector2(0.2, 0.5)
+max_asteroid_points_in_screen = 20
+asteroid_config = SubResource("Resource_hfikw")
 
 [node name="Spaceship" parent="." instance=ExtResource("1_5e38l")]
 z_index = 1
@@ -72,13 +101,6 @@ script = ExtResource("3_suq56")
 position = Vector2(150, 475)
 shape = SubResource("RectangleShape2D_1f6ug")
 
-[node name="AsteroidsSpawner" type="Node2D" parent="."]
-position = Vector2(-506, 537)
-script = ExtResource("3_7ueoi")
-time_between_spawns_bounds = Vector2(0.2, 0.5)
-max_asteroid_points_in_screen = 20
-asteroid_config = SubResource("Resource_hfikw")
-
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 layer = 0
 
@@ -111,6 +133,68 @@ theme_override_constants/margin_top = 30
 layout_mode = 2
 value = 100.0
 texture_progress = SubResource("PlaceholderTexture2D_u5esv")
+
+[node name="TravelProgress" type="Control" parent="HUDLayer/Control" node_paths=PackedStringArray("level")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -195.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("6_x86rl")
+level = NodePath("../../..")
+
+[node name="VSlider" type="VSlider" parent="HUDLayer/Control/TravelProgress"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber_disabled = ExtResource("6_hn4h5")
+theme_override_styles/slider = SubResource("StyleBoxFlat_l2hlq")
+step = 0.0
+value = 100.0
+editable = false
+scrollable = false
+
+[node name="Beginning" type="Control" parent="HUDLayer/Control/TravelProgress/VSlider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/Control/TravelProgress/VSlider/Beginning"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="End" type="Control" parent="HUDLayer/Control/TravelProgress/VSlider"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/Control/TravelProgress/VSlider/End"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]
