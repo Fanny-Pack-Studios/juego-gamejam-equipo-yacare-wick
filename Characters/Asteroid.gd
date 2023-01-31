@@ -9,6 +9,7 @@ var max_health := 10.0
 @export var too_little_threshold := 0.5
 
 signal removed(asteroid)
+signal destroyed(asteroid)
 
 func asteroid_points():
 	return scale.x
@@ -32,6 +33,7 @@ func _process(delta):
 	$Sprite2D.modulate = Color(health_percentage,
 								health_percentage,
 								health_percentage)
+	rotation_degrees += delta * velocity.cross(Vector2.UP) / 5
 
 func is_too_little():
 	return scale.x < too_little_threshold
@@ -46,16 +48,17 @@ func _randf_bounds(bounds: Vector2):
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	remove()
 
-func vanish():
-	remove()
-
 func hit_with_spaceship(_spaceship):
-	vanish()
+	destroy()
+
+func destroy():
+	destroyed.emit(self)
+	remove()
 
 func be_damaged(amount):
 	current_health -= amount
 	if(current_health <= 0):
-		vanish()
+		destroy()
 
 func remove():
 	removed.emit(self)

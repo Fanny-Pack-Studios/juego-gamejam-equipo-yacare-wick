@@ -33,28 +33,27 @@ func spawn_asteroid_process():
 	
 	call_deferred("spawn_asteroid_process")
 
-func spawn_asteroid():
+func spawn_asteroid() -> Asteroid:
 	var asteroid := Asteroid.instantiate()
 	asteroid.config = asteroid_config
 	add_child(asteroid)
 	current_asteroids_in_screen.push_back(asteroid)
 	asteroid.removed.connect(self.asteroid_removed)
+	asteroid.destroyed.connect(self.asteroid_destroyed)
 	return asteroid
 
 
 func asteroid_removed(asteroid):
 	current_asteroids_in_screen.erase(asteroid)
+
+func asteroid_destroyed(asteroid):
 	if(not asteroid.is_too_little()):
 		call_deferred("spawn_asteroid_fragment", asteroid.global_transform.origin, asteroid.scale / 2)
 		call_deferred("spawn_asteroid_fragment", asteroid.global_transform.origin, asteroid.scale / 2)
 
 
 func spawn_asteroid_fragment(position, scale):
-	var new_asteroids := [spawn_asteroid(), spawn_asteroid()]
-	new_asteroids.map(func (new_asteroid):
-		new_asteroid.global_transform.origin = position
-		new_asteroid.scale = scale / 2
-	)
+	var new_asteroid := spawn_asteroid()
+	new_asteroid.global_transform.origin = position
+	new_asteroid.scale = scale
 
-func _physics_process(delta):
-	pass
