@@ -3,11 +3,15 @@
 [ext_resource type="Script" path="res://Characters/Enemies/mecha_locust.gd" id="1_3tb5s"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="2_lt26w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y6b0j"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mw4tc"]
+radius = 7.0
 
 [node name="MechaLocust" type="CharacterBody2D"]
+z_index = 10
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
+collision_priority = 10.0
+motion_mode = 1
 script = ExtResource("1_3tb5s")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -16,7 +20,7 @@ color = Color(0.192157, 0.392157, 0, 1)
 polygon = PackedVector2Array(-11, 15, -11, 15, -20, -7, -20, -7, -20, -7, -20, -7, 1, -32, 1, -32, 1, -32, 1, -32, 28, -7, 28, -7, 28, -7, 28, -7, 17, 17, 17, 17, 17, 17, 17, 17, 16, -8, 16, -8, 16, -8, 16, -8, 8, -13, 8, -13, 8, -13, 8, -13, 5, 15, 5, 15, 5, 15, 5, 15, -3, -16, -3, -16, -3, -16, -3, -16, -10, -6, -10, -6, -10, -6, -10, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_y6b0j")
+shape = SubResource("CircleShape2D_mw4tc")
 
 [node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("2_lt26w")
@@ -26,3 +30,6 @@ min_value = -5.0
 max_value = 5.0
 constant = true
 duration = 10.0
+
+[node name="DamageTimer" type="Timer" parent="."]
+process_callback = 0

@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnsq1u34lemhl"]
+[gd_scene load_steps=8 format=3 uid="uid://dnsq1u34lemhl"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_j78yr"]
+[ext_resource type="World3D" uid="uid://cobqimndk6hh0" path="res://assets/World3D.tres" id="2_cc64f"]
+[ext_resource type="PackedScene" uid="uid://brtq3hxtv4xeg" path="res://assets/spaceship.gltf" id="2_osrd7"]
 [ext_resource type="PackedScene" uid="uid://diy86exb3j6oc" path="res://Characters/Weapons/Weapon.tscn" id="2_tpx5h"]
 [ext_resource type="Resource" uid="uid://dtv2v75wrfn2r" path="res://Parameters/regular_shoot.tres" id="3_dqh1n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_we1hp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qinrf"]
+size = Vector2(45, 30)
 
 [node name="Spaceship" type="CharacterBody2D"]
 position = Vector2(1034, 155)
@@ -15,11 +18,42 @@ collision_mask = 2147483648
 motion_mode = 1
 script = ExtResource("1_j78yr")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+world_3d = ExtResource("2_cc64f")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(120, 120)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 10, 0)
+fov = 65.4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+shadow_enabled = true
+
+[node name="spaceship" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_osrd7")]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ohwe6")
 
 [node name="Sprite" type="Polygon2D" parent="."]
+visible = false
 rotation = 3.05218
+scale = Vector2(2, 2)
 color = Color(0.443137, 1, 1, 1)
 polygon = PackedVector2Array(-12, -1, -12, -1, 1, -13, 1, -13, 1, -13, 12, 0, 12, 0, 12, 0, 12, 10, 12, 10, 12, 10, 1, 5, 1, 5, 1, 5, -13, 12, -13, 12, -13, 12)
 
@@ -28,7 +62,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_we1hp")
+shape = SubResource("RectangleShape2D_qinrf")
 
 [node name="WeaponTimer" type="Timer" parent="."]
 process_callback = 0
@@ -39,6 +73,7 @@ autostart = true
 one_shot = true
 
 [node name="Weapon" parent="." instance=ExtResource("2_tpx5h")]
+position = Vector2(-26, 18)
 weapon_config = ExtResource("3_dqh1n")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

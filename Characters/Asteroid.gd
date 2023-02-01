@@ -51,7 +51,8 @@ func _randf_bounds(bounds: Vector2):
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	remove()
 
-func hit_with_spaceship(_spaceship):
+func hit_with_spaceship(spaceship: Spaceship):
+	spaceship.take_damage(10)
 	destroy()
 
 func destroy():

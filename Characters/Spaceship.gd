@@ -5,6 +5,7 @@ const Shoot = preload("res://Characters/Weapons/RegularShoot.tscn")
 
 @export var MAX_SPEED := 300.0
 @export var ACCELERATION := 15.0
+@export var model_rotation_speed := 70.0
 @export var DRIFT_DESACCELERATION := 2.0
 var MAX_HEALTH := 100.0
 var current_health := MAX_HEALTH
@@ -31,17 +32,32 @@ func _physics_process(delta):
 		DRIFT_DESACCELERATION if(target_speed.is_zero_approx()) else ACCELERATION
 	)
 
+	var spaceship_3d = $SubViewportContainer/SubViewport/spaceship
+	spaceship_3d.rotation_degrees.z = move_toward(
+		spaceship_3d.rotation_degrees.z,
+		clamp(velocity.x, -30, 30),
+		model_rotation_speed * delta
+	)
+
 	move_and_slide()
 
 
 func _on_hitbox_body_entered(body):
-	take_damage(10)
 	body.hit_with_spaceship(self)
-	start_invincibility()
 
 func start_invincibility():
 	$InvincibleTimer.start()
 
 
-func take_damage(damage: float):
+func take_damage(damage: float, turn_on_invincibility: bool = true):
 	current_health -= damage
+	if(turn_on_invincibility):
+		start_invincibility()
+
+func random_attach_point() -> Vector2:
+	var rect: Rect2i = $Hitbox/CollisionShape2D.shape.get_rect()
+	var begin = rect.position
+	var end = rect.end
+	var x = randf_range(begin.x, end.x)
+	var y = randf_range(begin.y, end.y)
+	return Vector2(x, y)

@@ -12,7 +12,7 @@ size = Vector2(2000, 500)
 [node name="MechaLocustSpawner" type="Node2D" node_paths=PackedStringArray("target_spaceship")]
 position = Vector2(898, 815)
 script = ExtResource("1_6llu8")
-target_spaceship = NodePath("../../Spaceship")
+target_spaceship = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("NoiseTexture2D_gj8dx")
