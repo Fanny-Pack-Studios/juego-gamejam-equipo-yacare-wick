@@ -5,6 +5,7 @@ const Shoot = preload("res://Characters/Weapons/RegularShoot.tscn")
 
 @export var MAX_SPEED := 300.0
 @export var ACCELERATION := 15.0
+@export var model_rotation_speed := 70.0
 @export var DRIFT_DESACCELERATION := 2.0
 var MAX_HEALTH := 100.0
 var current_health := MAX_HEALTH
@@ -29,6 +30,13 @@ func _physics_process(delta):
 	velocity = velocity.move_toward(
 		target_speed,
 		DRIFT_DESACCELERATION if(target_speed.is_zero_approx()) else ACCELERATION
+	)
+
+	var spaceship_3d = $SubViewportContainer/SubViewport/spaceship
+	spaceship_3d.rotation_degrees.z = move_toward(
+		spaceship_3d.rotation_degrees.z,
+		clamp(velocity.x, -30, 30),
+		model_rotation_speed * delta
 	)
 
 	move_and_slide()
