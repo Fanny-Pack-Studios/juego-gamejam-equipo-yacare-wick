@@ -35,13 +35,21 @@ func _physics_process(delta):
 
 
 func _on_hitbox_body_entered(body):
-	take_damage(10)
 	body.hit_with_spaceship(self)
-	start_invincibility()
 
 func start_invincibility():
 	$InvincibleTimer.start()
 
 
-func take_damage(damage: float):
+func take_damage(damage: float, turn_on_invincibility: bool = true):
 	current_health -= damage
+	if(turn_on_invincibility):
+		start_invincibility()
+
+func random_attach_point() -> Vector2:
+	var rect: Rect2i = $Hitbox/CollisionShape2D.shape.get_rect()
+	var begin = rect.position
+	var end = rect.end
+	var x = randf_range(begin.x, end.x)
+	var y = randf_range(begin.y, end.y)
+	return Vector2(x, y)
