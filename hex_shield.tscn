@@ -1,19 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7tteubr6vip1"]
+[gd_scene load_steps=13 format=3 uid="uid://bff8huq644apu"]
 
-[ext_resource type="Texture2D" uid="uid://8wtvveltit5k" path="res://assets/photon_defense.png" id="1_1emfg"]
-[ext_resource type="Shader" uid="uid://dcpbtdpj26ud8" path="res://Test_FX.tres" id="1_xi8by"]
-[ext_resource type="PackedScene" uid="uid://dfclkc6jhmslj" path="res://assets/shield.gltf" id="2_lm4b0"]
+[ext_resource type="Texture2D" uid="uid://8wtvveltit5k" path="res://assets/photon_defense.png" id="1_7di3v"]
+[ext_resource type="PackedScene" uid="uid://dfclkc6jhmslj" path="res://assets/shield.gltf" id="2_i45w5"]
+[ext_resource type="Shader" uid="uid://dcpbtdpj26ud8" path="res://hex_shield.tres" id="3_rt4gi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_or8tb"]
 transparency = 1
-albedo_texture = ExtResource("1_1emfg")
+albedo_texture = ExtResource("1_7di3v")
 roughness = 0.1
 emission = Color(0.152941, 0.74902, 1, 1)
 emission_energy_multiplier = 2.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oawrq"]
 render_priority = 0
-shader = ExtResource("1_xi8by")
+shader = ExtResource("3_rt4gi")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_klns7"]
 load_path = "res://.godot/imported/shield.png-46d74908b0ac118b50397d7021ae31f8.s3tc.ctex"
@@ -84,12 +84,12 @@ shader = SubResource("VisualShader_ffydj")
 transparency = 0.5
 material = SubResource("StandardMaterial3D_or8tb")
 
-[node name="shield" parent="." instance=ExtResource("2_lm4b0")]
+[node name="shield" parent="." instance=ExtResource("2_i45w5")]
 
 [node name="shield2" parent="shield" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_oawrq")
 
-[node name="shield2" parent="." instance=ExtResource("2_lm4b0")]
+[node name="shield2" parent="." instance=ExtResource("2_i45w5")]
 visible = false
 
 [node name="shield2" parent="shield2" index="0"]

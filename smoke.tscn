@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://u8yk2sjptfmq"]
+
+[ext_resource type="PackedScene" uid="uid://dfclkc6jhmslj" path="res://assets/shield.gltf" id="1_2d502"]
+[ext_resource type="Shader" uid="uid://dp0i13qsdq40t" path="res://dissolve_fx.tres" id="2_isvpy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gb5rj"]
+render_priority = 0
+shader = ExtResource("2_isvpy")
+
+[node name="smoke" type="Node3D"]
+
+[node name="shield" parent="." instance=ExtResource("1_2d502")]
+
+[node name="shield2" parent="shield" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_gb5rj")
+
+[editable path="shield"]
