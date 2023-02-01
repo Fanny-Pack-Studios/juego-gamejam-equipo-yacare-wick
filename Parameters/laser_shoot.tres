@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponConfig" load_steps=3 format=3 uid="uid://ixj4ha2jexoy"]
+
+[ext_resource type="Script" path="res://Characters/Weapons/weapon_config.gd" id="1_omxoa"]
+[ext_resource type="Texture2D" uid="uid://broegacqsprhj" path="res://assets/shoot_laser.png" id="2_v8lj1"]
+
+[resource]
+script = ExtResource("1_omxoa")
+shoots_per_second = 20.0
+shoot_speed = 0.0
+shoot_time_to_live_in_seconds = 0.05
+shoot_goes_through_enemies = true
+fire_power = 5.0
+sprite = ExtResource("2_v8lj1")
+range_in_meters = 2000.0
+is_attached_to_parent = true

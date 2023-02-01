@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponConfig" load_steps=3 format=3 uid="uid://dwpmxubx6tdmv"]
+
+[ext_resource type="Script" path="res://Characters/Weapons/weapon_config.gd" id="1_0l4qp"]
+[ext_resource type="Texture2D" uid="uid://btbhef35lls2t" path="res://addons/panku_console/res/pics/icons8-hammer-32.png" id="2_supwo"]
+
+[resource]
+script = ExtResource("1_0l4qp")
+shoots_per_second = 0.5
+shoot_speed = 150.0
+shoot_time_to_live_in_seconds = 0.0
+shoot_goes_through_enemies = false
+fire_power = 1000.0
+sprite = ExtResource("2_supwo")
+range_in_meters = 1000.0
+is_attached_to_parent = false

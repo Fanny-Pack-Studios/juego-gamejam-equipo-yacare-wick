@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Characters/Weapons/RegularShoot.gd" id="1_7q73h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugs7t"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp130"]
 size = Vector2(9, 13)
 
 [node name="RegularShoot" type="Node2D"]
@@ -24,6 +24,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.5, 1.5)
-shape = SubResource("RectangleShape2D_ugs7t")
+shape = SubResource("RectangleShape2D_sp130")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://btrro60kficv0"]
+[gd_scene load_steps=15 format=3 uid="uid://btrro60kficv0"]
 
-[ext_resource type="PackedScene" uid="uid://dkjwx1r245n4" path="res://Characters/Spaceship.tscn" id="1_5e38l"]
+[ext_resource type="PackedScene" uid="uid://dnsq1u34lemhl" path="res://Characters/Spaceship.tscn" id="1_5e38l"]
 [ext_resource type="Script" path="res://Level.gd" id="1_aatks"]
 [ext_resource type="Script" path="res://AsteroidsSpawner.gd" id="3_7ueoi"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="3_suq56"]
 [ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="4_fdci7"]
+[ext_resource type="PackedScene" uid="uid://bbhq225an71fd" path="res://Characters/Enemies/mecha_locust.tscn" id="4_fdxsx"]
 [ext_resource type="Script" path="res://GUI/HealthBar.gd" id="5_joka3"]
+[ext_resource type="PackedScene" uid="uid://c7j67qq323h2d" path="res://Characters/Enemies/mecha_locust_spawner.tscn" id="5_pfsss"]
 [ext_resource type="Texture2D" uid="uid://dubryrnp87jny" path="res://assets/spaceship_pixelart_256.png" id="6_hn4h5"]
 [ext_resource type="Script" path="res://TravelProgress.gd" id="6_x86rl"]
 
@@ -34,14 +36,11 @@ corner_radius_bottom_left = 10
 script = ExtResource("1_aatks")
 beginning = NodePath("Travel/Beginning")
 end = NodePath("Travel/End")
-travel_speed = 15.0
+travel_speed = 100.0
 
 [node name="Travel" type="Node2D" parent="."]
 
 [node name="Beginning" type="Node2D" parent="Travel"]
-
-[node name="End" type="Node2D" parent="Travel"]
-position = Vector2(0, 4000)
 
 [node name="AsteroidsSpawner" type="Node2D" parent="Travel"]
 position = Vector2(-431, 1110)
@@ -50,8 +49,18 @@ time_between_spawns_bounds = Vector2(0.2, 0.5)
 max_asteroid_points_in_screen = 20
 asteroid_config = SubResource("Resource_hfikw")
 
+[node name="End" type="Node2D" parent="Travel"]
+position = Vector2(0, 4000)
+
+[node name="MechaLocust" parent="Travel" instance=ExtResource("4_fdxsx")]
+position = Vector2(898, 882)
+
+[node name="MechaLocustSpawner" parent="Travel" instance=ExtResource("5_pfsss")]
+position = Vector2(943, 1449)
+
 [node name="Spaceship" parent="." instance=ExtResource("1_5e38l")]
 z_index = 1
+collision_layer = 1
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 1
@@ -198,3 +207,5 @@ offset_bottom = 40.0
 
 [connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]
+
+[editable path="Spaceship"]

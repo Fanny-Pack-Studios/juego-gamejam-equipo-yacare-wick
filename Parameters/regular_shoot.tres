@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponConfig" load_steps=3 format=3 uid="uid://dtv2v75wrfn2r"]
+
+[ext_resource type="Script" path="res://Characters/Weapons/weapon_config.gd" id="1_omxoa"]
+[ext_resource type="Texture2D" uid="uid://3fucq7k12dgf" path="res://addons/panku_console/res/pics/icons8-settings-24.png" id="2_ysi4e"]
+
+[resource]
+script = ExtResource("1_omxoa")
+shoots_per_second = 5.0
+shoot_speed = 500.0
+shoot_time_to_live_in_seconds = 0.0
+shoot_goes_through_enemies = false
+fire_power = 30.0
+sprite = ExtResource("2_ysi4e")
+range_in_meters = 2000.0
+is_attached_to_parent = false
