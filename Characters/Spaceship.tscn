@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkjwx1r245n4"]
+[gd_scene load_steps=6 format=3 uid="uid://dnsq1u34lemhl"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_j78yr"]
+[ext_resource type="PackedScene" uid="uid://diy86exb3j6oc" path="res://Characters/Weapons/Weapon.tscn" id="2_tpx5h"]
+[ext_resource type="Resource" uid="uid://dtv2v75wrfn2r" path="res://Parameters/regular_shoot.tres" id="3_dqh1n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
 
@@ -8,7 +10,6 @@
 
 [node name="Spaceship" type="CharacterBody2D"]
 position = Vector2(1034, 155)
-rotation = 0.0916772
 collision_layer = 0
 collision_mask = 2147483648
 motion_mode = 1
@@ -37,5 +38,7 @@ autostart = true
 [node name="InvincibleTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Weapon" parent="." instance=ExtResource("2_tpx5h")]
+weapon_config = ExtResource("3_dqh1n")
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="WeaponTimer" to="." method="_on_weapon_timer_timeout"]

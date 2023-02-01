@@ -45,14 +45,3 @@ func start_invincibility():
 
 func take_damage(damage: float):
 	current_health -= damage
-
-
-func _on_weapon_timer_timeout():
-	shoot()
-
-func shoot():
-	var shoot = Shoot.instantiate()
-	shoot.speed = 1000
-	add_child(shoot)
-	shoot.global_transform.origin = global_transform.origin
-

@@ -11,6 +11,9 @@ var max_health := 10.0
 signal removed(asteroid)
 signal destroyed(asteroid)
 
+func config_type():
+	return load("res://Characters/AsteroidConfig.tres")
+
 func asteroid_points():
 	return scale.x
 
