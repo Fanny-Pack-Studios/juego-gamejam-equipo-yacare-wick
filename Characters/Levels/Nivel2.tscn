@@ -21,3 +21,4 @@ position = Vector2(982, 886)
 position = Vector2(1287, 916)
 
 [editable path="Spaceship"]
+[editable path="Spaceship/SubViewportContainer/SubViewport/spaceship"]

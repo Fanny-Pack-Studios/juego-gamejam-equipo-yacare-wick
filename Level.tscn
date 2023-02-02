@@ -1,19 +1,44 @@
-[gd_scene load_steps=14 format=3 uid="uid://btrro60kficv0"]
+[gd_scene load_steps=21 format=3 uid="uid://btrro60kficv0"]
 
 [ext_resource type="Script" path="res://Level.gd" id="1_lwjfv"]
 [ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="2_knfd6"]
 [ext_resource type="PackedScene" uid="uid://dnsq1u34lemhl" path="res://Characters/Spaceship.tscn" id="4_1ljfk"]
+[ext_resource type="Shader" path="res://BackgroundStars.gdshader" id="4_4gupt"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="5_n613o"]
 [ext_resource type="Script" path="res://GUI/HealthBar.gd" id="6_3rala"]
 [ext_resource type="Script" path="res://TravelProgress.gd" id="7_evcny"]
 [ext_resource type="Texture2D" uid="uid://dubryrnp87jny" path="res://assets/spaceship_pixelart_256.png" id="8_fhb7y"]
 [ext_resource type="Texture2D" uid="uid://cy10ym1wh2hb0" path="res://assets/space-bg.png" id="9_hcih1"]
 [ext_resource type="Script" path="res://test.gd" id="10_1fb2l"]
+[ext_resource type="Script" path="res://ParallaxInfo.gd" id="10_naqm6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_snwwe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uf2fa"]
+shader = ExtResource("4_4gupt")
+shader_parameter/bg_color = null
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jy722"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="Gradient" id="Gradient_sf871"]
+colors = PackedColorArray(0, 0, 0, 0.196078, 1, 1, 1, 0.196078)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ii3ut"]
+noise_type = 3
+fractal_octaves = 10
+fractal_gain = 0.8
+fractal_weighted_strength = 0.51
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fp1bc"]
+width = 1920
+height = 1080
+seamless = true
+color_ramp = SubResource("Gradient_sf871")
+noise = SubResource("FastNoiseLite_ii3ut")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6ug"]
 size = Vector2(300, 1500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snwwe"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u5esv"]
 size = Vector2(500, 30)
@@ -36,29 +61,32 @@ travel_speed = 100.0
 stream = ExtResource("2_knfd6")
 autoplay = true
 
-[node name="Travel" type="Node2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Beginning" type="Node2D" parent="Travel"]
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 1080)
 
-[node name="Planet" type="StaticBody2D" parent="Travel"]
-position = Vector2(906, 3852)
-collision_layer = 2147483648
-collision_mask = 0
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_uf2fa")
+texture = SubResource("PlaceholderTexture2D_jy722")
+centered = false
 
-[node name="Polygon2D" type="Polygon2D" parent="Travel/Planet"]
-color = Color(0.980392, 0.866667, 0.843137, 1)
-polygon = PackedVector2Array(-1040, 141, -1040, 141, -736, 34, -491, -14, -66, -86, 317, -56, 682, -14, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 2160)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Planet"]
-shape = SubResource("RectangleShape2D_snwwe")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.878431, 0.886275, 1, 0.588235)
+position = Vector2(0, 1)
+texture = ExtResource("9_hcih1")
+centered = false
 
-[node name="End" type="Node2D" parent="Travel"]
-position = Vector2(0, 4000)
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(0, 1080)
 
-[node name="Spaceship" parent="." instance=ExtResource("4_1ljfk")]
-z_index = 1
-z_as_relative = false
-collision_layer = 1
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = SubResource("NoiseTexture2D_fp1bc")
+centered = false
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 1
@@ -107,6 +135,30 @@ script = ExtResource("5_n613o")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls2/VanishAsteroids2"]
 position = Vector2(150, 475)
 shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Travel" type="Node2D" parent="."]
+
+[node name="Beginning" type="Node2D" parent="Travel"]
+
+[node name="Planet" type="StaticBody2D" parent="Travel"]
+position = Vector2(906, 3852)
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="Travel/Planet"]
+color = Color(0.980392, 0.866667, 0.843137, 1)
+polygon = PackedVector2Array(-1040, 141, -1040, 141, -736, 34, -491, -14, -66, -86, 317, -56, 682, -14, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Planet"]
+shape = SubResource("RectangleShape2D_snwwe")
+
+[node name="End" type="Node2D" parent="Travel"]
+position = Vector2(0, 4000)
+
+[node name="Spaceship" parent="." instance=ExtResource("4_1ljfk")]
+z_index = 1
+z_as_relative = false
+collision_layer = 1
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -203,18 +255,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-follow_viewport_enabled = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, 1)
-texture = ExtResource("9_hcih1")
-centered = false
-
-[node name="Label" type="Label" parent="."]
+[node name="AsteroidsInfo" type="Label" parent="HUDLayer"]
 z_index = 10
 offset_left = 20.0
 offset_top = 738.0
@@ -222,7 +263,16 @@ offset_right = 60.0
 offset_bottom = 761.0
 script = ExtResource("10_1fb2l")
 
+[node name="ParallaxInfo" type="Label" parent="HUDLayer"]
+z_index = 10
+offset_left = 20.0
+offset_top = 828.0
+offset_right = 60.0
+offset_bottom = 851.0
+script = ExtResource("10_naqm6")
+
 [connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]
 
 [editable path="Spaceship"]
+[editable path="Spaceship/SubViewportContainer/SubViewport/spaceship"]

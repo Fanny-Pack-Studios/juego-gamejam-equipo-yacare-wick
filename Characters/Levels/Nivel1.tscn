@@ -6,34 +6,34 @@
 [ext_resource type="PackedScene" uid="uid://c7j67qq323h2d" path="res://Characters/Enemies/mecha_locust_spawner.tscn" id="4_dfj5b"]
 [ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="5_6c7ao"]
 
-[sub_resource type="Resource" id="Resource_8yf56"]
+[sub_resource type="Resource" id="Resource_gwrjr"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
-speed_bounds = Vector2(50, 300)
+speed_bounds = Vector2(-40, 300)
 angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.5)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_xqmk0"]
+[sub_resource type="Resource" id="Resource_tbht6"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
-speed_bounds = Vector2(50, 500)
+speed_bounds = Vector2(-40, 500)
 angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.7)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_8obkc"]
+[sub_resource type="Resource" id="Resource_7vqbk"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
-speed_bounds = Vector2(200, 600)
+speed_bounds = Vector2(-40, 600)
 angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.5, 1)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_5lyfv"]
+[sub_resource type="Resource" id="Resource_oenee"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
-speed_bounds = Vector2(100, 600)
+speed_bounds = Vector2(0, 600)
 angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.5, 1.5)
 origin_bounds = Vector2(0.1, 0.9)
@@ -46,7 +46,7 @@ origin_bounds = Vector2(0.1, 0.9)
 position = Vector2(-379, 1983)
 time_between_spawns_bounds = Vector2(0.2, 0.4)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_8yf56")
+asteroid_config = SubResource("Resource_gwrjr")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner1" index="0"]
 position = Vector2(0, -679)
@@ -54,7 +54,7 @@ position = Vector2(0, -679)
 [node name="AsteroidsSpawner2" parent="Travel" index="4" instance=ExtResource("2_4xoaf")]
 position = Vector2(-379, 2782)
 max_asteroid_points_in_screen = 4.0
-asteroid_config = SubResource("Resource_xqmk0")
+asteroid_config = SubResource("Resource_tbht6")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner2" index="0"]
 position = Vector2(0, -679)
@@ -62,7 +62,7 @@ position = Vector2(0, -679)
 [node name="AsteroidsSpawner6" parent="Travel" index="5" instance=ExtResource("2_4xoaf")]
 position = Vector2(-379, 3364)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_8obkc")
+asteroid_config = SubResource("Resource_7vqbk")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner6" index="0"]
 position = Vector2(0, -679)
@@ -71,7 +71,7 @@ position = Vector2(0, -679)
 position = Vector2(-363, 3744)
 time_between_spawns_bounds = Vector2(0.1, 0.25)
 max_asteroid_points_in_screen = 10.0
-asteroid_config = SubResource("Resource_5lyfv")
+asteroid_config = SubResource("Resource_oenee")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner7" index="0"]
 position = Vector2(0, -679)

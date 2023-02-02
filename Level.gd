@@ -4,13 +4,14 @@ extends Node2D
 @export var beginning: Node2D
 @export var end: Node2D
 @export var travel_speed: float = 5.0
-var distance_traveled: float = 0
 @onready var music = $Music
 
 func _ready():
+	$Travel/Beginning.top_level = true
+	$Travel/End.top_level = true
 	[$Walls, $Walls2].map(func (wall): wall.top_level = true)
 
-func length():
+func length() -> float:
 	return beginning.global_transform.origin.distance_to(end_point())
 
 func _physics_process(delta):
@@ -18,9 +19,14 @@ func _physics_process(delta):
 		end_point(),
 		delta * travel_speed
 	)
+#	$ParallaxBackground.scroll_offset = $ParallaxBackground.scroll_offset + Vector2(0, -travel_speed) * delta
+	$ParallaxBackground.scroll_offset = Vector2(0, distance_left())
+
+func distance_traveled() -> float:
+	return length() - distance_left()
 
 func distance_left():
 	return global_transform.origin.distance_to(end_point())
 
-func end_point() -> Vector2:	
+func end_point() -> Vector2:
 	return (beginning.global_transform.origin - end.global_transform.origin + Vector2(0, ProjectSettings.get_setting("display/window/size/viewport_height")))
