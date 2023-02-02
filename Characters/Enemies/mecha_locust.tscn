@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf0hrdpg7cfjm"]
+[gd_scene load_steps=5 format=3 uid="uid://bbhq225an71fd"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/mecha_locust.gd" id="1_3tb5s"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="2_lt26w"]
 [ext_resource type="AudioStream" uid="uid://b58g1cx6vruol" path="res://media/sound/locust_buzzed.wav" id="3_py6tj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kmah3"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbnnk"]
 radius = 7.0
 
 [node name="MechaLocust" type="CharacterBody2D"]
 z_index = 10
-collision_layer = 2
+collision_layer = 6
 collision_mask = 2
 collision_priority = 10.0
 motion_mode = 1
@@ -21,7 +21,7 @@ color = Color(0.192157, 0.392157, 0, 1)
 polygon = PackedVector2Array(-11, 15, -11, 15, -20, -7, -20, -7, -20, -7, -20, -7, 1, -32, 1, -32, 1, -32, 1, -32, 28, -7, 28, -7, 28, -7, 28, -7, 17, 17, 17, 17, 17, 17, 17, 17, 16, -8, 16, -8, 16, -8, 16, -8, 8, -13, 8, -13, 8, -13, 8, -13, 5, 15, 5, 15, 5, 15, 5, 15, -3, -16, -3, -16, -3, -16, -3, -16, -10, -6, -10, -6, -10, -6, -10, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_kmah3")
+shape = SubResource("CircleShape2D_mbnnk")
 
 [node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("2_lt26w")

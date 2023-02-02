@@ -51,7 +51,7 @@ func hit_with_spaceship(spaceship):
 		create_tween().tween_property(self, "scale", Vector2(0.7, 0.7), 1)
 		create_tween().tween_property(self, "max_speed", 1000, 0.5)
 		create_tween().tween_property(self, "acceleration", 2000, 0.5)
-
+ 
 		$DamageTimer.wait_time = time_between_hits
 		$DamageTimer.timeout.connect(self.attack)
 		$DamageTimer.start()
