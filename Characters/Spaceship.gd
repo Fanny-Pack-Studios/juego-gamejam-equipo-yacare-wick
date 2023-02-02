@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var ACCELERATION := 15.0
 @export var model_rotation_speed := 70.0
 @export var DRIFT_DESACCELERATION := 2.0
+@onready var spaceship_3d: Node3D = $SubViewportContainer/SubViewport/spaceship
 var MAX_HEALTH := 100.0
 var current_health := MAX_HEALTH
 @export var invincible_time := 1.0
@@ -29,7 +30,7 @@ func _ready():
 
 func _physics_process(delta):
 	$Hitbox.monitoring = not is_invincible()
-	$Sprite.color.a = 0 if should_blink() else 1.0
+	spaceship_3d.visible = not should_blink()
 
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var target_speed := direction * MAX_SPEED
@@ -38,7 +39,6 @@ func _physics_process(delta):
 		DRIFT_DESACCELERATION if(target_speed.is_zero_approx()) else ACCELERATION
 	)
 
-	var spaceship_3d = $SubViewportContainer/SubViewport/spaceship
 	spaceship_3d.rotation_degrees.z = move_toward(
 		spaceship_3d.rotation_degrees.z,
 		Input.get_axis("ui_left", "ui_right") * 30,
@@ -62,6 +62,9 @@ func start_invincibility():
 
 func take_damage(damage: float, turn_on_invincibility: bool = true):
 	current_health -= damage
+	var max_shake = 2
+	$Shaker.max_value = max(damage / 10.0, max_shake)
+	$Shaker.start(0.5)
 	if(turn_on_invincibility):
 		start_invincibility()
 

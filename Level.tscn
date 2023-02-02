@@ -1,0 +1,228 @@
+[gd_scene load_steps=14 format=3 uid="uid://btrro60kficv0"]
+
+[ext_resource type="Script" path="res://Level.gd" id="1_lwjfv"]
+[ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="2_knfd6"]
+[ext_resource type="PackedScene" uid="uid://dnsq1u34lemhl" path="res://Characters/Spaceship.tscn" id="4_1ljfk"]
+[ext_resource type="Script" path="res://VanishAsteroids.gd" id="5_n613o"]
+[ext_resource type="Script" path="res://GUI/HealthBar.gd" id="6_3rala"]
+[ext_resource type="Script" path="res://TravelProgress.gd" id="7_evcny"]
+[ext_resource type="Texture2D" uid="uid://dubryrnp87jny" path="res://assets/spaceship_pixelart_256.png" id="8_fhb7y"]
+[ext_resource type="Texture2D" uid="uid://cy10ym1wh2hb0" path="res://assets/space-bg.png" id="9_hcih1"]
+[ext_resource type="Script" path="res://test.gd" id="10_1fb2l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snwwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6ug"]
+size = Vector2(300, 1500)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u5esv"]
+size = Vector2(500, 30)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2hlq"]
+border_width_left = 5
+border_width_right = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("beginning", "end")]
+script = ExtResource("1_lwjfv")
+beginning = NodePath("Travel/Beginning")
+end = NodePath("Travel/End")
+travel_speed = 100.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_knfd6")
+autoplay = true
+
+[node name="Travel" type="Node2D" parent="."]
+
+[node name="Beginning" type="Node2D" parent="Travel"]
+
+[node name="Planet" type="StaticBody2D" parent="Travel"]
+position = Vector2(906, 3852)
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="Travel/Planet"]
+color = Color(0.980392, 0.866667, 0.843137, 1)
+polygon = PackedVector2Array(-1040, 141, -1040, 141, -736, 34, -491, -14, -66, -86, 317, -56, 682, -14, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Planet"]
+shape = SubResource("RectangleShape2D_snwwe")
+
+[node name="End" type="Node2D" parent="Travel"]
+position = Vector2(0, 4000)
+
+[node name="Spaceship" parent="." instance=ExtResource("4_1ljfk")]
+z_index = 1
+z_as_relative = false
+collision_layer = 1
+
+[node name="Walls" type="StaticBody2D" parent="."]
+z_index = 1
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102)
+
+[node name="VanishAsteroids" type="Area2D" parent="Walls"]
+position = Vector2(-280, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_n613o")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/VanishAsteroids"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Walls2" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(1913, 1067)
+rotation = 3.14159
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls2"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102)
+
+[node name="VanishAsteroids2" type="Area2D" parent="Walls2"]
+position = Vector2(-256, -3.00061)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_n613o")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls2/VanishAsteroids2"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Control" type="Control" parent="HUDLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HealthBar" type="Control" parent="HUDLayer/Control" node_paths=PackedStringArray("texture_progress_bar", "player")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_3rala")
+texture_progress_bar = NodePath("MarginContainer/TextureProgressBar")
+player = NodePath("../../../Spaceship")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUDLayer/Control/HealthBar"]
+layout_mode = 0
+offset_right = 530.0
+offset_bottom = 60.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUDLayer/Control/HealthBar/MarginContainer"]
+layout_mode = 2
+value = 100.0
+texture_progress = SubResource("PlaceholderTexture2D_u5esv")
+
+[node name="TravelProgress" type="Control" parent="HUDLayer/Control" node_paths=PackedStringArray("level")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -195.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("7_evcny")
+level = NodePath("../../..")
+
+[node name="VSlider" type="VSlider" parent="HUDLayer/Control/TravelProgress"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber_disabled = ExtResource("8_fhb7y")
+theme_override_styles/slider = SubResource("StyleBoxFlat_l2hlq")
+step = 0.0
+value = 100.0
+editable = false
+scrollable = false
+
+[node name="Beginning" type="Control" parent="HUDLayer/Control/TravelProgress/VSlider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/Control/TravelProgress/VSlider/Beginning"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="End" type="Control" parent="HUDLayer/Control/TravelProgress/VSlider"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/Control/TravelProgress/VSlider/End"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 1)
+texture = ExtResource("9_hcih1")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+z_index = 10
+offset_left = 20.0
+offset_top = 738.0
+offset_right = 60.0
+offset_bottom = 761.0
+script = ExtResource("10_1fb2l")
+
+[connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
+[connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]
+
+[editable path="Spaceship"]

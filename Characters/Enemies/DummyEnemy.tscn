@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://db27boe1yhctc"]
+
+[ext_resource type="Script" path="res://Characters/Enemies/DummyEnemy.gd" id="1_gk08l"]
+[ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="2_1gjqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yux5e"]
+radius = 70.0
+
+[node name="DummyEnemy" type="CharacterBody2D"]
+script = ExtResource("1_gk08l")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(-100, 125, -100, 125, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -166, 12, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, -160, -120, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 56, -138, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 152, -36, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84, 80, 84)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yux5e")
+
+[node name="DestroyedEffect" type="Node2D" parent="."]
+script = ExtResource("2_1gjqi")

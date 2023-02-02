@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://pjo7upvu03oo"]
+
+[ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_wk357"]
+[ext_resource type="PackedScene" uid="uid://db27boe1yhctc" path="res://Characters/Enemies/DummyEnemy.tscn" id="2_retg0"]
+
+[node name="Nivel2" instance=ExtResource("1_wk357")]
+
+[node name="DummyEnemy" parent="Travel" index="1" instance=ExtResource("2_retg0")]
+position = Vector2(1030, 712)
+
+[node name="DummyEnemy2" parent="Travel" index="2" instance=ExtResource("2_retg0")]
+position = Vector2(1263, 706)
+
+[node name="DummyEnemy3" parent="Travel" index="3" instance=ExtResource("2_retg0")]
+position = Vector2(772, 778)
+
+[node name="DummyEnemy4" parent="Travel" index="4" instance=ExtResource("2_retg0")]
+position = Vector2(982, 886)
+
+[node name="DummyEnemy5" parent="Travel" index="5" instance=ExtResource("2_retg0")]
+position = Vector2(1287, 916)
+
+[editable path="Spaceship"]

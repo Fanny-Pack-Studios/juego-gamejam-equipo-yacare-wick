@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnsq1u34lemhl"]
+[gd_scene load_steps=11 format=3 uid="uid://dnsq1u34lemhl"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_j78yr"]
 [ext_resource type="World3D" uid="uid://cobqimndk6hh0" path="res://assets/World3D.tres" id="2_cc64f"]
@@ -6,11 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://diy86exb3j6oc" path="res://Characters/Weapons/Weapon.tscn" id="2_tpx5h"]
 [ext_resource type="Resource" uid="uid://dtv2v75wrfn2r" path="res://Parameters/regular_shoot.tres" id="3_dqh1n"]
 [ext_resource type="AudioStream" uid="uid://biaxwr4c5siad" path="res://media/sound/glass_damage.wav" id="6_2ryac"]
+[ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="7_ldcpf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qinrf"]
 size = Vector2(45, 30)
+
+[sub_resource type="Curve" id="Curve_5dc0u"]
+_data = [Vector2(0, 0.515337), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Spaceship" type="CharacterBody2D"]
 position = Vector2(1034, 155)
@@ -81,5 +86,14 @@ weapon_config = ExtResource("3_dqh1n")
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_2ryac")
 
+[node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
+script = ExtResource("7_ldcpf")
+target_node = NodePath("../SubViewportContainer/SubViewport/spaceship")
+target_property = &"position"
+max_value = 0.5
+fall_off = SubResource("Curve_5dc0u")
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+
+[editable path="SubViewportContainer/SubViewport/spaceship"]
