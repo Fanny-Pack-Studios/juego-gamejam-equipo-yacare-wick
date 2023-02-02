@@ -57,12 +57,15 @@ func hit_with_spaceship(spaceship: Spaceship):
 	destroy()
 
 func destroy():
+	sound.reparent(get_node("/root"))
+	sound.volume_db *= scale.x
+	sound.pitch_scale = randf_range(0.8, 1.2)
+	sound.finished.connect(func(): sound.queue_free())
+	sound.play()
 	destroyed.emit(self)
 	remove()
 
 func be_damaged(amount):
-	if !sound.is_playing():
-		sound.play()
 	current_health -= amount
 	if(current_health <= 0):
 		destroy()
