@@ -38,4 +38,6 @@ debug_toggle={
 [layer_names]
 
 2d_physics/layer_1="Spaceship"
-2d_physics/layer_2="Enemies"
+2d_physics/layer_2="Lochusts"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_32="Terrain"

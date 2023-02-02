@@ -30,9 +30,13 @@ func set_initial_position(position):
 
 func _ready():
 	$Hitbox.body_entered.connect(self._on_hitbox_body_entered)
+	$Hitbox.area_entered.connect(self._on_hitbox_area_entered)
 	if(time_to_live_in_seconds > 0):
 		$TimeToLive.timeout.connect(func (): queue_free())
 		$TimeToLive.start(time_to_live_in_seconds)
+
+func _on_hitbox_area_entered(area):
+	_on_hitbox_body_entered(area.get_parent())
 
 func _on_hitbox_body_entered(body):
 	body.be_damaged(fire_power)

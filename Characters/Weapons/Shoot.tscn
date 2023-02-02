@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Characters/Weapons/Shoot.gd" id="1_wvy3u"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rfr07"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dvq1k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1568"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2df3o"]
 size = Vector2(9, 13)
 
 [node name="Shoot" type="CharacterBody2D"]
@@ -14,7 +14,7 @@ collision_mask = 0
 script = ExtResource("1_wvy3u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_rfr07")
+shape = SubResource("CircleShape2D_dvq1k")
 disabled = true
 
 [node name="Sprite" type="TextureRect" parent="."]
@@ -30,11 +30,11 @@ size_flags_vertical = 4
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.5, 1.5)
-shape = SubResource("RectangleShape2D_e1568")
+shape = SubResource("RectangleShape2D_2df3o")
 
 [node name="TimeToLive" type="Timer" parent="."]
 process_callback = 0
