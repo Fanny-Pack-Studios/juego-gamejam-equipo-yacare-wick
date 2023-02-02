@@ -1,25 +1,54 @@
-[gd_scene load_steps=18 format=3 uid="uid://btrro60kficv0"]
+[gd_scene load_steps=23 format=3 uid="uid://btrro60kficv0"]
 
 [ext_resource type="PackedScene" uid="uid://dnsq1u34lemhl" path="res://Characters/Spaceship.tscn" id="1_5e38l"]
 [ext_resource type="Script" path="res://Level.gd" id="1_aatks"]
-[ext_resource type="Script" path="res://AsteroidsSpawner.gd" id="3_7ueoi"]
+[ext_resource type="PackedScene" uid="uid://rcggwxx4n7gy" path="res://Characters/Enemies/asteroids_spawner.tscn" id="2_5jpjl"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="3_suq56"]
 [ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="4_fdci7"]
-[ext_resource type="PackedScene" uid="uid://bbhq225an71fd" path="res://Characters/Enemies/mecha_locust.tscn" id="4_fdxsx"]
 [ext_resource type="Script" path="res://GUI/HealthBar.gd" id="5_joka3"]
 [ext_resource type="PackedScene" uid="uid://c7j67qq323h2d" path="res://Characters/Enemies/mecha_locust_spawner.tscn" id="5_pfsss"]
 [ext_resource type="Texture2D" uid="uid://dubryrnp87jny" path="res://assets/spaceship_pixelart_256.png" id="6_hn4h5"]
 [ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="6_v5m37"]
-[ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="6_wygpp"]
 [ext_resource type="Script" path="res://TravelProgress.gd" id="6_x86rl"]
+[ext_resource type="Script" path="res://test.gd" id="7_bmx2b"]
 [ext_resource type="Texture2D" uid="uid://cy10ym1wh2hb0" path="res://assets/space-bg.png" id="12_fjefq"]
+[ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="12_xryeq"]
 
-[sub_resource type="Resource" id="Resource_hfikw"]
+[sub_resource type="Resource" id="Resource_t2tol"]
+resource_local_to_scene = true
+script = ExtResource("4_fdci7")
+speed_bounds = Vector2(50, 300)
+angle_bounds_degrees = Vector2(-30, 30)
+scale_bounds = Vector2(0.2, 0.5)
+origin_bounds = Vector2(0.1, 0.9)
+
+[sub_resource type="Resource" id="Resource_ysgoh"]
+resource_local_to_scene = true
+script = ExtResource("4_fdci7")
+speed_bounds = Vector2(50, 500)
+angle_bounds_degrees = Vector2(-30, 30)
+scale_bounds = Vector2(0.2, 0.7)
+origin_bounds = Vector2(0.1, 0.9)
+
+[sub_resource type="Resource" id="Resource_grxq6"]
+resource_local_to_scene = true
+script = ExtResource("4_fdci7")
+speed_bounds = Vector2(200, 600)
+angle_bounds_degrees = Vector2(-30, 30)
+scale_bounds = Vector2(0.5, 1)
+origin_bounds = Vector2(0.1, 0.9)
+
+[sub_resource type="Resource" id="Resource_0o0ag"]
+resource_local_to_scene = true
 script = ExtResource("4_fdci7")
 speed_bounds = Vector2(100, 600)
-angle_bounds_degrees = Vector2(1, 2)
-scale_bounds = Vector2(0.1, 1)
-origin_bounds = Vector2(0.15, 0.15)
+angle_bounds_degrees = Vector2(-30, 30)
+scale_bounds = Vector2(0.5, 1.5)
+origin_bounds = Vector2(0.1, 0.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snwwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8bl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6ug"]
 size = Vector2(300, 1500)
@@ -45,32 +74,111 @@ travel_speed = 100.0
 
 [node name="Beginning" type="Node2D" parent="Travel"]
 
-[node name="AsteroidsSpawner" type="Node2D" parent="Travel"]
-position = Vector2(-431, 1110)
-script = ExtResource("3_7ueoi")
-time_between_spawns_bounds = Vector2(0.2, 0.5)
-max_asteroid_points_in_screen = 20
-asteroid_config = SubResource("Resource_hfikw")
+[node name="AsteroidsSpawner1" parent="Travel" instance=ExtResource("2_5jpjl")]
+position = Vector2(-379, 1983)
+time_between_spawns_bounds = Vector2(0.2, 0.4)
+max_asteroid_points_in_screen = 5.0
+asteroid_config = SubResource("Resource_t2tol")
 
-[node name="End" type="Node2D" parent="Travel"]
-position = Vector2(0, 4000)
+[node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner1" index="0"]
+position = Vector2(0, -679)
 
-[node name="MechaLocust" parent="Travel" instance=ExtResource("4_fdxsx")]
-position = Vector2(898, 882)
+[node name="AsteroidsSpawner2" parent="Travel" instance=ExtResource("2_5jpjl")]
+position = Vector2(-379, 2782)
+max_asteroid_points_in_screen = 4.0
+asteroid_config = SubResource("Resource_ysgoh")
+
+[node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner2" index="0"]
+position = Vector2(0, -679)
+
+[node name="AsteroidsSpawner6" parent="Travel" instance=ExtResource("2_5jpjl")]
+position = Vector2(-379, 3364)
+max_asteroid_points_in_screen = 5.0
+asteroid_config = SubResource("Resource_grxq6")
+
+[node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner6" index="0"]
+position = Vector2(0, -679)
+
+[node name="AsteroidsSpawner7" parent="Travel" instance=ExtResource("2_5jpjl")]
+position = Vector2(-363, 3744)
+time_between_spawns_bounds = Vector2(0.1, 0.25)
+max_asteroid_points_in_screen = 10.0
+asteroid_config = SubResource("Resource_0o0ag")
+
+[node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner7" index="0"]
+position = Vector2(0, -679)
 
 [node name="MechaLocustSpawner" parent="Travel" node_paths=PackedStringArray("target_spaceship") instance=ExtResource("5_pfsss")]
 position = Vector2(943, 1449)
 target_spaceship = NodePath("../../Spaceship")
 
-[node name="mecha_squirrel2" parent="Travel" instance=ExtResource("6_wygpp")]
-position = Vector2(1331, 1038)
+[node name="MechaLocustSpawner2" parent="Travel" node_paths=PackedStringArray("target_spaceship") instance=ExtResource("5_pfsss")]
+position = Vector2(414, 2431)
+rotation = 0.354186
+target_spaceship = NodePath("../../Spaceship")
+
+[node name="MechaLocustSpawner3" parent="Travel" node_paths=PackedStringArray("target_spaceship") instance=ExtResource("5_pfsss")]
+position = Vector2(1436, 2799)
+rotation = -0.547964
+target_spaceship = NodePath("../../Spaceship")
+
+[node name="mecha_squirrel" parent="Travel" instance=ExtResource("12_xryeq")]
+position = Vector2(617, 3024)
+
+[node name="mecha_squirrel2" parent="Travel" instance=ExtResource("12_xryeq")]
+position = Vector2(1441, 2559)
+rotation = -0.431142
+
+[node name="mecha_squirrel3" parent="Travel" instance=ExtResource("12_xryeq")]
+position = Vector2(1320, 3120)
+rotation = -0.431142
+
+[node name="Planet" type="StaticBody2D" parent="Travel"]
+position = Vector2(906, 3852)
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="Travel/Planet"]
+color = Color(0.980392, 0.866667, 0.843137, 1)
+polygon = PackedVector2Array(-1040, 141, -1040, 141, -736, 34, -491, -14, -66, -86, 317, -56, 682, -14, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165, 1086, 165)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Planet"]
+shape = SubResource("RectangleShape2D_snwwe")
+
+[node name="Boss" type="CharacterBody2D" parent="Travel"]
+position = Vector2(906, 3852)
+scale = Vector2(0.515554, 0.509245)
+collision_layer = 1073741824
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Boss"]
+shape = SubResource("RectangleShape2D_r8bl0")
+
+[node name="Polygon2D" type="Polygon2D" parent="Travel/Boss"]
+polygon = PackedVector2Array(-65, -91, -65, -91, -217, -195, -217, -195, -313, -466, -313, -466, -472, -434, -472, -434, -384, -187, -384, -187)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Travel/Boss"]
+polygon = PackedVector2Array(-65, -123, -65, -123, -113, -290, -113, -290, -113, -290, -113, -290, -113, -290, -113, -290, -113, -458, -113, -458, -113, -458, -113, -458, -113, -458, -113, -458, 143, -434, 143, -434, 143, -434, 143, -434, 143, -434, 143, -434, 127, -242, 127, -242, 127, -242, 127, -242, 127, -242, 127, -242)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Travel/Boss"]
+polygon = PackedVector2Array(-49, -131, -49, -131, 191, -195, 191, -195, 191, -195, 191, -195, 191, -195, 191, -195, 191, -195, 279, -362, 279, -362, 279, -362, 279, -362, 279, -362, 279, -362, 279, -362, 447, -322, 447, -322, 447, -322, 447, -322, 447, -322, 447, -322, 447, -322, 359, -131, 359, -131, 359, -131, 359, -131, 359, -131, 359, -131, 359, -131)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Travel/Boss"]
+polygon = PackedVector2Array(38.9995, -123, 39, -123, -121, -139, -121, -139, -121, -139, -121, -139, -121, -139, -121, -139, -121, -139, -121, -139, -121, -139, -217, 5, -217, 5, -217, 5, -217, 5, -217, 5, -217, 5, -217, 5, -217, 5, -217, 5, -89, -43, -89, -43, -89, -43, -89, -43, -89, -43, -89, -43, -89, -43, -89, -43, -89, -43, -41, 53, -41, 53, -41, 53, -41, 53, -41, 53, -41, 53, -41, 53, -41, 53, -41, 53, 55, -19, 55, -19, 55, -19, 55, -19, 55, -19, 55, -19, 55, -19, 55, -19, 55, -19, 215, 53, 215, 53, 215, 53, 215, 53, 215, 53, 215, 53, 215, 53, 215, 53, 215, 53)
+
+[node name="End" type="Node2D" parent="Travel"]
+position = Vector2(0, 4000)
 
 [node name="Music" type="AudioStreamPlayer" parent="Travel"]
 stream = ExtResource("6_v5m37")
 autoplay = true
 
-[node name="mecha_squirrel3" parent="Travel" instance=ExtResource("6_wygpp")]
-position = Vector2(553, 1489)
+[node name="Label" type="Label" parent="Travel"]
+offset_left = 510.592
+offset_top = 229.465
+offset_right = 550.592
+offset_bottom = 252.465
+script = ExtResource("7_bmx2b")
 
 [node name="Spaceship" parent="." instance=ExtResource("1_5e38l")]
 z_index = 1
@@ -234,4 +342,8 @@ centered = false
 [connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]
 
+[editable path="Travel/AsteroidsSpawner1"]
+[editable path="Travel/AsteroidsSpawner2"]
+[editable path="Travel/AsteroidsSpawner6"]
+[editable path="Travel/AsteroidsSpawner7"]
 [editable path="Spaceship"]

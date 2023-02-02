@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://rcggwxx4n7gy"]
+
+[ext_resource type="Script" path="res://AsteroidsSpawner.gd" id="1_b1gkv"]
+[ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="2_0ax01"]
+
+[sub_resource type="Resource" id="Resource_gms0g"]
+resource_local_to_scene = true
+script = ExtResource("2_0ax01")
+speed_bounds = Vector2(100, 600)
+angle_bounds_degrees = Vector2(0, 45)
+scale_bounds = Vector2(0.2, 1)
+origin_bounds = Vector2(0.6, 0.6)
+
+[node name="AsteroidsSpawner" type="Node2D"]
+position = Vector2(979, 482)
+script = ExtResource("1_b1gkv")
+time_between_spawns_bounds = Vector2(0.2, 0.5)
+asteroid_config = SubResource("Resource_gms0g")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -493)
+rect = Rect2(-10, 10, 2000, 20)
+
+[node name="DisableIfSpawnerIsOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -29)
+rect = Rect2(-10, -10, 2000, 20)
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_entered" from="DisableIfSpawnerIsOnScreen" to="." method="_on_disable_if_spawner_is_on_screen_screen_entered"]

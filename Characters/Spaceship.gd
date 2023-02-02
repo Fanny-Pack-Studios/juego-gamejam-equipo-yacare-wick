@@ -53,6 +53,9 @@ func _on_hitbox_body_entered(body):
 	sound.play()
 	
 
+func _on_hitbox_area_entered(area):
+	_on_hitbox_body_entered(area.get_parent())
+
 func start_invincibility():
 	$InvincibleTimer.start()
 
@@ -69,3 +72,4 @@ func random_attach_point() -> Vector2:
 	var x = randf_range(begin.x, end.x)
 	var y = randf_range(begin.y, end.y)
 	return Vector2(x, y)
+

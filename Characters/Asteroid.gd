@@ -20,12 +20,12 @@ func asteroid_points():
 
 func _ready():
 	var speed = _randf_bounds(config.speed_bounds)
-	rotation = _randf_bounds(config.angle_bounds_degrees)
+	rotation_degrees = _randf_bounds(config.angle_bounds_degrees)
 	velocity = (Vector2.UP * speed).rotated(rotation)
 	var size = _randf_bounds(config.scale_bounds)
 	scale = Vector2.ONE * size
 	global_transform.origin.x = randf_range(
-		config.origin_bounds.x,
+		get_viewport_rect().end.x * config.origin_bounds.x,
 		get_viewport_rect().end.x * config.origin_bounds.y
 	)
 	rotation_degrees = rotation

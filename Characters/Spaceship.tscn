@@ -81,4 +81,5 @@ weapon_config = ExtResource("3_dqh1n")
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_2ryac")
 
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
