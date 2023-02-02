@@ -1,15 +1,15 @@
-[gd_resource type="World3D" load_steps=4 format=3 uid="uid://d0aso678ijxtg"]
+[gd_resource type="World3D" load_steps=4 format=3 uid="uid://cobqimndk6hh0"]
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ighyq"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_oiam7"]
 
-[sub_resource type="Environment" id="Environment_7mkh4"]
+[sub_resource type="Environment" id="Environment_3qyol"]
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
 
-[sub_resource type="Environment" id="Environment_tc50v"]
+[sub_resource type="Environment" id="Environment_olj2e"]
 
 [resource]
-environment = SubResource("Environment_7mkh4")
-fallback_environment = SubResource("Environment_tc50v")
-camera_attributes = SubResource("CameraAttributesPractical_ighyq")
+environment = SubResource("Environment_3qyol")
+fallback_environment = SubResource("Environment_olj2e")
+camera_attributes = SubResource("CameraAttributesPractical_oiam7")

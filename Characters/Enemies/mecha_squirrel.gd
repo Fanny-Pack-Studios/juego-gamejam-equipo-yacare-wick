@@ -1,13 +1,11 @@
 class_name MechaSquirrel
-extends CharacterBody2D
+extends Enemy
 
 var target_direction = null
 @export var acceleration: float = 250
 @export var max_speed: float = 1000
 @export var wander_speed: float = 100
-var max_health := 50.0
-var current_health := max_health
-
+@onready var original_color = $SpriteAttacking/Sprite2.color
 
 func _ready():
 	top_level = true
@@ -16,20 +14,15 @@ func _ready():
 	velocity = Vector2.UP.rotated(rotation) * wander_speed
 
 
+func sprites():
+	return [$SpriteAttacking/Sprite1, $SpriteAttacking/Sprite2, $SpriteWandering]
+
 func _physics_process(delta):
 	move_and_slide()
-
-
-func be_damaged(damage):
-	current_health -= damage
-	if(current_health <= 0):
-		queue_free()
-
 
 func hit_with_spaceship(spaceship):
 	spaceship.take_damage(15)
 	queue_free()
-
 
 func _on_detection_area_body_entered(body):
 	var tween = create_tween()

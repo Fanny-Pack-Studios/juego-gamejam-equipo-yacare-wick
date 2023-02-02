@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbhq225an71fd"]
+[gd_scene load_steps=7 format=3 uid="uid://bbhq225an71fd"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/mecha_locust.gd" id="1_3tb5s"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="2_lt26w"]
 [ext_resource type="AudioStream" uid="uid://b58g1cx6vruol" path="res://media/sound/locust_buzzed.wav" id="3_py6tj"]
+[ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="4_yc6dw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbnnk"]
 radius = 7.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_okufc"]
+radius = 12.0
+
 [node name="MechaLocust" type="CharacterBody2D"]
 z_index = 10
-collision_layer = 6
+collision_layer = 2
 collision_mask = 2
 collision_priority = 10.0
 motion_mode = 1
@@ -37,3 +41,14 @@ process_callback = 0
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_py6tj")
+
+[node name="DestroyedEffect" type="Node2D" parent="."]
+script = ExtResource("4_yc6dw")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_okufc")

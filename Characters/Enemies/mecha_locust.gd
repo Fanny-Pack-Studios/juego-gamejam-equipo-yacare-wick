@@ -1,5 +1,5 @@
 class_name MechaLocust
-extends CharacterBody2D
+extends Enemy
 
 var target: Node2D
 @export var acceleration: float = 250
@@ -8,12 +8,13 @@ var target: Node2D
 @export var damage_per_hit: float = 0.5
 var attached_to_target = false
 var attach_point: Vector2 = Vector2.ZERO
-var max_health := 50.0
-var current_health := max_health
 @onready var sound = $Sounds
 
 func _ready():
 	top_level = true
+
+func sprites():
+	return [$Polygon2D]
 
 func _physics_process(delta):
 	if(null == target):
@@ -34,11 +35,6 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(target_velocity, delta * acceleration)
 
 		move_and_slide()
-
-func be_damaged(damage):
-	current_health -= damage
-	if(current_health <= 0):
-		queue_free()
 
 func attack():
 	target.take_damage(1, false)

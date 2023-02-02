@@ -42,7 +42,7 @@ func _physics_process(delta):
 	var spaceship_3d = $SubViewportContainer/SubViewport/spaceship
 	spaceship_3d.rotation_degrees.z = move_toward(
 		spaceship_3d.rotation_degrees.z,
-		clamp(velocity.x, -30, 30),
+		Input.get_axis("ui_left", "ui_right") * 30,
 		model_rotation_speed * delta
 	)
 
