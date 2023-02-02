@@ -54,8 +54,6 @@ constant = Color(0, 0.833333, 1, 1)
 
 [resource]
 code = "shader_type spatial;
-render_mode cull_disabled;
-
 uniform sampler2D tex_frg_26;
 
 
@@ -106,11 +104,10 @@ void fragment() {
 
 // ColorConstant:33
 	vec4 n_out33p0 = vec4(0.000000, 0.833333, 1.000000, 1.000000);
-	float n_out33p3 = n_out33p0.b;
 
 
 // FloatOp:32
-	float n_out32p0 = n_out31p0 + n_out33p3;
+	float n_out32p0 = n_out31p0 + n_out33p0.x;
 
 
 // Output:0
@@ -120,8 +117,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(622.378, -547.461)
-modes/cull = 2
+graph_offset = Vector2(212.089, -404.805)
 nodes/fragment/0/position = Vector2(2700, -740)
 nodes/fragment/21/node = SubResource("VisualShaderNodeInput_31brv")
 nodes/fragment/21/position = Vector2(866.538, -881.547)
@@ -147,4 +143,4 @@ nodes/fragment/32/node = SubResource("VisualShaderNodeFloatOp_w07tc")
 nodes/fragment/32/position = Vector2(2420, -440)
 nodes/fragment/33/node = SubResource("VisualShaderNodeColorConstant_koxmr")
 nodes/fragment/33/position = Vector2(2160, -180)
-nodes/fragment/connections = PackedInt32Array(23, 0, 24, 0, 26, 0, 27, 0, 27, 0, 28, 0, 27, 0, 29, 0, 29, 0, 30, 1, 30, 0, 31, 0, 28, 0, 0, 1, 32, 0, 0, 5, 22, 0, 23, 0, 21, 0, 26, 0, 31, 0, 32, 0, 33, 3, 32, 1, 24, 0, 27, 1)
+nodes/fragment/connections = PackedInt32Array(23, 0, 24, 0, 26, 0, 27, 0, 27, 0, 28, 0, 27, 0, 29, 0, 29, 0, 30, 1, 30, 0, 31, 0, 28, 0, 0, 1, 32, 0, 0, 5, 22, 0, 23, 0, 21, 0, 26, 0, 31, 0, 32, 0, 24, 0, 27, 1, 33, 0, 32, 1)
