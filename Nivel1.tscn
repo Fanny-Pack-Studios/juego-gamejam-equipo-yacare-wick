@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://btrro60kficv0"]
+[gd_scene load_steps=18 format=3 uid="uid://btrro60kficv0"]
 
 [ext_resource type="PackedScene" uid="uid://dnsq1u34lemhl" path="res://Characters/Spaceship.tscn" id="1_5e38l"]
 [ext_resource type="Script" path="res://Level.gd" id="1_aatks"]
 [ext_resource type="Script" path="res://AsteroidsSpawner.gd" id="3_7ueoi"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="3_suq56"]
 [ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="4_fdci7"]
-[ext_resource type="PackedScene" uid="uid://cf0hrdpg7cfjm" path="res://Characters/Enemies/mecha_locust.tscn" id="4_fdxsx"]
+[ext_resource type="PackedScene" uid="uid://bbhq225an71fd" path="res://Characters/Enemies/mecha_locust.tscn" id="4_fdxsx"]
 [ext_resource type="Script" path="res://GUI/HealthBar.gd" id="5_joka3"]
 [ext_resource type="PackedScene" uid="uid://c7j67qq323h2d" path="res://Characters/Enemies/mecha_locust_spawner.tscn" id="5_pfsss"]
 [ext_resource type="Texture2D" uid="uid://dubryrnp87jny" path="res://assets/spaceship_pixelart_256.png" id="6_hn4h5"]
 [ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="6_v5m37"]
+[ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="6_wygpp"]
 [ext_resource type="Script" path="res://TravelProgress.gd" id="6_x86rl"]
 [ext_resource type="Texture2D" uid="uid://cy10ym1wh2hb0" path="res://assets/space-bg.png" id="12_fjefq"]
 
@@ -61,9 +62,15 @@ position = Vector2(898, 882)
 position = Vector2(943, 1449)
 target_spaceship = NodePath("../../Spaceship")
 
+[node name="mecha_squirrel2" parent="Travel" instance=ExtResource("6_wygpp")]
+position = Vector2(1331, 1038)
+
 [node name="Music" type="AudioStreamPlayer" parent="Travel"]
 stream = ExtResource("6_v5m37")
 autoplay = true
+
+[node name="mecha_squirrel3" parent="Travel" instance=ExtResource("6_wygpp")]
+position = Vector2(553, 1489)
 
 [node name="Spaceship" parent="." instance=ExtResource("1_5e38l")]
 z_index = 1

@@ -6,6 +6,7 @@ var target_direction = null
 @export var max_speed: float = 1000
 @export var wander_speed: float = 100
 @onready var original_color = $SpriteAttacking/Sprite2.color
+@onready var sound = $Sound
 
 func _ready():
 	top_level = true
@@ -49,3 +50,4 @@ func _on_detection_area_body_entered(body):
 	)
 	$SpriteWandering.visible = false
 	$SpriteAttacking.visible = true
+	sound.play()

@@ -7,7 +7,7 @@ var current_health := 10.0
 var max_health := 10.0
 
 @export var too_little_threshold := 0.5
-@onready var sound = $AudioStreamPlayer2D
+@onready var sound = $Sound
 
 signal removed(asteroid)
 signal destroyed(asteroid)
@@ -61,8 +61,9 @@ func destroy():
 	remove()
 
 func be_damaged(amount):
+	if !sound.is_playing():
+		sound.play()
 	current_health -= amount
-	sound.play()
 	if(current_health <= 0):
 		destroy()
 

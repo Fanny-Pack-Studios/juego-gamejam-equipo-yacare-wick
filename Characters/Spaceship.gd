@@ -1,7 +1,6 @@
 class_name Spaceship
 extends CharacterBody2D
 
-const Shoot = preload("res://Characters/Weapons/RegularShoot.tscn")
 
 @export var MAX_SPEED := 300.0
 @export var ACCELERATION := 15.0

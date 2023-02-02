@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd6uqjn1mckrm"]
+[gd_scene load_steps=7 format=3 uid="uid://bd6uqjn1mckrm"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/mecha_squirrel.gd" id="1_ee4je"]
 [ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="2_wksxc"]
+[ext_resource type="AudioStream" uid="uid://bdbhu25bcggud" path="res://media/sound/Squirrel_screech.wav" id="3_th6lq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6tyxs"]
 radius = 8.0
@@ -58,5 +59,8 @@ shape = SubResource("CapsuleShape2D_xj1r2")
 
 [node name="DestroyedEffect" type="Node2D" parent="."]
 script = ExtResource("2_wksxc")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_th6lq")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
