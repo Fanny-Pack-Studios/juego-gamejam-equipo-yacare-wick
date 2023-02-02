@@ -10,6 +10,7 @@ var attached_to_target = false
 var attach_point: Vector2 = Vector2.ZERO
 var max_health := 50.0
 var current_health := max_health
+@onready var sound = $Sounds
 
 func _ready():
 	top_level = true
@@ -23,6 +24,10 @@ func _physics_process(delta):
 			target.global_transform.origin + attach_point,
 			delta * max_speed
 		)
+		if (target.zap_things()):
+			be_damaged(1)
+			if !sound.is_playing():
+				sound.play()
 	else:
 		var direction_to_target = global_transform.origin.direction_to(target.global_transform.origin)
 		var target_velocity = direction_to_target * max_speed

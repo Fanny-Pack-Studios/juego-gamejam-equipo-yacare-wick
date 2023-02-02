@@ -10,10 +10,17 @@ const Shoot = preload("res://Characters/Weapons/RegularShoot.tscn")
 var MAX_HEALTH := 100.0
 var current_health := MAX_HEALTH
 @export var invincible_time := 1.0
+@onready var sound = $Sound
 
 func is_invincible() -> bool:
 	return $InvincibleTimer.time_left > 0
-
+	
+func turned_violently() -> bool:
+	return Input.is_action_just_pressed("ui_right") && Input.is_action_pressed("ui_left")
+	
+func zap_things() -> bool:
+	return Input.is_action_pressed("ui_accept")
+	
 func should_blink() -> bool:
 	return is_invincible() and Engine.get_frames_drawn() % 2 == 0
 
@@ -44,6 +51,8 @@ func _physics_process(delta):
 
 func _on_hitbox_body_entered(body):
 	body.hit_with_spaceship(self)
+	sound.play()
+	
 
 func start_invincibility():
 	$InvincibleTimer.start()

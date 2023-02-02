@@ -5,9 +5,11 @@ extends Node2D
 @export var end: Node2D
 @export var travel_speed: float = 1.0
 var distance_traveled: float = 0
+@onready var music = $Music
 
 func _ready():
 	[$Walls, $Walls2].map(func (wall): wall.top_level = true)
+	#music.play()
 
 func length():
 	return beginning.global_transform.origin.distance_to(end.global_transform.origin)

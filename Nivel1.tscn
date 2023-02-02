@@ -1,14 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://btrro60kficv0"]
+[gd_scene load_steps=16 format=3 uid="uid://btrro60kficv0"]
 
 [ext_resource type="PackedScene" uid="uid://dnsq1u34lemhl" path="res://Characters/Spaceship.tscn" id="1_5e38l"]
 [ext_resource type="Script" path="res://Level.gd" id="1_aatks"]
 [ext_resource type="Script" path="res://AsteroidsSpawner.gd" id="3_7ueoi"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="3_suq56"]
 [ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="4_fdci7"]
-[ext_resource type="PackedScene" uid="uid://bbhq225an71fd" path="res://Characters/Enemies/mecha_locust.tscn" id="4_fdxsx"]
+[ext_resource type="PackedScene" uid="uid://cf0hrdpg7cfjm" path="res://Characters/Enemies/mecha_locust.tscn" id="4_fdxsx"]
 [ext_resource type="Script" path="res://GUI/HealthBar.gd" id="5_joka3"]
 [ext_resource type="PackedScene" uid="uid://c7j67qq323h2d" path="res://Characters/Enemies/mecha_locust_spawner.tscn" id="5_pfsss"]
 [ext_resource type="Texture2D" uid="uid://dubryrnp87jny" path="res://assets/spaceship_pixelart_256.png" id="6_hn4h5"]
+[ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="6_v5m37"]
 [ext_resource type="Script" path="res://TravelProgress.gd" id="6_x86rl"]
 
 [sub_resource type="Resource" id="Resource_hfikw"]
@@ -58,6 +59,10 @@ position = Vector2(898, 882)
 [node name="MechaLocustSpawner" parent="Travel" node_paths=PackedStringArray("target_spaceship") instance=ExtResource("5_pfsss")]
 position = Vector2(943, 1449)
 target_spaceship = NodePath("../../Spaceship")
+
+[node name="Music" type="AudioStreamPlayer" parent="Travel"]
+stream = ExtResource("6_v5m37")
+autoplay = true
 
 [node name="Spaceship" parent="." instance=ExtResource("1_5e38l")]
 z_index = 1
