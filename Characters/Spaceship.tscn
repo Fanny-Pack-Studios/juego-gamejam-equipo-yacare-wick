@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dnsq1u34lemhl"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_j78yr"]
-[ext_resource type="World3D" uid="uid://cobqimndk6hh0" path="res://assets/World3D.tres" id="2_cc64f"]
+[ext_resource type="World3D" uid="uid://d0aso678ijxtg" path="res://assets/World3D.tres" id="2_cc64f"]
 [ext_resource type="PackedScene" uid="uid://brtq3hxtv4xeg" path="res://assets/spaceship.gltf" id="2_osrd7"]
-[ext_resource type="PackedScene" uid="uid://diy86exb3j6oc" path="res://Characters/Weapons/Weapon.tscn" id="2_tpx5h"]
+[ext_resource type="PackedScene" path="res://Characters/Weapons/Weapon.tscn" id="2_tpx5h"]
 [ext_resource type="Resource" uid="uid://dtv2v75wrfn2r" path="res://Parameters/regular_shoot.tres" id="3_dqh1n"]
 [ext_resource type="AudioStream" uid="uid://biaxwr4c5siad" path="res://media/sound/glass_damage.wav" id="6_2ryac"]
 
