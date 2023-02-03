@@ -1,7 +1,5 @@
-extends Node2D
+extends Power
 
-var player_is_using_it = false
-var target: Spaceship
 @export var shield_time: float = 5.0
 @export var cooldown_time: float = 10.0
 

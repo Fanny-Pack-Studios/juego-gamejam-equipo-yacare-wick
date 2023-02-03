@@ -8,7 +8,7 @@ var _driving_skill: float
 var photo: Texture2D
 var name: String
 var biography: String
-var weapon
+var power: Power
 
 static func random():
 	var possible_names = []
@@ -25,6 +25,11 @@ static func random():
 		possible_biographies.append(csv[4])
 	
 	var pilot = Pilot.new()
+	var possible_powers = [
+		load("res://Characters/Powers/Shield.tscn"),
+		load("res://Characters/Powers/Dash.tscn")
+	]
+	pilot.power = possible_powers.pick_random().instantiate()
 	var possible_configs = [
 		load("res://Parameters/Weapons/bomb_shoot.tres"),
 		load("res://Parameters/Weapons/laser_shoot.tres"),
@@ -41,7 +46,7 @@ static func random():
 	var random_pilot_idx = randi_range(0, possible_names.size() - 1)
 	pilot.name = possible_names[random_pilot_idx]
 	pilot.biography = possible_biographies[random_pilot_idx]
-	pilot.weapon = pilot.weapon_from_config(possible_configs.pick_random())
+#	pilot.weapon = pilot.weapon_from_config(possible_configs.pick_random())
 
 	return pilot
 

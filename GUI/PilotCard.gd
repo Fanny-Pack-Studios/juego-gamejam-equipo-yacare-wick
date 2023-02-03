@@ -6,7 +6,8 @@ var pilot
 func _ready():
 	pilot = Pilot.random()
 	$VBoxContainer/Name.text = pilot.name
-	$VBoxContainer/Powers/Photo.texture = pilot.photo
+	$VBoxContainer/Images/Photo.texture = pilot.photo
+	$VBoxContainer/Images/Power.texture = pilot.power.icon
 	$VBoxContainer/Description.text = pilot.biography
 	focus_entered.connect(func():
 		self.increase_size()	
@@ -28,9 +29,3 @@ func decrease_size():
 	tween.tween_property(self, "scale", Vector2.ONE, 0.2)
 	tween.set_parallel().tween_property(self, "position", previous_position, 0.2)
 
-func _on_gui_input(event: InputEvent):
-	if(event.is_action_released("ui_accept")):
-		next_level()
-
-func next_level():
-	get_tree().change_scene_to_packed(load("res://Characters/Levels/Nivel1.tscn"))

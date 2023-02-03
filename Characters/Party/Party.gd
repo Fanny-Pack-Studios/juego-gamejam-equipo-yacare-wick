@@ -11,3 +11,7 @@ func _ready():
 
 func board(ship):
 	ship.be_boarded(pilot, copilot)
+
+func assign_pilots(_pilot, _copilot):
+	pilot = _pilot
+	copilot = _copilot

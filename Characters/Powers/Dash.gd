@@ -1,7 +1,5 @@
-extends Node2D
+extends Power
 
-var player_is_using_it: bool = false
-var target: Spaceship
 @export var dash_time: float = 0.5
 @export var cooldown_time: float = 2.0
 @export var speed_bonus: float = 500
