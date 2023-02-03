@@ -1,7 +1,12 @@
+class_name Weapon
 extends Node2D
+
+enum Side { Left, Right, Any }
 
 const Shoot = preload("res://Characters/Weapons/Shoot.tscn") 
 @export var weapon_config: WeaponConfig
+
+var side: Side = Side.Any
 
 func _ready():
 	$Cooldown.wait_time = 1.0 / weapon_config.shoots_per_second

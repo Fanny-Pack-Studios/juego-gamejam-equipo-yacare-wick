@@ -12,6 +12,35 @@ var current_health := MAX_HEALTH
 @export var invincible_time := 1.0
 @onready var sound = $Sound
 
+func be_boarded(offense_pilot: Pilot, defense_pilot: Pilot, mobility_pilot: Pilot):
+	equip_weapons(offense_pilot.weapons())
+
+func equip_weapons(weapons: Array[Weapon]):
+	$Weapons.get_children().clear()
+	weapons.map(func (weapon):
+		match weapon.side:
+			Weapon.Side.Left:
+				$Weapons/Slots/LeftCannon.add_child(weapon)
+			Weapon.Side.Right:
+				$Weapons/Slots/RightCannon.add_child(weapon)
+			Weapon.Side.Any:
+				var slots := $Weapons/Slots.get_children()
+				var chosen_slot = min_by(slots, func(slot): return slot.get_children().size())
+				chosen_slot.add_child(weapon)
+	)
+
+func max_by(array: Array, callable: Callable) -> Variant:
+	return array.reduce(
+		func(x, y): return x if callable.call(x) < callable.call(y) else y,
+		array.front()
+	)
+
+func min_by(array: Array, callable: Callable) -> Variant:
+	return array.reduce(
+		func(x, y): return x if callable.call(x) < callable.call(y) else y,
+		array.front()
+	)
+
 func is_invincible() -> bool:
 	return $InvincibleTimer.time_left > 0
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Level.gd" id="1_lwjfv"]
 [ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="2_knfd6"]
-[ext_resource type="PackedScene" uid="uid://dnsq1u34lemhl" path="res://Characters/Spaceship.tscn" id="4_1ljfk"]
+[ext_resource type="PackedScene" uid="uid://bkta5sosp64xf" path="res://Characters/Spaceship.tscn" id="4_1ljfk"]
 [ext_resource type="Shader" path="res://BackgroundStars.gdshader" id="4_4gupt"]
 [ext_resource type="Script" path="res://VanishAsteroids.gd" id="5_n613o"]
 [ext_resource type="Script" path="res://GUI/HealthBar.gd" id="6_3rala"]
