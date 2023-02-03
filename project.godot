@@ -27,7 +27,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ruake/plugin.cfg", "res://addons/extendable_inspector/plugin.cfg", "res://addons/quick_script_change/plugin.cfg", "res://addons/script-name-on-top/plugin.cfg", "res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/ruake/plugin.cfg", "res://addons/extendable_inspector/plugin.cfg", "res://addons/script-name-on-top/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [input]
 

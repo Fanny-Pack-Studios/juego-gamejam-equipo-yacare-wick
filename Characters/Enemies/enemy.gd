@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var max_health: float = 100
 var current_health
+var moving_in_path = false
 
 signal killed
 signal was_hit(damage)
@@ -20,3 +21,6 @@ func be_damaged(damage):
 	
 func _killed():
 	pass
+
+func set_moving_in_path(value):
+	moving_in_path = value

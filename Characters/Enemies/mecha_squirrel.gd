@@ -10,7 +10,8 @@ var target_direction = null
 func _ready():
 	super()
 	top_level = false
-	velocity = Vector2.UP.rotated(rotation) * wander_speed
+	if(not moving_in_path):
+		velocity = Vector2.UP.rotated(rotation) * wander_speed
 
 
 func sprites():

@@ -38,7 +38,7 @@ static func random():
 			.pick_random()
 	)
 	pilot.photo = load(photo_path)
-	var random_pilot_idx = randi_range(0, possible_names.size())
+	var random_pilot_idx = randi_range(0, possible_names.size() - 1)
 	pilot.name = possible_names[random_pilot_idx]
 	pilot.biography = possible_biographies[random_pilot_idx]
 	pilot.weapon = pilot.weapon_from_config(possible_configs.pick_random())
