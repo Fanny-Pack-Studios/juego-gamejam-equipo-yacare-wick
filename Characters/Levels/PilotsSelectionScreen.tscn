@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Characters/Levels/PilotsSelectionScreen.gd" id="1_f2lpj"]
 [ext_resource type="PackedScene" uid="uid://dvpbjlm7dlgte" path="res://GUI/PilotCard.tscn" id="1_hooiw"]
-[ext_resource type="AudioStream" uid="uid://bliiq2m5xwy47" path="res://media/music/are-you-ready-for-adventures.mp3" id="3_wfqis"]
+[ext_resource type="AudioStream" uid="uid://bliiq2m5xwy47" path="res://media/music/are-you-ready-for-adventures.mp3" id="3_3t2fa"]
 
 [node name="PilotsSelectionScreen" type="Node2D"]
 script = ExtResource("1_f2lpj")
@@ -33,5 +33,5 @@ focus_neighbor_left = NodePath("../PilotCard")
 position = Vector2(960, 545)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_wfqis")
+stream = ExtResource("3_3t2fa")
 autoplay = true
