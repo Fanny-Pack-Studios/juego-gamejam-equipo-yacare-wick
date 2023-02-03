@@ -60,8 +60,6 @@ func _init():
 # se definan que armas va a usar
 func weapons() -> Array[Weapon]:
 	var possible_configs = [
-		load("res://Parameters/Weapons/bomb_shoot.tres"),
-		load("res://Parameters/Weapons/laser_shoot.tres"),
 		load("res://Parameters/Weapons/regular_shoot.tres")
 	]
 	

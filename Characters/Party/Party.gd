@@ -6,8 +6,8 @@ var pilot: Pilot
 var copilot: Pilot
 
 func _ready():
-	pilot = Pilot.new()
-	copilot = Pilot.new()
+	pilot = Pilot.random()
+	copilot = Pilot.random()
 
 func board(ship):
 	ship.be_boarded(pilot, copilot)
