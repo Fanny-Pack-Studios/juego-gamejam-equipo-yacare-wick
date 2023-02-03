@@ -16,9 +16,6 @@ func _ready():
 	uses_left = uses
 	$DashTime.wait_time = dash_time
 	$InternalCooldown.wait_time = internal_cooldown_between_uses
-	$DashTime.timeout.connect(func():
-		target.protections.erase(self)
-	)
 	$Area.body_entered.connect(func(body):
 		body.be_damaged(damage)
 	)
@@ -43,6 +40,11 @@ func _physics_process(delta):
 		).set_trans(Tween.TRANS_BACK)
 		var shadow_count = $Shadows.get_children().size()
 		create_tween().set_loops(8).tween_callback(self.place_shadow).set_delay(dash_time / shadow_count)
+
+	if(is_active and not self in target.protections):
+		target.protections.push_back(self)
+	if(not is_active and self in target.protections):
+		target.protections.erase(self)
 
 	$Area.monitoring = is_active
 
