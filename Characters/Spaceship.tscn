@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkta5sosp64xf"]
+[gd_scene load_steps=13 format=3 uid="uid://bkta5sosp64xf"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_j78yr"]
 [ext_resource type="World3D" uid="uid://cobqimndk6hh0" path="res://assets/World3D.tres" id="2_cc64f"]
 [ext_resource type="PackedScene" uid="uid://l8klhop3fmd7" path="res://Characters/Spaceship3D.tscn" id="3_nya1u"]
 [ext_resource type="AudioStream" uid="uid://biaxwr4c5siad" path="res://media/sound/glass_damage.wav" id="6_2ryac"]
 [ext_resource type="Script" path="res://Characters/Powers/UseShield.gd" id="6_nr3la"]
+[ext_resource type="Script" path="res://Characters/Powers/Dash.gd" id="7_53v4r"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="7_ldcpf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
@@ -18,6 +19,9 @@ point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7h14x"]
 radius = 66.6108
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bcg7"]
+radius = 37.1214
 
 [node name="Spaceship" type="CharacterBody2D"]
 position = Vector2(1034, 155)
@@ -117,6 +121,23 @@ monitorable = false
 shape = SubResource("CircleShape2D_7h14x")
 
 [node name="Secondary" type="Node2D" parent="Powers"]
+
+[node name="Dash" type="Node2D" parent="Powers/Secondary"]
+script = ExtResource("7_53v4r")
+
+[node name="DashTime" type="Timer" parent="Powers/Secondary/Dash"]
+one_shot = true
+
+[node name="Area" type="Area2D" parent="Powers/Secondary/Dash"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="Powers/Secondary/Dash/Area"]
+shape = SubResource("CircleShape2D_2bcg7")
+
+[node name="InternalCooldown" type="Timer" parent="Powers/Secondary/Dash"]
+process_callback = 0
+one_shot = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

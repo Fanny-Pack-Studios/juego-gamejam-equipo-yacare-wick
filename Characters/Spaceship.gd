@@ -12,7 +12,7 @@ var MAX_HEALTH := 100.0
 var current_health := MAX_HEALTH
 @export var invincible_time := 1.0
 @onready var sound = $Sound
-var protections  = []
+var protections = []
 
 var pilot: Pilot
 var copilot: Pilot
@@ -92,7 +92,7 @@ func _physics_process(delta):
 	var target_speed := direction * max_speed()
 	velocity = velocity.move_toward(
 		target_speed,
-		drift_desacceleration() if(target_speed.is_zero_approx()) else acceleration()
+		(drift_desacceleration() if(target_speed.is_zero_approx()) else acceleration())
 	)
 	var using_primary_power := Input.is_action_pressed("primary_action")
 	if(not $Powers/Primary.get_children().is_empty()):
