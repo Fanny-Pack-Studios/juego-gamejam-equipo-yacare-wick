@@ -11,6 +11,7 @@ var attach_point: Vector2 = Vector2.ZERO
 @onready var sound = $Sounds
 
 func _ready():
+	super()
 	top_level = true
 
 func sprites():

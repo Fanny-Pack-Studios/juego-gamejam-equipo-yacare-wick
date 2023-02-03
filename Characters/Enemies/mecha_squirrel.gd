@@ -9,7 +9,8 @@ var target_direction = null
 @onready var sound = $Sound
 
 func _ready():
-	top_level = true
+	super()
+	top_level = false
 	$SpriteWandering.visible = true
 	$SpriteAttacking.visible = false
 	velocity = Vector2.UP.rotated(rotation) * wander_speed
@@ -30,6 +31,8 @@ func _on_detection_area_body_entered(body):
 	var time_to_jump = 0.2
 	var target_position = body.global_transform.origin
 	var own_position = global_transform.origin
+	top_level = true
+	global_transform.origin = own_position
 	target_direction = own_position.direction_to(
 		target_position + body.velocity * (own_position.distance_to(target_position) / max_speed)
 	)
@@ -51,3 +54,4 @@ func _on_detection_area_body_entered(body):
 	$SpriteWandering.visible = false
 	$SpriteAttacking.visible = true
 	sound.play()
+

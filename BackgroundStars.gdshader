@@ -26,5 +26,6 @@ void fragment() {
 		color = r * (0.85 * sin(TIME * (r * 5.0) + 720.0 * r) + 0.95);
 	}
 	float alpha = 0.4;
+	
 	COLOR = vec4(vec3(color), alpha) + bg_color * vec4(1.0,1.0,1.0, alpha);
 }
