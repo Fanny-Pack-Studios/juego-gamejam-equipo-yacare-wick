@@ -2,6 +2,8 @@ class_name Level
 extends Node2D
 
 const PilotsSelectionScreen = preload("res://Characters/Levels/PilotsSelectionScreen.tscn")
+const BossMusic = preload("res://media/music/hard-prey-boss-music.mp3")
+var boss_music_on = false
 
 @export var beginning: Node2D
 @export var end: Node2D
@@ -24,6 +26,11 @@ func _physics_process(delta):
 	)
 #	$ParallaxBackground.scroll_offset = $ParallaxBackground.scroll_offset + Vector2(0, -travel_speed) * delta
 	$ParallaxBackground.scroll_offset = Vector2(0, distance_left())
+	if distance_left() <= 200 && !boss_music_on:
+		boss_music_on = true
+		music.stop()
+		music.stream = BossMusic
+		music.play()
 
 func distance_traveled() -> float:
 	return length() - distance_left()
