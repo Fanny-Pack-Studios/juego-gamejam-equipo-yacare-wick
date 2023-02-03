@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvbvdexp48bme"]
+[gd_scene load_steps=4 format=3 uid="uid://csnlpihnnaj6p"]
 
 [ext_resource type="Script" path="res://Characters/Levels/PilotsSelectionScreen.gd" id="1_f2lpj"]
 [ext_resource type="PackedScene" uid="uid://dvpbjlm7dlgte" path="res://GUI/PilotCard.tscn" id="1_hooiw"]
+[ext_resource type="Texture2D" uid="uid://dl1ngr1jl6p03" path="res://Characters/Levels/light-wool.png" id="3_swtne"]
 
 [node name="PilotsSelectionScreen" type="Node2D"]
 script = ExtResource("1_f2lpj")
@@ -27,3 +28,7 @@ focus_neighbor_right = NodePath("../PilotCard2")
 [node name="PilotCard2" parent="CanvasLayer/HFlowContainer" instance=ExtResource("1_hooiw")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../PilotCard")
+
+[node name="Light-wool-1920x1080" type="Sprite2D" parent="."]
+position = Vector2(960, 545)
+texture = ExtResource("3_swtne")
