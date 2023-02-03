@@ -18,7 +18,6 @@ func _ready():
 	)
 
 func increase_size():
-	print("AA ", position)
 	if(previous_position == null):
 		previous_position = position
 	var tween = create_tween()

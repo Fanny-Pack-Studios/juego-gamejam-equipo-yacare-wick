@@ -2,16 +2,12 @@ extends Node
 
 const Pilot = preload("res://Characters/Pilot/Pilot.gd")
 
-var current_offensive_pilot: Pilot
-var current_defensive_pilot: Pilot
-var current_mobility_pilot: Pilot
+var pilot: Pilot
+var copilot: Pilot
 
 func _ready():
-	pass
+	pilot = Pilot.new()
+	copilot = Pilot.new()
 
 func board(ship):
-	ship.be_boarded(
-		current_offensive_pilot,
-		current_defensive_pilot,
-		current_mobility_pilot
-	)
+	ship.be_boarded(pilot, copilot)

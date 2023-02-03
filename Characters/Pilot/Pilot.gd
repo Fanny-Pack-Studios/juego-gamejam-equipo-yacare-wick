@@ -1,8 +1,20 @@
 class_name Pilot
-extends Node
+extends RefCounted
 
 const Weapon = preload("res://Characters/Weapons/Weapon.tscn")
 
+var _defense: float
+var _driving_skill: float
+
+func defense():
+	return defense
+
+func driving_skill():
+	return _driving_skill
+
+func _init():
+	_defense = randf_range(0.0, 5.0)
+	_driving_skill = randf_range(0.0, 1.0)
 
 # TODO: esto por ahora es random pero la idea seria que al generarse el piloto
 # se definan que armas va a usar

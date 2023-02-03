@@ -2,18 +2,36 @@ class_name Spaceship
 extends CharacterBody2D
 
 
-@export var MAX_SPEED := 300.0
-@export var ACCELERATION := 15.0
+@export var BASE_MAX_SPEED := 200.0
+@export var BASE_ACCELERATION := 15.0
+@export var BASE_DRIFT_DESACCELERATION := 2.0
 @export var model_rotation_speed := 70.0
-@export var DRIFT_DESACCELERATION := 2.0
+@export var base_defense := 1
 @onready var spaceship_3d: Node3D = $SubViewportContainer/SubViewport/spaceship
 var MAX_HEALTH := 100.0
 var current_health := MAX_HEALTH
 @export var invincible_time := 1.0
 @onready var sound = $Sound
 
-func be_boarded(offense_pilot: Pilot, defense_pilot: Pilot, mobility_pilot: Pilot):
-	equip_weapons(offense_pilot.weapons())
+var pilot: Pilot
+var copilot: Pilot
+
+func defense():
+	return 0
+
+func max_speed() -> float:
+	return BASE_MAX_SPEED * (1 + pilot.driving_skill() + copilot.driving_skill())
+
+func acceleration() -> float:
+	return BASE_ACCELERATION * (1 + pilot.driving_skill() + copilot.driving_skill())
+
+func drift_desacceleration() -> float:
+	return BASE_ACCELERATION * (1 + pilot.driving_skill() + copilot.driving_skill())
+
+func be_boarded(_pilot: Pilot, _copilot: Pilot):
+	pilot = _pilot
+	copilot = _copilot
+	equip_weapons(pilot.weapons())
 
 func equip_weapons(weapons: Array[Weapon]):
 	$Weapons.get_children().clear()
@@ -62,10 +80,10 @@ func _physics_process(delta):
 	spaceship_3d.visible = not should_blink()
 
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var target_speed := direction * MAX_SPEED
+	var target_speed := direction * max_speed()
 	velocity = velocity.move_toward(
 		target_speed,
-		DRIFT_DESACCELERATION if(target_speed.is_zero_approx()) else ACCELERATION
+		drift_desacceleration() if(target_speed.is_zero_approx()) else acceleration()
 	)
 
 	spaceship_3d.rotation_degrees.z = move_toward(
@@ -90,7 +108,7 @@ func start_invincibility():
 
 
 func take_damage(damage: float, turn_on_invincibility: bool = true):
-	current_health -= damage
+	current_health -= abs(damage - defense())
 	var max_shake = 2
 	$Shaker.max_value = max(damage / 10.0, max_shake)
 	$Shaker.start(0.5)
