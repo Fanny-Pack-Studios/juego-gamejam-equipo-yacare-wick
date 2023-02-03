@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkta5sosp64xf"]
+[gd_scene load_steps=11 format=3 uid="uid://bkta5sosp64xf"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_j78yr"]
 [ext_resource type="World3D" uid="uid://cobqimndk6hh0" path="res://assets/World3D.tres" id="2_cc64f"]
-[ext_resource type="PackedScene" uid="uid://brtq3hxtv4xeg" path="res://assets/spaceship.gltf" id="2_osrd7"]
+[ext_resource type="PackedScene" uid="uid://l8klhop3fmd7" path="res://Characters/Spaceship3D.tscn" id="3_nya1u"]
 [ext_resource type="AudioStream" uid="uid://biaxwr4c5siad" path="res://media/sound/glass_damage.wav" id="6_2ryac"]
+[ext_resource type="Script" path="res://Characters/Powers/UseShield.gd" id="6_nr3la"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="7_ldcpf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
@@ -14,6 +15,9 @@ size = Vector2(45, 30)
 [sub_resource type="Curve" id="Curve_5dc0u"]
 _data = [Vector2(0, 0.515337), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7h14x"]
+radius = 66.6108
 
 [node name="Spaceship" type="CharacterBody2D"]
 position = Vector2(1034, 155)
@@ -39,18 +43,10 @@ grow_vertical = 2
 world_3d = ExtResource("2_cc64f")
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(120, 120)
+size = Vector2i(150, 150)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 10, 0)
-current = true
-fov = 65.4
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
-shadow_enabled = true
-
-[node name="spaceship" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_osrd7")]
+[node name="Spaceship3D" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_nya1u")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ohwe6")
@@ -82,7 +78,7 @@ stream = ExtResource("6_2ryac")
 
 [node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("7_ldcpf")
-target_node = NodePath("../SubViewportContainer/SubViewport/spaceship")
+target_node = NodePath("../SubViewportContainer/SubViewport/Spaceship3D/spaceship")
 target_property = &"position"
 max_value = 0.5
 fall_off = SubResource("Curve_5dc0u")
@@ -97,7 +93,30 @@ position = Vector2(-20, 40)
 [node name="RightCannon" type="Node2D" parent="Weapons/Slots"]
 position = Vector2(20, 39)
 
+[node name="Powers" type="Node2D" parent="."]
+
+[node name="Primary" type="Node2D" parent="Powers"]
+
+[node name="UseShield" type="Node2D" parent="Powers/Primary"]
+script = ExtResource("6_nr3la")
+
+[node name="Cooldown" type="Timer" parent="Powers/Primary/UseShield"]
+wait_time = 5.0
+one_shot = true
+
+[node name="ShieldTime" type="Timer" parent="Powers/Primary/UseShield"]
+process_callback = 0
+one_shot = true
+
+[node name="Area" type="Area2D" parent="Powers/Primary/UseShield"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="Collision" type="CollisionShape2D" parent="Powers/Primary/UseShield/Area"]
+shape = SubResource("CircleShape2D_7h14x")
+
+[node name="Secondary" type="Node2D" parent="Powers"]
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-
-[editable path="SubViewportContainer/SubViewport/spaceship"]

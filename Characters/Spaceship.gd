@@ -7,11 +7,12 @@ extends CharacterBody2D
 @export var BASE_DRIFT_DESACCELERATION := 2.0
 @export var model_rotation_speed := 70.0
 @export var base_defense := 1
-@onready var spaceship_3d: Node3D = $SubViewportContainer/SubViewport/spaceship
+@onready var spaceship_3d: Node3D = $SubViewportContainer/SubViewport/Spaceship3D/spaceship
 var MAX_HEALTH := 100.0
 var current_health := MAX_HEALTH
 @export var invincible_time := 1.0
 @onready var sound = $Sound
+var protections  = []
 
 var pilot: Pilot
 var copilot: Pilot
@@ -72,8 +73,16 @@ func should_blink() -> bool:
 	return is_invincible() and Engine.get_frames_drawn() % 2 == 0
 
 func _ready():
+	if(null == pilot):
+		pilot = Pilot.random()
+	if(null == copilot):
+		copilot = Pilot.random()
 	$InvincibleTimer.wait_time = invincible_time
 	top_level = true
+	if(not $Powers/Primary.get_children().is_empty()):
+		$Powers/Primary.get_children().front().target = self
+	if(not $Powers/Secondary.get_children().is_empty()):
+		$Powers/Secondary.get_children().front().target = self
 
 func _physics_process(delta):
 	$Hitbox.monitoring = not is_invincible()
@@ -85,6 +94,14 @@ func _physics_process(delta):
 		target_speed,
 		drift_desacceleration() if(target_speed.is_zero_approx()) else acceleration()
 	)
+	var using_primary_power := Input.is_action_pressed("primary_action")
+	if(not $Powers/Primary.get_children().is_empty()):
+		$Powers/Primary.get_children().front().player_is_using_it = using_primary_power
+	var using_secondary_power := Input.is_action_pressed("secondary_action")
+	if(not $Powers/Secondary.get_children().is_empty()):
+		$Powers/Secondary.get_children().front().player_is_using_it = using_secondary_power
+	
+	$Hitbox.monitoring = protections.is_empty()
 
 	spaceship_3d.rotation_degrees.z = move_toward(
 		spaceship_3d.rotation_degrees.z,

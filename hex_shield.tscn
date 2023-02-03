@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bff8huq644apu"]
+[gd_scene load_steps=13 format=3 uid="uid://dynirwpj5vv2r"]
 
 [ext_resource type="Texture2D" uid="uid://8wtvveltit5k" path="res://assets/photon_defense.png" id="1_7di3v"]
 [ext_resource type="PackedScene" uid="uid://dfclkc6jhmslj" path="res://assets/shield.gltf" id="2_i45w5"]
-[ext_resource type="Shader" uid="uid://dcpbtdpj26ud8" path="res://hex_shield.tres" id="3_rt4gi"]
+[ext_resource type="Shader" uid="uid://dnxrcak1dldn3" path="res://Characters/Spaceship3D_shield_shader.tres" id="3_nj4u3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_or8tb"]
 transparency = 1
@@ -12,8 +12,10 @@ emission = Color(0.152941, 0.74902, 1, 1)
 emission_energy_multiplier = 2.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oawrq"]
+resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_rt4gi")
+shader = ExtResource("3_nj4u3")
+shader_parameter/shield_alpha = 1.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_klns7"]
 load_path = "res://.godot/imported/shield.png-46d74908b0ac118b50397d7021ae31f8.s3tc.ctex"
