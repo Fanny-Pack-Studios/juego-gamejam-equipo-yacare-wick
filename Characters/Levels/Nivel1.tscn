@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="7_vald8"]
 [ext_resource type="Script" path="res://Characters/Levels/BossInfo.gd" id="8_b46qx"]
 
-[sub_resource type="Resource" id="Resource_t0bcr"]
+[sub_resource type="Resource" id="Resource_ot7ne"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 300)
@@ -17,7 +17,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.5)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_6pha0"]
+[sub_resource type="Resource" id="Resource_nc5kd"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 500)
@@ -25,7 +25,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.7)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_hlp47"]
+[sub_resource type="Resource" id="Resource_8ysk7"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 600)
@@ -33,7 +33,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.5, 1)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_e1cba"]
+[sub_resource type="Resource" id="Resource_7ej6n"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(0, 600)
@@ -57,7 +57,7 @@ modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(-379, 1983)
 time_between_spawns_bounds = Vector2(0.2, 0.4)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_t0bcr")
+asteroid_config = SubResource("Resource_ot7ne")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner1" index="0"]
 position = Vector2(0, -679)
@@ -65,7 +65,7 @@ position = Vector2(0, -679)
 [node name="AsteroidsSpawner2" parent="Travel" index="4" instance=ExtResource("2_4xoaf")]
 position = Vector2(-379, 2782)
 max_asteroid_points_in_screen = 4.0
-asteroid_config = SubResource("Resource_6pha0")
+asteroid_config = SubResource("Resource_nc5kd")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner2" index="0"]
 position = Vector2(0, -679)
@@ -73,7 +73,7 @@ position = Vector2(0, -679)
 [node name="AsteroidsSpawner6" parent="Travel" index="5" instance=ExtResource("2_4xoaf")]
 position = Vector2(-379, 3364)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_hlp47")
+asteroid_config = SubResource("Resource_8ysk7")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner6" index="0"]
 position = Vector2(0, -679)
@@ -82,7 +82,7 @@ position = Vector2(0, -679)
 position = Vector2(-363, 3744)
 time_between_spawns_bounds = Vector2(0.1, 0.25)
 max_asteroid_points_in_screen = 10.0
-asteroid_config = SubResource("Resource_e1cba")
+asteroid_config = SubResource("Resource_7ej6n")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner7" index="0"]
 position = Vector2(0, -679)
@@ -145,7 +145,7 @@ script = ExtResource("7_vald8")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Travel/Boss" index="6"]
 
-[node name="Area" parent="Spaceship/Powers/Secondary/Dash" index="2"]
+[node name="Area" parent="Spaceship/Powers/Secondary/Dash" index="1"]
 scale = Vector2(1.24, 1.4)
 
 [node name="Name" parent="HUDLayer/Pilots/PanelContainer/PilotSlot" index="2"]

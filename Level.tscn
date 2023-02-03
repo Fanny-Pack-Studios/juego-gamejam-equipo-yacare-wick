@@ -176,6 +176,7 @@ position = Vector2(0, 4000)
 [node name="Spaceship" parent="." instance=ExtResource("4_1ljfk")]
 z_index = 1
 z_as_relative = false
+position = Vector2(926, 273)
 collision_layer = 1
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
@@ -343,4 +344,3 @@ script = ExtResource("10_naqm6")
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]
 
 [editable path="Spaceship"]
-[editable path="Spaceship/SubViewportContainer/SubViewport/spaceship"]

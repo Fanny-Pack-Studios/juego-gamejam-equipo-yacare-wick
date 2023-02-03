@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkta5sosp64xf"]
+[gd_scene load_steps=14 format=3 uid="uid://bkta5sosp64xf"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_j78yr"]
 [ext_resource type="World3D" uid="uid://cobqimndk6hh0" path="res://assets/World3D.tres" id="2_cc64f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Characters/Powers/UseShield.gd" id="6_nr3la"]
 [ext_resource type="Script" path="res://Characters/Powers/Dash.gd" id="7_53v4r"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="7_ldcpf"]
+[ext_resource type="Texture2D" uid="uid://51sbmen3oglt" path="res://assets/SpaceshipSillouette.png" id="8_21c6l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
 
@@ -24,7 +25,6 @@ radius = 66.6108
 radius = 37.1214
 
 [node name="Spaceship" type="CharacterBody2D"]
-position = Vector2(1034, 155)
 collision_layer = 0
 collision_mask = 2147483648
 motion_mode = 1
@@ -134,6 +134,219 @@ collision_mask = 4
 
 [node name="Collision" type="CollisionShape2D" parent="Powers/Secondary/Dash/Area"]
 shape = SubResource("CircleShape2D_2bcg7")
+
+[node name="Shadows" type="Node2D" parent="Powers/Secondary/Dash"]
+show_behind_parent = true
+visibility_layer = 0
+
+[node name="Shadow" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow2" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow3" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow4" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow5" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow6" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow7" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow8" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow9" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow10" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
+
+[node name="Shadow11" type="TextureRect" parent="Powers/Secondary/Dash/Shadows"]
+visible = false
+modulate = Color(0.101961, 0, 0.690196, 0.392157)
+show_behind_parent = true
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 426.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("8_21c6l")
+expand_mode = 2
 
 [node name="InternalCooldown" type="Timer" parent="Powers/Secondary/Dash"]
 process_callback = 0
