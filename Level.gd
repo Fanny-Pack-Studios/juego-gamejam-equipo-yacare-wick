@@ -1,6 +1,8 @@
 class_name Level
 extends Node2D
 
+const PilotsSelectionScreen = preload("res://Characters/Levels/PilotsSelectionScreen.tscn")
+
 @export var beginning: Node2D
 @export var end: Node2D
 @export var travel_speed: float = 5.0
@@ -30,3 +32,8 @@ func distance_left():
 
 func end_point() -> Vector2:
 	return (beginning.global_transform.origin - end.global_transform.origin + Vector2(0, ProjectSettings.get_setting("display/window/size/viewport_height")))
+
+func next_level():
+	var tween = create_tween()
+	tween.tween_property($CanvasLayer/FadeOut, "modulate", Color(0,0,0,1), 1)
+	tween.tween_callback(func(): get_tree().change_scene_to_packed(PilotsSelectionScreen))

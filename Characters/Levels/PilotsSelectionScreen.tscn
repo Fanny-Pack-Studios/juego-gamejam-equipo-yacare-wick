@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvbvdexp48bme"]
+
+[ext_resource type="Texture2D" uid="uid://bc2etsybuhlrd" path="res://assets/Pilotos/0e5.png" id="1_3hyyr"]
+[ext_resource type="Script" path="res://Characters/Levels/PilotsSelectionScreen.gd" id="1_f2lpj"]
+[ext_resource type="PackedScene" uid="uid://dvpbjlm7dlgte" path="res://GUI/PilotCard.tscn" id="1_hooiw"]
+[ext_resource type="Texture2D" uid="uid://disgl40wbjnx7" path="res://assets/Pilotos/image.png" id="4_pv3ue"]
+
+[node name="PilotsSelectionScreen" type="Node2D"]
+script = ExtResource("1_f2lpj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1280.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+
+[node name="PilotCard" parent="CanvasLayer/HFlowContainer" instance=ExtResource("1_hooiw")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../PilotCard2")
+photo = ExtResource("1_3hyyr")
+pilot_name = "Anna james"
+biography = "Anna is a quiet and reserved pilot who values the sanctity of nature above all else. She is deeply committed to the well-being of the Radix Vitae and will stop at nothing to protect it. Her hobby is bird-watching."
+
+[node name="PilotCard2" parent="CanvasLayer/HFlowContainer" instance=ExtResource("1_hooiw")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../PilotCard")
+photo = ExtResource("4_pv3ue")
+pilot_name = "Jacob Green"
+biography = "Jacob is a confident and determined pilot who takes his role as a guardian of the mystical tree very seriously. He is highly skilled in sustainable flying practices and always strives to minimize the ship's impact on the environment. His hobby is hiking."

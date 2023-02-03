@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://veoy0a2cqwy3"]
+[gd_scene load_steps=15 format=3 uid="uid://veoy0a2cqwy3"]
 
 [ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_4web7"]
 [ext_resource type="PackedScene" uid="uid://rcggwxx4n7gy" path="res://Characters/Enemies/asteroids_spawner.tscn" id="2_4xoaf"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="7_vald8"]
 [ext_resource type="Script" path="res://Characters/Levels/BossInfo.gd" id="8_b46qx"]
 
-[sub_resource type="Resource" id="Resource_mfr5b"]
+[sub_resource type="Resource" id="Resource_etlft"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 300)
@@ -17,7 +17,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.5)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_ayw7c"]
+[sub_resource type="Resource" id="Resource_hgqt0"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 500)
@@ -25,7 +25,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.7)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_igkrd"]
+[sub_resource type="Resource" id="Resource_4g2jk"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 600)
@@ -33,7 +33,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.5, 1)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_rgvx7"]
+[sub_resource type="Resource" id="Resource_epv5y"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(0, 600)
@@ -44,6 +44,10 @@ origin_bounds = Vector2(0.1, 0.9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v76jk"]
 size = Vector2(1000, 500)
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4aomg"]
+width = 1920
+height = 1080
+
 [node name="Nivel1" instance=ExtResource("1_4web7")]
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="1"]
@@ -53,7 +57,7 @@ modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(-379, 1983)
 time_between_spawns_bounds = Vector2(0.2, 0.4)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_mfr5b")
+asteroid_config = SubResource("Resource_etlft")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner1" index="0"]
 position = Vector2(0, -679)
@@ -61,7 +65,7 @@ position = Vector2(0, -679)
 [node name="AsteroidsSpawner2" parent="Travel" index="4" instance=ExtResource("2_4xoaf")]
 position = Vector2(-379, 2782)
 max_asteroid_points_in_screen = 4.0
-asteroid_config = SubResource("Resource_ayw7c")
+asteroid_config = SubResource("Resource_hgqt0")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner2" index="0"]
 position = Vector2(0, -679)
@@ -69,7 +73,7 @@ position = Vector2(0, -679)
 [node name="AsteroidsSpawner6" parent="Travel" index="5" instance=ExtResource("2_4xoaf")]
 position = Vector2(-379, 3364)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_igkrd")
+asteroid_config = SubResource("Resource_4g2jk")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner6" index="0"]
 position = Vector2(0, -679)
@@ -78,7 +82,7 @@ position = Vector2(0, -679)
 position = Vector2(-363, 3744)
 time_between_spawns_bounds = Vector2(0.1, 0.25)
 max_asteroid_points_in_screen = 10.0
-asteroid_config = SubResource("Resource_rgvx7")
+asteroid_config = SubResource("Resource_epv5y")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner7" index="0"]
 position = Vector2(0, -679)
@@ -137,13 +141,26 @@ script = ExtResource("7_vald8")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Travel/Boss" index="6"]
 
+[node name="HUDLayer" parent="." index="6"]
+layer = -1
+
 [node name="BossInfo" type="Label" parent="HUDLayer" index="3"]
 offset_top = 688.0
 offset_right = 40.0
 offset_bottom = 711.0
 script = ExtResource("8_b46qx")
 
-[node name="TestCamera" type="Camera2D" parent="." index="7"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+layer = 0
+
+[node name="FadeOut" type="Sprite2D" parent="CanvasLayer" index="0"]
+modulate = Color(0, 0, 0, 0)
+z_index = 4096
+z_as_relative = false
+texture = SubResource("NoiseTexture2D_4aomg")
+centered = false
+
+[node name="TestCamera" type="Camera2D" parent="." index="8"]
 anchor_mode = 0
 zoom = Vector2(0.2, 0.2)
 

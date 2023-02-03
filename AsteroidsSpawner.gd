@@ -38,7 +38,7 @@ func spawn_asteroid_process():
 func spawn_asteroid(config = asteroid_config) -> Asteroid:
 	var asteroid := Asteroid.instantiate()
 	asteroid.config = config
-	get_node("/root").add_child(asteroid)
+	get_parent().add_child(asteroid)
 	asteroid.global_transform.origin.y = global_transform.origin.y
 	current_asteroids_in_screen.push_back(asteroid)
 	asteroid.removed.connect(self.asteroid_removed)
