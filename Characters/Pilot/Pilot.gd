@@ -8,7 +8,7 @@ var _driving_skill: float
 var photo: Texture2D
 var name: String
 var biography: String
-var weapon: Weapon
+var weapon
 
 static func random():
 	var possible_names = []
@@ -58,7 +58,7 @@ func _init():
 
 # TODO: esto por ahora es random pero la idea seria que al generarse el piloto
 # se definan que armas va a usar
-func weapons() -> Array[Weapon]:
+func weapons() -> Array:
 	var possible_configs = [
 		load("res://Parameters/Weapons/regular_shoot.tres")
 	]
@@ -70,7 +70,7 @@ func weapons() -> Array[Weapon]:
 		func(config): return weapon_from_config(config)
 	)
 
-func weapon_from_config(config: WeaponConfig) -> Weapon:
+func weapon_from_config(config: WeaponConfig):
 	var weapon = Weapon.instantiate()
 	weapon.weapon_config = config
 	return weapon

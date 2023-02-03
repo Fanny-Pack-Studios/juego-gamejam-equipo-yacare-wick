@@ -1,6 +1,7 @@
 class_name Spaceship
 extends CharacterBody2D
 
+const Weapon = preload("res://Characters/Weapons/weapon.gd")
 
 @export var BASE_MAX_SPEED := 200.0
 @export var BASE_ACCELERATION := 15.0
@@ -34,7 +35,7 @@ func be_boarded(_pilot: Pilot, _copilot: Pilot):
 	copilot = _copilot
 	equip_weapons(pilot.weapons())
 
-func equip_weapons(weapons: Array[Weapon]):
+func equip_weapons(weapons: Array):
 	$Weapons.get_children().clear()
 	weapons.map(func (weapon):
 		match weapon.side:
