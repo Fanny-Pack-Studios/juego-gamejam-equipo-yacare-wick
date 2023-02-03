@@ -5,19 +5,16 @@ var target_direction = null
 @export var acceleration: float = 250
 @export var max_speed: float = 1000
 @export var wander_speed: float = 100
-@onready var original_color = $SpriteAttacking/Sprite2.color
 @onready var sound = $Sound
 
 func _ready():
 	super()
 	top_level = false
-	$SpriteWandering.visible = true
-	$SpriteAttacking.visible = false
 	velocity = Vector2.UP.rotated(rotation) * wander_speed
 
 
 func sprites():
-	return [$SpriteAttacking/Sprite1, $SpriteAttacking/Sprite2, $SpriteWandering]
+	return []
 
 func _physics_process(delta):
 	move_and_slide()
@@ -42,6 +39,12 @@ func _on_detection_area_body_entered(body):
 		target_direction * max_speed,
 		time_to_jump
 	).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_ELASTIC)
+	tween.set_parallel().tween_property(
+		self,
+		"rotation",
+		Vector2.UP.angle_to(target_direction),
+		0.3
+	).as_relative().set_trans(Tween.TRANS_BOUNCE)
 #	tween.tween_callback(func(): 
 #		self.target_direction = global_transform.origin.direction_to(body.global_transform.origin)
 #	).set_delay(time_to_jump)
@@ -51,7 +54,6 @@ func _on_detection_area_body_entered(body):
 		Vector2(1.0, 2.0),
 		3
 	)
-	$SpriteWandering.visible = false
-	$SpriteAttacking.visible = true
 	sound.play()
+	$SubViewportContainer/SubViewport/Node3D.play_attack_animation()
 

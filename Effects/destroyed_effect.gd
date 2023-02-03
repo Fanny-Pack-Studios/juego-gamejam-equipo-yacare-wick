@@ -2,6 +2,10 @@
 class_name DestroyedEffect
 extends Node2D
 
+@export var explosion_time: float = 0.2
+@export var stretch: Vector2 = Vector2(4, 0.1)
+
+
 var target: CharacterBody2D
 
 func _get_configuration_warnings():
@@ -21,7 +25,8 @@ func _ready():
 	target.killed.connect(self.explode)
 
 func explode():
-	var time = 0.2
+	target.set_physics_process(false)
+	var time = explosion_time
 	var tween = create_tween()
 	target.sprites().map(func(sprite):
 		tween.parallel().tween_property(
@@ -34,7 +39,7 @@ func explode():
 	tween.parallel().tween_property(
 		target,
 		"scale",
-		Vector2(4, 0.1),
+		stretch,
 		time
 	)
 	tween.parallel().tween_property(
