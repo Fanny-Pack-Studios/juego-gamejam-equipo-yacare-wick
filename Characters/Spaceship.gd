@@ -36,9 +36,18 @@ func be_boarded(_pilot: Pilot, _copilot: Pilot):
 	pilot = _pilot
 	copilot = _copilot
 	equip_weapons(pilot.weapons())
+	equip_power($Powers/Primary, pilot.power())
+	equip_power($Powers/Secondary, copilot.power())
+
+func equip_power(power_slot: Node2D, power: Power):
+	power_slot.get_children().map(func(p):
+		power_slot.remove_child(p)
+	)
+	power.target = self
+	power_slot.add_child(power)
 
 func equip_weapons(weapons: Array):
-	$Weapons.get_children().clear()
+	$Weapons.get_children().map(func(p): p.queue_free())
 	weapons.map(func (weapon):
 		match weapon.side:
 			Weapon.Side.Left:
@@ -82,10 +91,10 @@ func _ready():
 		copilot = Pilot.random()
 	$InvincibleTimer.wait_time = invincible_time
 	top_level = true
-	if(not $Powers/Primary.get_children().is_empty()):
-		$Powers/Primary.get_children().front().target = self
-	if(not $Powers/Secondary.get_children().is_empty()):
-		$Powers/Secondary.get_children().front().target = self
+	if(is_instance_valid($Powers/Primary.get_children().front())):
+		equip_power($Powers/Primary, $Powers/Primary.get_children().front())
+	if(is_instance_valid($Powers/Secondary.get_children().front())):
+		equip_power($Powers/Secondary, $Powers/Secondary.get_children().front())
 
 func _physics_process(delta):
 	$Hitbox.monitoring = not is_invincible()

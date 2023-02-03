@@ -1,5 +1,5 @@
 class_name Pilot
-extends RefCounted
+extends Object
 
 const Weapon = preload("res://Characters/Weapons/Weapon.tscn")
 
@@ -8,7 +8,13 @@ var _driving_skill: float
 var photo: Texture2D
 var name: String
 var biography: String
-var power: Power
+var power_scene
+var _power
+
+func power():
+	if(not is_instance_valid(_power)):
+		_power = power_scene.instantiate()
+	return _power
 
 static func random():
 	var possible_names = []
@@ -29,7 +35,7 @@ static func random():
 		load("res://Characters/Powers/Shield.tscn"),
 		load("res://Characters/Powers/Dash.tscn")
 	]
-	pilot.power = possible_powers.pick_random().instantiate()
+	pilot.power_scene = possible_powers.pick_random()
 	var possible_configs = [
 		load("res://Parameters/Weapons/bomb_shoot.tres"),
 		load("res://Parameters/Weapons/laser_shoot.tres"),

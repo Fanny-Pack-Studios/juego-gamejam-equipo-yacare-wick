@@ -9,9 +9,15 @@ func _ready():
 	pilot = Pilot.random()
 	copilot = Pilot.random()
 
-func board(ship):
+func board(ship: Spaceship):
 	ship.be_boarded(pilot, copilot)
 
 func assign_pilots(_pilot, _copilot):
 	pilot = _pilot
 	copilot = _copilot
+
+func primary_power():
+	return pilot.power()
+
+func secondary_power():
+	return copilot.power()

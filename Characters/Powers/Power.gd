@@ -5,3 +5,6 @@ extends Node2D
 @export var icon: Texture2D
 var player_is_using_it: bool = false
 var target: Spaceship
+
+func queue_free():
+	super()

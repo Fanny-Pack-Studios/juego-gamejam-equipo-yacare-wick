@@ -7,7 +7,7 @@ func _ready():
 	pilot = Pilot.random()
 	$VBoxContainer/Name.text = pilot.name
 	$VBoxContainer/Images/Photo.texture = pilot.photo
-	$VBoxContainer/Images/Power.texture = pilot.power.icon
+	$VBoxContainer/Images/Power.texture = pilot.power().icon
 	$VBoxContainer/Description.text = pilot.biography
 	focus_entered.connect(func():
 		self.increase_size()	
