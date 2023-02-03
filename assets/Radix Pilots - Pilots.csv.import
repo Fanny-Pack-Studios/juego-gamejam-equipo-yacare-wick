@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://k15rqlwopldg"
+
+[deps]
+
+files=["res://assets/Radix Pilots - Pilots.Name.translation", "res://assets/Radix Pilots - Pilots.Gender.translation", "res://assets/Radix Pilots - Pilots.Academy.translation", "res://assets/Radix Pilots - Pilots.Bio.translation"]
+
+source_file="res://assets/Radix Pilots - Pilots.csv"
+dest_files=["res://assets/Radix Pilots - Pilots.Name.translation", "res://assets/Radix Pilots - Pilots.Gender.translation", "res://assets/Radix Pilots - Pilots.Academy.translation", "res://assets/Radix Pilots - Pilots.Bio.translation"]
+
+[params]
+
+compress=true
+delimiter=0

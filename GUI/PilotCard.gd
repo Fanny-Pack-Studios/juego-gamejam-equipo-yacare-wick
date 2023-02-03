@@ -1,15 +1,13 @@
 extends MarginContainer
 
-@export var photo: Texture2D
-@export var pilot_name: String = ""
-@export var biography: String = ""
-
 var previous_position = null
+var pilot
 
 func _ready():
-	$VBoxContainer/Name.text = pilot_name
-	$VBoxContainer/Powers/Photo.texture = photo
-	$VBoxContainer/Description.text = biography
+	pilot = Pilot.random()
+	$VBoxContainer/Name.text = pilot.name
+	$VBoxContainer/Powers/Photo.texture = pilot.photo
+	$VBoxContainer/Description.text = pilot.biography
 	focus_entered.connect(func():
 		self.increase_size()	
 	)
