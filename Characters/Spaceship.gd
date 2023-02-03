@@ -12,6 +12,8 @@ var MAX_HEALTH := 100.0
 var current_health := MAX_HEALTH
 @export var invincible_time := 1.0
 @onready var sound = $Sound
+const Game_Over_Screen = preload("res://Characters/Levels/GameOverScreen.tscn")
+
 var protections = []
 
 var pilot: Pilot
@@ -131,6 +133,10 @@ func take_damage(damage: float, turn_on_invincibility: bool = true):
 	$Shaker.start(0.5)
 	if(turn_on_invincibility):
 		start_invincibility()
+	if (current_health <= 0):
+		var tween = create_tween()
+		tween.tween_property($CanvasLayer/FadeOut, "modulate", Color(0,0,0,1), 1)
+		tween.tween_callback(func(): get_tree().change_scene_to_packed(Game_Over_Screen))
 
 func random_attach_point() -> Vector2:
 	var rect: Rect2i = $Hitbox/CollisionShape2D.shape.get_rect()
