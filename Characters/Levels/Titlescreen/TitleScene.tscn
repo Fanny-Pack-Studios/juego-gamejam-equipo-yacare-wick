@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq05v3geov0yw"]
+
+[ext_resource type="Texture2D" uid="uid://cgvl3rujt17jn" path="res://Characters/Levels/Screens/Space Background_4.png" id="1_ru15f"]
+[ext_resource type="Script" path="res://Characters/Levels/Intro/IntroLabel.gd" id="2_5h3rd"]
+[ext_resource type="AudioStream" uid="uid://dyoyec8e74vo2" path="res://media/music/space-trip-114102.mp3" id="3_snsaw"]
+[ext_resource type="Texture2D" uid="uid://n3uiw7fvynkf" path="res://assets/LogoRadix.png" id="4_2du0v"]
+
+[node name="IntroScene" type="Node2D"]
+
+[node name="SpaceBackground" type="Sprite2D" parent="."]
+position = Vector2(960, 537)
+texture = ExtResource("1_ru15f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpaceBackground"]
+offset_left = -720.0
+offset_top = -361.0
+offset_right = 736.0
+offset_bottom = 519.0
+auto_translate = false
+localize_numeral_system = false
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                   [color=#9ACD32]Press Space to Continue[/color]"
+fit_content = true
+scroll_active = false
+tab_size = 7
+deselect_on_focus_loss_enabled = false
+structured_text_bidi_override = 3
+script = ExtResource("2_5h3rd")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_snsaw")
+autoplay = true
+
+[node name="LogoRadix" type="Sprite2D" parent="."]
+position = Vector2(938, 530)
+texture = ExtResource("4_2du0v")

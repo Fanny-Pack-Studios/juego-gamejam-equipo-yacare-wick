@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c45oxsppwv5c1"]
+[gd_scene load_steps=4 format=3 uid="uid://c45oxsppwv5c1"]
 
 [ext_resource type="Texture2D" uid="uid://cgvl3rujt17jn" path="res://Characters/Levels/Screens/Space Background_4.png" id="1_ydx5b"]
 [ext_resource type="Script" path="res://Characters/Levels/Intro/IntroLabel.gd" id="2_xtkpn"]
+[ext_resource type="AudioStream" uid="uid://dyoyec8e74vo2" path="res://media/music/space-trip-114102.mp3" id="3_sxo5a"]
 
 [node name="IntroScene" type="Node2D"]
 
@@ -32,3 +33,7 @@ tab_size = 7
 deselect_on_focus_loss_enabled = false
 structured_text_bidi_override = 3
 script = ExtResource("2_xtkpn")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sxo5a")
+autoplay = true
