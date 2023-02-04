@@ -5,17 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://b0nbtgo6k6bpr" path="res://assets/Powers/afterburn.png" id="3_d241v"]
 
 [sub_resource type="Theme" id="Theme_71p41"]
-MarginContainer/constants/margin_bottom = 30
+MarginContainer/constants/margin_bottom = 0
 MarginContainer/constants/margin_left = 15
 MarginContainer/constants/margin_right = 15
-MarginContainer/constants/margin_top = 30
+MarginContainer/constants/margin_top = 0
 VBoxContainer/constants/separation = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_feewm"]
 font_size = 40
 
 [node name="PilotCard" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 221.0
+grow_horizontal = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 focus_mode = 2
 theme = SubResource("Theme_71p41")
 script = ExtResource("1_ujqp5")
@@ -25,11 +30,15 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Name" type="Label" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 10
 text = "Anna James"
 label_settings = SubResource("LabelSettings_feewm")
@@ -37,41 +46,38 @@ horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="Images" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Images" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 4
 theme_override_constants/separation = 40
 
-[node name="Photo" type="TextureRect" parent="VBoxContainer/Images"]
+[node name="Photo" type="TextureRect" parent="HBoxContainer/Images"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("1_nxlla")
 expand_mode = 3
 
-[node name="Power" type="TextureRect" parent="VBoxContainer/Images"]
+[node name="Power" type="TextureRect" parent="HBoxContainer/Images"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_d241v")
 expand_mode = 3
 
-[node name="Stats" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Stats" type="RichTextLabel" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 bbcode_enabled = true
-text = "[center]
-+1 ataque
-[color=green]+2 defensa[/color]
-3 de choclo
-2 de choclo
-+1 movilidad
-8 de carne
-[/center]"
+text = "[color=green]TODO: // this is what this pilot improves[/color]"
 fit_content = true
 
-[node name="Description" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Description" type="RichTextLabel" parent="HBoxContainer"]
 clip_contents = false
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 text = "Anna is a quiet and reserved pilot who values the sanctity of nature above all else. She is deeply committed to the well-being of the Radix Vitae and will stop at nothing to protect it. Her hobby is bird-watching."
 fit_content = true
 autowrap_mode = 2
