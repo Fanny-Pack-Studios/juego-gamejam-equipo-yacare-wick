@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45oxsppwv5c1"]
+
+[ext_resource type="Texture2D" uid="uid://cgvl3rujt17jn" path="res://Characters/Levels/Screens/Space Background_4.png" id="1_ydx5b"]
+[ext_resource type="Script" path="res://Characters/Levels/Intro/IntroLabel.gd" id="2_xtkpn"]
+
+[node name="IntroScene" type="Node2D"]
+
+[node name="SpaceBackground" type="Sprite2D" parent="."]
+position = Vector2(960, 537)
+texture = ExtResource("1_ydx5b")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpaceBackground"]
+offset_left = -738.0
+offset_top = -361.0
+offset_right = 718.0
+offset_bottom = 513.0
+auto_translate = false
+localize_numeral_system = false
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[left]Year 2408:
+300 years after being expelled from Earth by the artificial intelligence Aleph, half of the population of Terra Nova, the last human colony, embarks on the giant spaceship Radix Orbis on a mission to defeat Aleph and its army composed of mechanical flora and fauna. The ship also carries Radix Vitae, the Root of Life, a giant sentient tree that is the key to bringing life back to Earth and the other Aleph colonies. Radix Orbis is the pinnacle of a new form of technology, based on the symbiotic relationship between humanity, nature and machines, and can only be piloted by humans who are able to connect with Radix Vitae.
+[/left]
+
+
+
+
+                                                                                                            [color=#9ACD32]Press Space to Play[/color]"
+fit_content = true
+scroll_active = false
+tab_size = 7
+deselect_on_focus_loss_enabled = false
+structured_text_bidi_override = 3
+script = ExtResource("2_xtkpn")
