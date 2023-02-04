@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponConfig" load_steps=3 format=3 uid="uid://dtv2v75wrfn2r"]
 
 [ext_resource type="Script" path="res://Characters/Weapons/weapon_config.gd" id="1_omxoa"]
-[ext_resource type="Texture2D" uid="uid://5u47thb2tv06" path="res://assets/pineshoot16x16.png" id="2_3bfqq"]
+[ext_resource type="Texture2D" uid="uid://bm8rqhdegls6g" path="res://assets/pineshoot16x16.png" id="2_3bfqq"]
 
 [resource]
 script = ExtResource("1_omxoa")
