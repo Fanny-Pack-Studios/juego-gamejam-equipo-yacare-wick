@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://veoy0a2cqwy3"]
 
 [ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_4web7"]
-[ext_resource type="PackedScene" uid="uid://rcggwxx4n7gy" path="res://Characters/Enemies/asteroids_spawner.tscn" id="2_4xoaf"]
+[ext_resource type="PackedScene" path="res://Characters/Enemies/asteroids_spawner.tscn" id="2_4xoaf"]
 [ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="3_kaj0i"]
 [ext_resource type="PackedScene" uid="uid://c7j67qq323h2d" path="res://Characters/Enemies/mecha_locust_spawner.tscn" id="4_dfj5b"]
 [ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="5_6c7ao"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="7_vald8"]
 [ext_resource type="Script" path="res://Characters/Levels/BossInfo.gd" id="8_b46qx"]
 
-[sub_resource type="Resource" id="Resource_2m3ex"]
+[sub_resource type="Resource" id="Resource_15bxm"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 300)
@@ -17,7 +17,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.5)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_gte8a"]
+[sub_resource type="Resource" id="Resource_b7su3"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 500)
@@ -25,7 +25,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.7)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_ww244"]
+[sub_resource type="Resource" id="Resource_3d8mp"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(-40, 600)
@@ -33,7 +33,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.5, 1)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_nvex0"]
+[sub_resource type="Resource" id="Resource_xnnlh"]
 resource_local_to_scene = true
 script = ExtResource("3_kaj0i")
 speed_bounds = Vector2(0, 600)
@@ -41,10 +41,10 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.5, 1.5)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsrpd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qppq6"]
 size = Vector2(1000, 500)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_les0b"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gct0q"]
 width = 1920
 height = 1080
 
@@ -57,7 +57,7 @@ modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(-379, 1983)
 time_between_spawns_bounds = Vector2(0.2, 0.4)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_2m3ex")
+asteroid_config = SubResource("Resource_15bxm")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner1" index="0"]
 position = Vector2(0, -679)
@@ -65,7 +65,7 @@ position = Vector2(0, -679)
 [node name="AsteroidsSpawner2" parent="Travel" index="4" instance=ExtResource("2_4xoaf")]
 position = Vector2(-379, 2782)
 max_asteroid_points_in_screen = 4.0
-asteroid_config = SubResource("Resource_gte8a")
+asteroid_config = SubResource("Resource_b7su3")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner2" index="0"]
 position = Vector2(0, -679)
@@ -73,7 +73,7 @@ position = Vector2(0, -679)
 [node name="AsteroidsSpawner6" parent="Travel" index="5" instance=ExtResource("2_4xoaf")]
 position = Vector2(-379, 3364)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_ww244")
+asteroid_config = SubResource("Resource_3d8mp")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner6" index="0"]
 position = Vector2(0, -679)
@@ -82,7 +82,7 @@ position = Vector2(0, -679)
 position = Vector2(-363, 3744)
 time_between_spawns_bounds = Vector2(0.1, 0.25)
 max_asteroid_points_in_screen = 10.0
-asteroid_config = SubResource("Resource_nvex0")
+asteroid_config = SubResource("Resource_xnnlh")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner7" index="0"]
 position = Vector2(0, -679)
@@ -126,7 +126,7 @@ max_health = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Boss" index="0"]
 position = Vector2(-23.2759, -188.515)
-shape = SubResource("RectangleShape2D_dsrpd")
+shape = SubResource("RectangleShape2D_qppq6")
 
 [node name="Polygon2D" type="Polygon2D" parent="Travel/Boss" index="1"]
 polygon = PackedVector2Array(-65, -91, -65, -91, -217, -195, -217, -195, -313, -466, -313, -466, -472, -434, -472, -434, -384, -187, -384, -187)
@@ -145,12 +145,6 @@ script = ExtResource("7_vald8")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Travel/Boss" index="6"]
 
-[node name="BossInfo" type="Label" parent="HUDLayer" index="3"]
-offset_top = 688.0
-offset_right = 40.0
-offset_bottom = 711.0
-script = ExtResource("8_b46qx")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 0
 
@@ -158,12 +152,18 @@ layer = 0
 modulate = Color(0, 0, 0, 0)
 z_index = 4096
 z_as_relative = false
-texture = SubResource("NoiseTexture2D_les0b")
+texture = SubResource("NoiseTexture2D_gct0q")
 centered = false
 
 [node name="TestCamera" type="Camera2D" parent="." index="8"]
 anchor_mode = 0
 zoom = Vector2(0.2, 0.2)
+
+[node name="BossInfo" type="Label" parent="HUDLayer" index="3"]
+offset_top = 688.0
+offset_right = 40.0
+offset_bottom = 711.0
+script = ExtResource("8_b46qx")
 
 [editable path="Travel/AsteroidsSpawner1"]
 [editable path="Travel/AsteroidsSpawner2"]

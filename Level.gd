@@ -13,7 +13,7 @@ var boss_music_on = false
 func _ready():
 	$Travel/Beginning.top_level = true
 	$Travel/End.top_level = true
-	[$Walls, $Walls2].map(func (wall): wall.top_level = true)
+	[$Walls, $Walls2, $Walls3, $Walls4].map(func (wall): wall.top_level = true)
 	Party.board($Spaceship)
 
 func length() -> float:

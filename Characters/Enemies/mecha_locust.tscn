@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbhq225an71fd"]
+[gd_scene load_steps=8 format=3 uid="uid://cf0hrdpg7cfjm"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/mecha_locust.gd" id="1_3tb5s"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="2_lt26w"]
+[ext_resource type="Texture2D" uid="uid://bcjtsnt3vuw4s" path="res://assets/langi-langi.png" id="2_tmfhp"]
 [ext_resource type="AudioStream" uid="uid://b58g1cx6vruol" path="res://media/sound/locust_buzzed.wav" id="3_py6tj"]
 [ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="4_yc6dw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mbnnk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5qefr"]
 radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_okufc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_px86n"]
 radius = 12.0
 
 [node name="MechaLocust" type="CharacterBody2D"]
@@ -19,17 +20,20 @@ collision_priority = 10.0
 motion_mode = 1
 script = ExtResource("1_3tb5s")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(0.5, 0.5)
-color = Color(0.192157, 0.392157, 0, 1)
-polygon = PackedVector2Array(-11, 15, -11, 15, -20, -7, -20, -7, -20, -7, -20, -7, 1, -32, 1, -32, 1, -32, 1, -32, 28, -7, 28, -7, 28, -7, 28, -7, 17, 17, 17, 17, 17, 17, 17, 17, 16, -8, 16, -8, 16, -8, 16, -8, 8, -13, 8, -13, 8, -13, 8, -13, 5, 15, 5, 15, 5, 15, 5, 15, -3, -16, -3, -16, -3, -16, -3, -16, -10, -6, -10, -6, -10, -6, -10, -6)
+[node name="Polygon2D2" type="TextureRect" parent="."]
+offset_left = -8.0
+offset_top = -9.0
+offset_right = 8.0
+offset_bottom = 7.0
+texture = ExtResource("2_tmfhp")
+stretch_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mbnnk")
+shape = SubResource("CircleShape2D_5qefr")
 
 [node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("2_lt26w")
-target_node = NodePath("../Polygon2D")
+target_node = NodePath("")
 target_property = &"offset"
 min_value = -5.0
 max_value = 5.0
@@ -50,5 +54,5 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_okufc")
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_px86n")

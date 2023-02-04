@@ -160,6 +160,48 @@ script = ExtResource("5_n613o")
 position = Vector2(150, 475)
 shape = SubResource("RectangleShape2D_1f6ug")
 
+[node name="Walls3" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(1738, -298)
+rotation = 1.57496
+scale = Vector2(1, 1.31966)
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls3"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls3"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102)
+
+[node name="VanishAsteroids2" type="Area2D" parent="Walls3"]
+position = Vector2(-256, -3.00061)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_n613o")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls3/VanishAsteroids2"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Walls4" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(265, 1377)
+rotation = -1.56386
+scale = Vector2(1, 1.31966)
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls4"]
+position = Vector2(150, 475)
+shape = SubResource("RectangleShape2D_1f6ug")
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls4"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 299, -26, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, 305, 1116, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102, -62, 1102)
+
 [node name="Travel" type="Node2D" parent="."]
 
 [node name="Beginning" type="Node2D" parent="Travel"]
@@ -260,6 +302,7 @@ texture = ExtResource("10_iiwh6")
 expand_mode = 3
 
 [node name="PrimaryKey" type="TextureRect" parent="HUDLayer/Powers"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
 offset_left = -36.0
 offset_top = 49.0
@@ -267,6 +310,7 @@ offset_right = 64.0
 offset_bottom = 149.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_7ogau")
+expand_mode = 1
 script = ExtResource("12_5ex0g")
 path = "primary_action"
 
@@ -280,6 +324,7 @@ texture = ExtResource("13_arfcv")
 expand_mode = 1
 
 [node name="SecondaryKey" type="TextureRect" parent="HUDLayer/Powers"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
 offset_left = 71.0
 offset_top = 50.0
@@ -287,6 +332,7 @@ offset_right = 171.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_he17g")
+expand_mode = 1
 script = ExtResource("12_5ex0g")
 path = "secondary_action"
 
@@ -400,5 +446,6 @@ script = ExtResource("10_naqm6")
 
 [connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]
+[connection signal="body_entered" from="Walls3/VanishAsteroids2" to="Walls3/VanishAsteroids2" method="_on_body_entered"]
 
 [editable path="Spaceship"]
