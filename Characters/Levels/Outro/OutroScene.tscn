@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://g8cjrmr18s4i"]
 
 [ext_resource type="Texture2D" uid="uid://b03tfe4jx4c4a" path="res://Characters/Levels/Screens/Space Background_6.png" id="1_lvckw"]
-[ext_resource type="Script" path="res://Characters/Levels/Intro/IntroLabel.gd" id="2_bworo"]
+[ext_resource type="Script" path="res://Characters/Levels/Outro/OutroLabel.gd" id="2_g8o85"]
 [ext_resource type="AudioStream" uid="uid://devv74kearij6" path="res://media/music/lost-in-space-ambient-soundscape-12294.mp3" id="3_6yi7n"]
 
 [node name="OutroScene" type="Node2D"]
@@ -36,7 +36,7 @@ scroll_active = false
 tab_size = 7
 deselect_on_focus_loss_enabled = false
 structured_text_bidi_override = 3
-script = ExtResource("2_bworo")
+script = ExtResource("2_g8o85")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6yi7n")

@@ -10,8 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Juego-gamejam-equipo-yacare-wick"
-run/main_scene="res://Characters/Levels/Nivel1.tscn"
+config/name="Radix_Orbis"
+config/description="Space shooter in which a community that survived the robot apocalypse and escaped Earth is trying to get back to its home planet. During the game you'll control different generations of pilots that will guide the spaceship back home."
+run/main_scene="res://Characters/Levels/Titlescreen/TitleScene.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 

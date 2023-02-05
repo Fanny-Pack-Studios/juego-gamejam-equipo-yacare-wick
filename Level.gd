@@ -1,7 +1,9 @@
 class_name Level
 extends Node2D
 
-const PilotsSelectionScreen = preload("res://Characters/Levels/PilotsSelectionScreen.tscn")
+#Se cambio la escena de pilotos para la de condicion de victoria
+#const PilotsSelectionScreen = preload("res://Characters/Levels/PilotsSelectionScreen.tscn")
+const OutroScreen = preload("res://Characters/Levels/Outro/OutroScene.tscn")
 const BossMusic = preload("res://media/music/hard-prey-boss-music.mp3")
 var boss_music_on = false
 
@@ -44,4 +46,4 @@ func end_point() -> Vector2:
 func next_level():
 	var tween = create_tween()
 	tween.tween_property($CanvasLayer/FadeOut, "modulate", Color(0,0,0,1), 1)
-	tween.tween_callback(func(): get_tree().change_scene_to_packed(PilotsSelectionScreen))
+	tween.tween_callback(func(): get_tree().change_scene_to_packed(OutroScreen))

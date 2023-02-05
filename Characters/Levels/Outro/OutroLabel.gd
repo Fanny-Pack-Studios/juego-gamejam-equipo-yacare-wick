@@ -1,6 +1,6 @@
 extends RichTextLabel
 
-const Nivel1 = preload("res://Characters/Levels/Nivel1.tscn")
+const TitleScene = preload("res://Characters/Levels/Titlescreen/TitleScene.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var tween = create_tween()
@@ -10,6 +10,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Input.is_action_pressed("ui_accept")):
+	if (Input.is_action_just_released("ui_accept")):
 		var tween_screen = create_tween()
-		tween_screen.tween_callback(func(): get_tree().change_scene_to_packed(Nivel1))
+		tween_screen.tween_callback(func(): get_tree().change_scene_to_packed(TitleScene))
