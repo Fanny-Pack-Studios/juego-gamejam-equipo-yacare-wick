@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://pjo7upvu03oo"]
 
 [ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_wk357"]
-[ext_resource type="PackedScene" uid="uid://dmwx3hqtparxb" path="res://Characters/Enemies/EnemiesOnPath.tscn" id="2_2nkcw"]
-[ext_resource type="PackedScene" uid="uid://db27boe1yhctc" path="res://Characters/Enemies/DummyEnemy.tscn" id="2_retg0"]
+[ext_resource type="PackedScene" path="res://Characters/Enemies/EnemiesOnPath.tscn" id="2_2nkcw"]
+[ext_resource type="PackedScene" path="res://Characters/Enemies/DummyEnemy.tscn" id="2_retg0"]
 [ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="3_xm1o1"]
 
 [sub_resource type="Curve2D" id="Curve2D_01fku"]
@@ -46,4 +46,3 @@ collision_mask = 0
 
 [editable path="Travel/EnemiesOnPath"]
 [editable path="Spaceship"]
-[editable path="Spaceship/SubViewportContainer/SubViewport/spaceship"]

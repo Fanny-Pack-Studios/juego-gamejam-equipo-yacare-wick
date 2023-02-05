@@ -24,9 +24,7 @@ text = "[left]Year 2408:
 [/left]
 
 
-
-
-                                                                                                            [color=#9ACD32]Press Space to Play[/color]"
+                                                      [color=#9ACD32]Press Space to Play[/color]"
 fit_content = true
 scroll_active = false
 tab_size = 7

@@ -8,6 +8,38 @@
 [ext_resource type="Texture2D" uid="uid://850ukx2p02bl" path="res://Characters/Levels/Titlescreen/SPIKAGAMES.PNG.png" id="6_buj0p"]
 [ext_resource type="Texture2D" uid="uid://brjusm5mg5ex4" path="res://Characters/Levels/Titlescreen/SquareLogoFanny.png" id="7_vmwub"]
 
+[sub_resource type="Animation" id="Animation_vmxgn"]
+resource_name = "Blackout"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lvopk"]
+resource_name = "Fade In"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_fu1dk"]
 resource_name = "Fade Out"
 length = 3.0
@@ -22,6 +54,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wvnqr"]
+resource_name = "Fanny_Screen_Fade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../FannyScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.294118, 0.294118, 0.294118, 1), Color(0.294118, 0.294118, 0.294118, 0.795918), Color(0.294118, 0.294118, 0.294118, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_iek36"]
@@ -51,54 +99,6 @@ tracks/1/keys = {
 "values": [Color(0.294118, 0.294118, 0.294118, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_lvopk"]
-resource_name = "Fade In"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_vmxgn"]
-resource_name = "Blackout"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_wvnqr"]
-resource_name = "Fanny_Screen_Fade"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../FannyScreen:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 4.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.294118, 0.294118, 0.294118, 1), Color(0.294118, 0.294118, 0.294118, 0.795918), Color(0.294118, 0.294118, 0.294118, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5p1sq"]
 _data = {
 "Blackout": SubResource("Animation_vmxgn"),
@@ -108,20 +108,32 @@ _data = {
 "RESET": SubResource("Animation_iek36")
 }
 
-[sub_resource type="Animation" id="Animation_32chc"]
-resource_name = "SpikaFade"
-length = 4.0
+[sub_resource type="Animation" id="Animation_bt6ej"]
+resource_name = "FannyFade"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../SpikaGamesLogo:modulate")
+tracks/0/path = NodePath("../FannypackLogo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 3.9),
+"times": PackedFloat32Array(1, 4.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpikaGamesLogo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_d3j2i"]
@@ -163,32 +175,20 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_bt6ej"]
-resource_name = "FannyFade"
-length = 5.0
+[sub_resource type="Animation" id="Animation_32chc"]
+resource_name = "SpikaFade"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../FannypackLogo:modulate")
+tracks/0/path = NodePath("../SpikaGamesLogo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 4.5),
+"times": PackedFloat32Array(1, 3.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../SpikaGamesLogo:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wlfii"]
