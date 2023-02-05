@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Characters/Enemies/mecha_squirrel.gd" id="1_ee4je"]
 [ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="2_wksxc"]
 [ext_resource type="AudioStream" uid="uid://bdbhu25bcggud" path="res://media/sound/Squirrel_screech.wav" id="3_th6lq"]
-[ext_resource type="PackedScene" uid="uid://cfy8a86mnvqyt" path="res://Characters/Enemies/Squirrel3D.tscn" id="5_1585p"]
+[ext_resource type="PackedScene" path="res://Characters/Enemies/Squirrel3D.tscn" id="5_1585p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6tyxs"]
 radius = 8.0

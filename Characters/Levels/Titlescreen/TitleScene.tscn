@@ -268,8 +268,8 @@ texture = ExtResource("6_buj0p")
 
 [node name="FannypackLogo" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(967, 544.5)
-scale = Vector2(0.453155, 0.561528)
+position = Vector2(991, 540)
+scale = Vector2(0.350913, 0.350913)
 texture = ExtResource("7_vmwub")
 
 [node name="FannyScreen" type="ColorRect" parent="."]
