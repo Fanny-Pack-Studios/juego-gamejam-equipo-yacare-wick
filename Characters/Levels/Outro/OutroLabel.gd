@@ -1,6 +1,6 @@
 extends RichTextLabel
 
-const TitleScene = preload("res://Characters/Levels/Titlescreen/TitleScene.tscn")
+const CreditScene = preload("res://Characters/Levels/Credits/CreditScene.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var tween = create_tween()
@@ -12,4 +12,4 @@ func _ready():
 func _process(delta):
 	if (Input.is_action_just_released("ui_accept")):
 		var tween_screen = create_tween()
-		tween_screen.tween_callback(func(): get_tree().change_scene_to_packed(TitleScene))
+		tween_screen.tween_callback(func(): get_tree().change_scene_to_packed(CreditScene))

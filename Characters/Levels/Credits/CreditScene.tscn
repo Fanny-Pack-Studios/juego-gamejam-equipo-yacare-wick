@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctuidatda6ow0"]
+
+[ext_resource type="Texture2D" uid="uid://b1xajf3684vft" path="res://Characters/Levels/Screens/Space Background.png" id="1_gfqs4"]
+[ext_resource type="Script" path="res://Characters/Levels/Credits/RichTextLabel.gd" id="2_f3g7x"]
+
+[node name="CreditScene" type="Node2D"]
+
+[node name="SpaceBackground" type="Sprite2D" parent="."]
+position = Vector2(961, 540)
+texture = ExtResource("1_gfqs4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 419.0
+offset_top = 102.0
+offset_right = 1718.0
+offset_bottom = 722.0
+bbcode_enabled = true
+text = "Tools used for making resources:
+
+Pilots based on the original project \"pixel-art-portrait-generator\" by V-ktor:
+https://github.com/V-ktor/pixel-art-portraits
+
+Space Background thanks to Space Background Generator tool by Deep-Fold:
+https://deep-fold.itch.io/space-background-generator
+
+Sound Effects made with sfbgames chiptone:
+https://sfbgames.itch.io/chiptone
+
+Audio Tracks
+
+Music from EvgenyBardyuzha:
+https://pixabay.com/es/users/evgenybardyuzha-25235210/
+
+Music cut based in Alone with the Darkness by NaturesEye:
+https://pixabay.com/es/music/misterio-alone-with-the-darkness-9859/"
+script = ExtResource("2_f3g7x")
