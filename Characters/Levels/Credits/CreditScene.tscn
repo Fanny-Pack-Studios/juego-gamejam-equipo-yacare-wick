@@ -6,31 +6,57 @@
 [node name="CreditScene" type="Node2D"]
 
 [node name="SpaceBackground" type="Sprite2D" parent="."]
-position = Vector2(961, 540)
+position = Vector2(960, 540)
+scale = Vector2(1.01, 1.01)
 texture = ExtResource("1_gfqs4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 419.0
-offset_top = 102.0
-offset_right = 1718.0
-offset_bottom = 722.0
+offset_left = 406.0
+offset_top = 72.0
+offset_right = 1705.0
+offset_bottom = 921.0
 bbcode_enabled = true
-text = "Tools used for making resources:
+text = "[b]Development:[/b]
+
+FannyPack Studios:
+Juan Manuel Fernandes dos Santos
+Nicolás Calens
+Hernán de Haro
+
+Spika Games:
+Sebastián Picardi
+
+
+[b]Tools used for making resources:[/b]
 
 Pilots based on the original project \"pixel-art-portrait-generator\" by V-ktor:
-https://github.com/V-ktor/pixel-art-portraits
+https://github.com/V-ktor/pixel-art-portraits 
 
 Space Background thanks to Space Background Generator tool by Deep-Fold:
-https://deep-fold.itch.io/space-background-generator
+https://deep-fold.itch.io/space-background-generator 
 
-Sound Effects made with sfbgames chiptone:
+Sound Effects made with SFBGames chiptone:
 https://sfbgames.itch.io/chiptone
 
-Audio Tracks
 
-Music from EvgenyBardyuzha:
-https://pixabay.com/es/users/evgenybardyuzha-25235210/
+[b]Audio Tracks[/b]
 
-Music cut based in Alone with the Darkness by NaturesEye:
-https://pixabay.com/es/music/misterio-alone-with-the-darkness-9859/"
+Are You Ready for Adventures, Hard Prey & Dream Locations by EvgenyBardyuzha:
+https://pixabay.com/es/users/evgenybardyuzha-25235210/ 
+
+Alone with the Darkness & Lost in Space - Ambient Soundscape by NaturesEye:
+https://pixabay.com/es/users/natureseye-18615106/ 
+
+Space Trip by Playsound:
+https://pixabay.com/es/users/playsound-24686998/ 
+"
 script = ExtResource("2_f3g7x")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 1362.0
+offset_top = 911.0
+offset_right = 1672.0
+offset_bottom = 974.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave amp=100 freq=3]Thanks for Playing!"
