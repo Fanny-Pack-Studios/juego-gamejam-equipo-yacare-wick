@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelConfig" load_steps=2 format=3 uid="uid://dn7rrw7bwo6c1"]
+
+[ext_resource type="Script" path="res://Characters/Levels/LevelConfig.gd" id="1_hce8g"]
+
+[resource]
+script = ExtResource("1_hce8g")
+length = null
+travel_speed = null
+events = [null]

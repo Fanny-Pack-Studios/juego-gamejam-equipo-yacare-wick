@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AsteroidShower" load_steps=2 format=3 uid="uid://cllhc153ynkvy"]
+
+[ext_resource type="Script" path="res://Characters/Levels/Events/AsteroidShower.gd" id="1_wltx3"]
+
+[resource]
+script = ExtResource("1_wltx3")
+duration_in_seconds = null
+moment_it_starts_at = null

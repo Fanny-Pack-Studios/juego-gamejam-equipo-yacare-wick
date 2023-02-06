@@ -17,12 +17,22 @@ func _ready():
 	$Travel/End.top_level = true
 	[$Walls, $Walls2, $Walls3, $Walls4].map(func (wall): wall.top_level = true)
 	Party.board($Spaceship)
+	var level_config = find_child("LevelConfig", true)
+	if(level_config):
+		travel_speed = level_config.travel_speed
+		end.global_position = beginning.global_position + Vector2(0, level_config.length)
+		var planet = find_child("Planet", true)
+		if(planet):
+			planet.position = Vector2(0, end.position.y)
+		var boss = find_child("Boss", true)
+		if(boss):
+			boss.position = Vector2(700, end.position.y - 100)
 
 func length() -> float:
-	return beginning.global_transform.origin.distance_to(end_point())
+	return beginning.global_position.distance_to(end_point())
 
 func _physics_process(delta):
-	global_transform.origin = global_transform.origin.move_toward(
+	global_position = global_position.move_toward(
 		end_point(),
 		delta * travel_speed
 	)
@@ -41,7 +51,7 @@ func distance_left():
 	return global_transform.origin.distance_to(end_point())
 
 func end_point() -> Vector2:
-	return (beginning.global_transform.origin - end.global_transform.origin + Vector2(0, ProjectSettings.get_setting("display/window/size/viewport_height")))
+	return (beginning.global_position - end.global_position + Vector2(0, ProjectSettings.get_setting("display/window/size/viewport_height")))
 
 func next_level():
 	var tween = create_tween()

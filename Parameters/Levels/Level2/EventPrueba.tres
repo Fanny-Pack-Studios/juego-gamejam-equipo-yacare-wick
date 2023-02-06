@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dm4nujfuk651s"]
+
+[ext_resource type="Script" path="res://Characters/Levels/Events/Event.gd" id="1_7ktku"]
+
+[resource]
+script = ExtResource("1_7ktku")
+moment_it_starts_at = null
