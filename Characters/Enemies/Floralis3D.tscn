@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn2i4wh1nddx0"]
 
-[ext_resource type="Script" path="res://Characters/Enemies/Squirrel3D.gd" id="1_6rbej"]
+[ext_resource type="Script" path="res://Characters/Enemies/Floralis3D.gd" id="1_3ovsg"]
 [ext_resource type="PackedScene" uid="uid://bm73livtncqlg" path="res://assets/general_floralis.gltf" id="2_ssjm6"]
 
 [sub_resource type="Environment" id="Environment_yjtgi"]
 background_color = Color(1, 1, 1, 1)
 glow_enabled = true
 
-[node name="Floralis3D" type="Node3D"]
-script = ExtResource("1_6rbej")
+[node name="GeneralFloralis" type="Node3D"]
+script = ExtResource("1_3ovsg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.246779, 0.969072, 0, -0.969072, 0.246779, 0, 8.20256, 4.19853)
@@ -36,6 +36,13 @@ transform = Transform3D(-0.999921, -0.0125218, 0.001055, 0, 0.0839561, 0.99647, 
 
 [node name="Flora_Legs" parent="general_floralis" index="7"]
 transform = Transform3D(1, -9.31323e-10, 1.16415e-10, -9.31323e-10, 1, -7.45058e-09, 0, 7.45058e-09, 1, 9.31323e-10, -0.90582, 0)
+
+[node name="Skeleton3D" parent="general_floralis/LegsArma" index="0"]
+transform = Transform3D(1, 9.31323e-10, -1.16415e-10, -9.31323e-10, 1, -7.45058e-09, 0, 0, 1, 0, 0, 0)
+bones/6/rotation = Quaternion(0.0702494, 0.082629, -0.432111, 0.895275)
+bones/17/position = Vector3(1.59127, 1.84234, 0.584828)
+bones/17/rotation = Quaternion(-0.0384684, -0.0820287, -0.714663, 0.693576)
+bones/18/position = Vector3(1.99718, 1.09359, -0.793237)
 
 [node name="Flora_petals001" parent="general_floralis" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, -0.905821, 7.45058e-09)
