@@ -43,7 +43,6 @@ shape = SubResource("CapsuleShape2D_n4ea6")
 
 [node name="DestroyedEffect" type="Node2D" parent="."]
 script = ExtResource("2_wksxc")
-explosion_scale = null
 explosion_time = 0.1
 stretch = Vector2(2, 0.1)
 

@@ -36,7 +36,6 @@ func _physics_process(delta):
 		end_point(),
 		delta * travel_speed
 	)
-	$Camera2D.offset.y = position.y
 #	$ParallaxBackground.scroll_offset = $ParallaxBackground.scroll_offset + Vector2(0, -travel_speed) * delta
 	$ParallaxBackground.scroll_offset = Vector2(0, distance_left())
 	if distance_left() <= 200 && !boss_music_on:
