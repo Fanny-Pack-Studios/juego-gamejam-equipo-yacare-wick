@@ -69,6 +69,18 @@ static func random():
 func bonus_text(str: String):
 	return str("[color=green]", str, "[/color]\n")
 
+func inherited_stats_description():
+	var best_skill = [[_defense / 5.0, "defense"], [_driving_skill, "driving_skill"], [_reflexes,"reflexes"]].max().back()
+	match best_skill:
+		"defense":
+			return str("Next recruits will have ", bonus_text("+%" + String.num(_defense / 5.0 * 10.0, 2)), " ship defenses")
+	match best_skill:
+		"driving_skill":
+			return str("Next recruits will have ", bonus_text("+%" + String.num(_driving_skill * 10.0, 2)), " ship speed")
+	match best_skill:
+		"reflexes":
+			return str("Next recruits will have, ", bonus_text("less cooldown on abilities"))
+
 func stats_description():
 	var description = str("Age: ", _age, "\n\n")
 	if(defense() > 0.0):
