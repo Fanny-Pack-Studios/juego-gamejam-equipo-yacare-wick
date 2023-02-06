@@ -16,9 +16,20 @@ var current_health := MAX_HEALTH
 const Game_Over_Screen = preload("res://Characters/Levels/GameOverScreen.tscn")
 
 var protections = []
+var attached_enemies = []
 
 var pilot: Pilot
 var copilot: Pilot
+
+func attach(enemy):
+	attached_enemies.push_front(enemy)
+
+func destroy_attached():
+	attached_enemies.map(func (enemy):
+		if(is_instance_valid(enemy)):
+			enemy.kill()
+	)
+	attached_enemies.clear()
 
 func defense():
 	return 0

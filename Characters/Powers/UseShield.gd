@@ -36,6 +36,7 @@ func _physics_process(delta):
 
 	$Area.monitoring = is_active
 	target.find_child("Spaceship3D", true).using_shield = is_active
+	target.destroy_attached()
 
 func bb_text():
 	return "Shield time: " + String.num(shield_time(), 2)+ "s\n" +\

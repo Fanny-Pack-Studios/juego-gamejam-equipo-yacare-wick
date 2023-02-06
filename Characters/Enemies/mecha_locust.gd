@@ -42,6 +42,7 @@ func attack():
 
 func hit_with_spaceship(spaceship):
 	if(not attached_to_target):
+		spaceship.attach(self)
 		$CollisionShape2D.set_deferred("disabled", true)
 		attach_point = spaceship.random_attach_point()
 		attached_to_target = true

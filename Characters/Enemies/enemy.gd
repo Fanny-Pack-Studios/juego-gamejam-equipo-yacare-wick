@@ -24,3 +24,7 @@ func _killed():
 
 func set_moving_in_path(value):
 	moving_in_path = value
+
+func kill():
+	_killed()
+	killed.emit()

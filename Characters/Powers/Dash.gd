@@ -47,6 +47,7 @@ func _physics_process(delta):
 	if(uses_left > 0 and player_used_it and $InternalCooldown.is_stopped()):
 		uses_left -= 1
 		target.protections.push_back(self)
+		target.destroy_attached()
 		$DashTime.start()
 		$InternalCooldown.start()
 		create_tween().tween_callback(self.recover_use).set_delay(cooldown_time())

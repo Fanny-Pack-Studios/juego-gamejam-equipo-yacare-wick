@@ -21,6 +21,7 @@ func bb_text():
 func _physics_process(delta):
 	if(player_used_it and $SpecialAbilityCooldown.is_stopped()):
 		$SpecialAbilityCooldown.start()
+		target.destroy_attached()
 		var dup_weapon = self.duplicate()
 		target.add_child(dup_weapon)
 		var dup_weapon_config = weapon_config.duplicate()

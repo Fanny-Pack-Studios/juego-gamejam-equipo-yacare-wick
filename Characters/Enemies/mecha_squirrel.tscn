@@ -5,14 +5,14 @@
 [ext_resource type="AudioStream" uid="uid://bdbhu25bcggud" path="res://media/sound/Squirrel_screech.wav" id="3_th6lq"]
 [ext_resource type="PackedScene" uid="uid://cfy8a86mnvqyt" path="res://Characters/Enemies/Squirrel3D.tscn" id="5_1585p"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6tyxs"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ftdb3"]
 radius = 8.0
 height = 26.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hfh3i"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nripe"]
 radius = 450.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xj1r2"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4ea6"]
 height = 35.9997
 
 [node name="mecha_squirrel" type="CharacterBody2D"]
@@ -26,20 +26,20 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -3)
-shape = SubResource("CapsuleShape2D_6tyxs")
+shape = SubResource("CapsuleShape2D_ftdb3")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_hfh3i")
+shape = SubResource("CircleShape2D_nripe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, 3)
 rotation = -0.00349154
-shape = SubResource("CapsuleShape2D_xj1r2")
+shape = SubResource("CapsuleShape2D_n4ea6")
 
 [node name="DestroyedEffect" type="Node2D" parent="."]
 script = ExtResource("2_wksxc")
