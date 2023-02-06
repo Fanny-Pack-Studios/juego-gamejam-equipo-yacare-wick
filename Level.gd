@@ -40,9 +40,13 @@ func _physics_process(delta):
 	$ParallaxBackground.scroll_offset = Vector2(0, distance_left())
 	if distance_left() <= 200 && !boss_music_on:
 		boss_music_on = true
+		var boss = find_child("Boss", true)
+		if(boss):
+			boss.start()
 		music.stop()
 		music.stream = BossMusic
 		music.play()
+		
 
 func distance_traveled() -> float:
 	return length() - distance_left()

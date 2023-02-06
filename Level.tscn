@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://btrro60kficv0"]
+[gd_scene load_steps=42 format=3 uid="uid://btrro60kficv0"]
 
 [ext_resource type="Script" path="res://Level.gd" id="1_lwjfv"]
 [ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="2_knfd6"]
@@ -83,7 +83,7 @@ corner_radius_bottom_left = 3
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_7qndm")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u5esv"]
-size = Vector2(500, 30)
+size = Vector2(500, 25)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2hlq"]
 border_width_left = 5
@@ -92,6 +92,9 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_usdk4"]
+size = Vector2(1500, 25)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("beginning", "end")]
 script = ExtResource("1_lwjfv")
@@ -224,8 +227,8 @@ polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -
 
 [node name="LevelConfig" type="Node2D" parent="Travel"]
 script = ExtResource("6_lm4k7")
-length = 8000.0
-travel_speed = 500.0
+length = 3000.0
+travel_speed = 2000.0
 events_description = "1,asteroids,10
 2,squirrels,5
 2,lochusts,2"
@@ -542,6 +545,32 @@ grow_vertical = 0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HUDLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -80.0
+offset_right = 140.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 350
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 350
+theme_override_constants/margin_bottom = 10
+
+[node name="BossHealth" type="TextureProgressBar" parent="HUDLayer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 0.1
+value = 100.0
+texture_under = SubResource("PlaceholderTexture2D_usdk4")
+texture_progress = SubResource("PlaceholderTexture2D_usdk4")
+tint_under = Color(0.129412, 0.109804, 0.105882, 0.843137)
+tint_progress = Color(0.654902, 0, 0.243137, 1)
 
 [node name="AsteroidsInfo" type="Label" parent="HUDLayer"]
 z_index = 10
