@@ -5,6 +5,7 @@ var pilot
 
 func set_pilot(new_pilot):
 	pilot = Pilot.random()
+
 	$HBoxContainer/Name.text = pilot.name
 	$HBoxContainer/Images/Photo.texture = pilot.photo
 	$HBoxContainer/Images/Power.texture = pilot.power().icon

@@ -6,6 +6,7 @@ func calculate_available_pilots(previous_pilots):
 	var pilots = previous_pilots.duplicate()
 	for i in range(0, 3):
 		var new_pilot = Pilot.random()
+		new_pilot.has_piloted_before = true
 		new_pilot.instructors = Party.past_instructors
 		pilots.push_back(new_pilot)
 	return pilots
@@ -13,6 +14,7 @@ func calculate_available_pilots(previous_pilots):
 func _ready():
 	Party.update()
 	var pilots = Party.pop_pilots()
+	Party.clean()
 	var available_pilots = calculate_available_pilots(pilots)
 	
 	$CanvasLayer/Copilot.scale = Vector2(0,0)
