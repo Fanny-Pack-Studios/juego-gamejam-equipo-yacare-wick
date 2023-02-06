@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://btrro60kficv0"]
+[gd_scene load_steps=44 format=3 uid="uid://btrro60kficv0"]
 
 [ext_resource type="Script" path="res://Level.gd" id="1_lwjfv"]
 [ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="2_knfd6"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://GUI/Pilots.gd" id="7_dx1fl"]
 [ext_resource type="Script" path="res://TravelProgress.gd" id="7_evcny"]
 [ext_resource type="Script" path="res://Characters/Levels/Boss.gd" id="7_jbwth"]
-[ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="8_80sh3"]
 [ext_resource type="Texture2D" uid="uid://dubryrnp87jny" path="res://assets/spaceship_pixelart_256.png" id="8_fhb7y"]
 [ext_resource type="Texture2D" uid="uid://dkbnytcw2a5ul" path="res://assets/Pilotos/candidate014.png" id="8_wi0cr"]
 [ext_resource type="AudioStream" uid="uid://bdbhu25bcggud" path="res://media/sound/Squirrel_screech.wav" id="9_8ylvo"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dvu4qvrwgslv3" path="res://addons/controller_icons/assets/key/z.png" id="10_7ogau"]
 [ext_resource type="Texture2D" uid="uid://b4ukbxq61fgnt" path="res://assets/Powers/bubble-field.png" id="10_iiwh6"]
 [ext_resource type="Script" path="res://ParallaxInfo.gd" id="10_naqm6"]
+[ext_resource type="Script" path="res://BossShields.gd" id="10_nd5so"]
 [ext_resource type="PackedScene" uid="uid://bn2i4wh1nddx0" path="res://Characters/Enemies/Floralis3D.tscn" id="10_uaswn"]
 [ext_resource type="Script" path="res://GUI/PowersHUD.gd" id="10_v5nap"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/TextureRect.gd" id="12_5ex0g"]
@@ -61,11 +61,17 @@ size = Vector2(401.51, 704.965)
 radius = 8.0
 height = 26.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7br2l"]
-radius = 450.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rr3a4"]
 height = 35.9997
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6owc"]
+size = Vector2(610.994, 771.731)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eehka"]
+size = Vector2(122.104, 638.74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7upug"]
+size = Vector2(94.198, 555.906)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qndm"]
 bg_color = Color(0.643137, 0.560784, 0.733333, 0.760784)
@@ -229,7 +235,8 @@ polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -
 script = ExtResource("6_lm4k7")
 length = 3000.0
 travel_speed = 2000.0
-events_description = "1,asteroids,10
+events_description = "0.1,squirrels,5
+1,asteroids,10
 2,squirrels,5
 2,lochusts,2"
 
@@ -253,9 +260,10 @@ shape = SubResource("RectangleShape2D_snwwe")
 position = Vector2(0, 4000)
 
 [node name="Boss" type="CharacterBody2D" parent="Travel"]
+z_index = 11
 position = Vector2(1002, 3720)
 scale = Vector2(0.515554, 0.509245)
-collision_layer = 1073741828
+collision_layer = 1073741824
 collision_mask = 0
 script = ExtResource("7_jbwth")
 max_health = 3000.0
@@ -265,36 +273,23 @@ position = Vector2(10.6682, -105.058)
 scale = Vector2(1, 0.999999)
 shape = SubResource("RectangleShape2D_tsw2o")
 
-[node name="DestroyedEffect" type="Node2D" parent="Travel/Boss"]
-script = ExtResource("8_80sh3")
-
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Travel/Boss"]
 
 [node name="Hitbox" type="Area2D" parent="Travel/Boss"]
+position = Vector2(15.5176, -192.445)
+scale = Vector2(-0.784488, -0.256763)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Boss/Hitbox"]
 position = Vector2(0, -3)
+scale = Vector2(5.44678, 25.251)
 shape = SubResource("CapsuleShape2D_d7dw1")
 
-[node name="DetectionArea" type="Area2D" parent="Travel/Boss"]
-visible = false
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Boss/DetectionArea"]
-shape = SubResource("CircleShape2D_7br2l")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Travel/Boss"]
-visible = false
 position = Vector2(0, 3)
 rotation = -0.00349154
 shape = SubResource("CapsuleShape2D_rr3a4")
-
-[node name="DestroyedEffect2" type="Node2D" parent="Travel/Boss"]
-script = ExtResource("8_80sh3")
-explosion_time = 0.1
-stretch = Vector2(2, 0.1)
 
 [node name="Sound" type="AudioStreamPlayer" parent="Travel/Boss"]
 stream = ExtResource("9_8ylvo")
@@ -304,12 +299,14 @@ rect = Rect2(-10, -50, 20, 200)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Travel/Boss"]
 process_mode = 3
+z_index = 11
 offset_left = 773.912
 offset_top = 663.705
 offset_right = 1285.91
 offset_bottom = 1175.71
 rotation = 3.14935
 scale = Vector2(3, 3)
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="Travel/Boss/SubViewportContainer"]
 own_world_3d = true
@@ -317,9 +314,38 @@ transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="Squirrel3D" parent="Travel/Boss/SubViewportContainer/SubViewport" instance=ExtResource("10_uaswn")]
+[node name="GeneralFloralis" parent="Travel/Boss/SubViewportContainer/SubViewport" instance=ExtResource("10_uaswn")]
+
+[node name="SpawnPosition" type="Node2D" parent="Travel/Boss"]
+position = Vector2(0, -237.606)
+
+[node name="DamageArea" type="Area2D" parent="Travel/Boss"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Boss/DamageArea"]
+position = Vector2(14.547, -163.968)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_f6owc")
+
+[node name="Shields" type="Area2D" parent="Travel/Boss"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_nd5so")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Boss/Shields"]
+position = Vector2(-195.827, -249.537)
+rotation = -0.342554
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_eehka")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Travel/Boss/Shields"]
+position = Vector2(230.334, -245.594)
+rotation = 0.323979
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7upug")
 
 [node name="Spaceship" parent="." instance=ExtResource("4_1ljfk")]
+unique_name_in_owner = true
 z_index = 1
 z_as_relative = false
 position = Vector2(926, 273)

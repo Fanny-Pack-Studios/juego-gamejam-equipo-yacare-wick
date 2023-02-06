@@ -148,6 +148,8 @@ func start_invincibility():
 
 
 func take_damage(damage: float, turn_on_invincibility: bool = true):
+	if(not protections.is_empty()):
+		return
 	current_health -= abs(damage - defense())
 	var max_shake = 2
 	$Shaker.max_value = max(damage / 10.0, max_shake)
