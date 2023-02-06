@@ -16,7 +16,7 @@ func _ready():
 		if(i > 0):
 			card.focus_neighbor_top = card.get_path_to(cards[i - 1])
 		card.gui_input.connect(func(input):
-			if input.is_action_pressed("primary_action"):
+			if input.is_action_pressed("primary_action") or input.is_action_pressed("ui_accept"):
 				choose_pilot(card.pilot)
 			elif input.is_action_pressed("secondary_action"):
 				deselect_pilot()
