@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsgafud3g7nkc"]
+
+[ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_kso7g"]
+
+[node name="Level" instance=ExtResource("1_kso7g")]
+
+[node name="LevelConfig" parent="Travel" index="0"]
+length = 20000.0
+travel_speed = 300.0
+events_description = "1,asteroids,1
+4,asteroids,12
+5,asteroids,6
+9,squirrels,2
+9,squirrels,2
+11,squirrels,2
+11,squirrels,2
+11,squirrels,2
+10,asteroids,1
+12,squirrels,2
+12,squirrels,2
+12,squirrels,2
+13,squirrels,2
+13,squirrels,2
+13,squirrels,2
+12,lochusts,2
+15,asteroids,1
+15,lochusts,2
+15.5,lochusts,2
+16,lochusts,3
+19,lochusts,2
+20,asteroids,1
+21,squirrels,2
+21,squirrels,2
+21,lochusts,1
+21.5,lochusts,1
+21.6,asteroids,1
+22,lochusts,1
+22.5,lochusts,1
+17,asteroids,1
+20,asteroids,1
+23,squirrels,10
+23,squirrels,10
+23,lochusts,1
+24,asteroids,1
+24,lochusts,1
+25,lochusts,1
+26,lochusts,1
+28,asteroids,1
+32,asteroids,1
+36,asteroids,1
+40,asteroids,1
+44,asteroids,1
+48,asteroids,1
+52,asteroids,1"
+
+[editable path="Spaceship"]
