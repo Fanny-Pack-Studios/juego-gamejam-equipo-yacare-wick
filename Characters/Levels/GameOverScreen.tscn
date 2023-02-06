@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl46igxdpofmr"]
+[gd_scene load_steps=5 format=3 uid="uid://cl46igxdpofmr"]
 
+[ext_resource type="Script" path="res://Characters/Levels/GameOverScreen.gd" id="1_yhdv0"]
 [ext_resource type="AudioStream" uid="uid://dmq03vqicphw3" path="res://media/music/alone-with-the-darkness-cut.mp3" id="2_874bb"]
 [ext_resource type="Texture2D" uid="uid://cbubrr0nseytc" path="res://Characters/Levels/Screens/Space Background_2.png" id="3_7dr3x"]
 [ext_resource type="Texture2D" uid="uid://bf3kxuerqt5xa" path="res://Characters/Levels/GameOver.png" id="4_78xv0"]
 
 [node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_yhdv0")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_874bb")
