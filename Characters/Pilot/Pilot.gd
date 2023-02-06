@@ -79,7 +79,7 @@ func inherited_stats_description():
 			return str("Next recruits will have ", bonus_text("+%" + String.num(_driving_skill * 10.0, 2)), " ship speed")
 	match best_skill:
 		"reflexes":
-			return str("Next recruits will have, ", bonus_text("less cooldown on abilities"))
+			return str("Next recruits will have ", bonus_text("less cooldown on abilities"))
 
 func stats_description():
 	var description = str("Age: ", _age, "\n\n")

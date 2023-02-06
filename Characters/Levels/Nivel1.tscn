@@ -111,6 +111,12 @@ rotation = -0.431142
 position = Vector2(1305, 960)
 rotation = -0.00904059
 
+[node name="DestroyedEffect" parent="Travel/Boss" index="1"]
+explosion_scale = null
+
+[node name="DestroyedEffect2" parent="Travel/Boss" index="6"]
+explosion_scale = null
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 0
 

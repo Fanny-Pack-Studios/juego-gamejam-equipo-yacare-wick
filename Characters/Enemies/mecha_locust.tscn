@@ -49,6 +49,7 @@ stream = ExtResource("3_py6tj")
 
 [node name="DestroyedEffect" type="Node2D" parent="."]
 script = ExtResource("4_yc6dw")
+explosion_scale = 0.3
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4

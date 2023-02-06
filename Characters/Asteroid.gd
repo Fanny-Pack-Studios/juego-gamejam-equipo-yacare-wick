@@ -1,6 +1,7 @@
 class_name Asteroid
 extends CharacterBody2D
 
+const SmokeScene = preload("res://Effects/smoke.tscn")
 @export var config: AsteroidConfig
 
 var current_health := 10.0
@@ -57,6 +58,10 @@ func hit_with_spaceship(spaceship: Spaceship):
 	destroy()
 
 func destroy():
+	var smoke = SmokeScene.instantiate()
+	smoke.scale = self.scale
+	get_parent().add_child(smoke)
+	smoke.global_position = global_position
 	sound.reparent(get_node("/root"))
 	sound.volume_db *= scale.x
 	sound.pitch_scale = randf_range(0.8, 1.2)

@@ -39,4 +39,10 @@ position = Vector2(1287, 916)
 collision_layer = 4
 collision_mask = 0
 
+[node name="DestroyedEffect" parent="Travel/Boss" index="1"]
+explosion_scale = null
+
+[node name="DestroyedEffect2" parent="Travel/Boss" index="6"]
+explosion_scale = null
+
 [editable path="Spaceship"]
