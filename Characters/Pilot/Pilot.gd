@@ -21,7 +21,7 @@ static func random():
 	var possible_biographies = []
 	
 	var file = FileAccess.open(
-		"res://assets/Radix Pilots - Pilots.csv",
+		"res://assets/pilots.csv",
 		FileAccess.READ
 	)
 	file.get_csv_line() # ignore headers
@@ -45,7 +45,7 @@ static func random():
 	var photo_path = PILOTS_PHOTO_DIR + (
 		Array(DirAccess.open(PILOTS_PHOTO_DIR)\
 			.get_files())\
-			.filter(func(filepath): return ("candidate" in filepath and not ".import" in filepath))\
+			.filter(func(filepath: String): return filepath.replace(".import", ""))\
 			.pick_random()
 	)
 	pilot.photo = load(photo_path)

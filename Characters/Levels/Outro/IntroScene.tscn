@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4qcgwddy6ko3"]
+
+[ext_resource type="Texture2D" uid="uid://b03tfe4jx4c4a" path="res://Characters/Levels/Screens/Space Background_6.png" id="1_lvckw"]
+[ext_resource type="Script" path="res://Characters/Levels/Intro/IntroLabel.gd" id="2_bworo"]
+[ext_resource type="AudioStream" uid="uid://devv74kearij6" path="res://media/music/lost-in-space-ambient-soundscape-12294.mp3" id="3_6yi7n"]
+
+[node name="OutroScene" type="Node2D"]
+
+[node name="SpaceBackground" type="Sprite2D" parent="."]
+position = Vector2(960, 537)
+texture = ExtResource("1_lvckw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpaceBackground"]
+offset_left = -922.0
+offset_top = -497.0
+offset_right = 943.0
+offset_bottom = 516.0
+auto_translate = false
+localize_numeral_system = false
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[left]When the symbiotic technology of Radix Orbis defeated Aleph, the AI realized that its premise that life forms were inefficient and useless was proven false. At the same time, Aleph and Radix Vitae made contact for the first time, and the two sentient beings became fascinated with each other. So as soon as the terraforming process of Earth was stable, Radix Vitae left the planet in a ship created in symbiosis with Aleph.
+[color=84DE02]
+After that, humanity was able to develop freely in Earth, in Terra Nova, and in the other colonies they had terraformed in the way, in harmonic relationship with nature and technology, and without an overseeing inteligence over them.
+[/color]
+[left]                   
+                                                                              
+
+
+                                                                                [color=red]THE END...?[/color]
+
+                                         
+                                                                                                                                         [color=#9ACD32]Press Space to Play again[/color]"
+fit_content = true
+scroll_active = false
+tab_size = 7
+deselect_on_focus_loss_enabled = false
+structured_text_bidi_override = 3
+script = ExtResource("2_bworo")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6yi7n")
+autoplay = true

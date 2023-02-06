@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://bsxiyi3wdeexe" path="res://assets/en_asteroid.png" id="3_kdj7f"]
 [ext_resource type="AudioStream" uid="uid://cw15ldx8fcaog" path="res://media/sound/asteroid_explodes.wav" id="4_etu1v"]
 
-[sub_resource type="Resource" id="Resource_0amq1"]
+[sub_resource type="Resource" id="Resource_cqydn"]
 script = ExtResource("2_7nnfm")
 speed_bounds = Vector2(300, 400)
 angle_bounds_degrees = Vector2(0, 360)
 scale_bounds = Vector2(0.33, 1)
 origin_bounds = Vector2(0, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hboj5"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_kcfrh"]
 radius = 150.0
 
 [node name="Asteroids" type="CharacterBody2D"]
@@ -20,7 +20,7 @@ visibility_layer = 2
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_blshm")
-config = SubResource("Resource_0amq1")
+config = SubResource("Resource_cqydn")
 too_little_threshold = 0.4
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -30,7 +30,7 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_kdj7f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_hboj5")
+shape = SubResource("CircleShape2D_kcfrh")
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_etu1v")
