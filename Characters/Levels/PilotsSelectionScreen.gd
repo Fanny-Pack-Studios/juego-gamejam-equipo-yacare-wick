@@ -22,7 +22,7 @@ func _ready():
 	await get_tree().process_frame
 	var cards = $CanvasLayer/VBoxContainer/HBoxContainer/GridContainer.get_children()
 	
-	for i in range(1, cards.size()):
+	for i in range(0, cards.size()):
 		cards[i].set_pilot(available_pilots[i])
 	
 	for i in range(cards.size()):

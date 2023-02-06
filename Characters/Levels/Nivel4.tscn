@@ -12,7 +12,7 @@ is_last_level = true
 length = 8001.0
 travel_speed = 115.0
 events_description = "1,asteroids,20
-5,squirrels,15
+5,squirrels,13
 7,lochusts,8
 10,squirrels,15
 15,squirrels,10
@@ -20,7 +20,8 @@ events_description = "1,asteroids,20
 17,squirrels,3
 15,asteroids,50
 19,lochust,5
-22,squirrels,3"
+22,squirrels,3
+22,lochust,5"
 
 [node name="mecha_squirrel" parent="Travel" index="2" instance=ExtResource("4_l37wd")]
 position = Vector2(386.072, 1175.63)
