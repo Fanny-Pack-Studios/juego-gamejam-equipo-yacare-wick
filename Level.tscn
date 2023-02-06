@@ -615,6 +615,10 @@ offset_right = 60.0
 offset_bottom = 851.0
 script = ExtResource("10_naqm6")
 
+[node name="ActualLevelDebug" type="Label" parent="HUDLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="explosion" parent="." instance=ExtResource("26_v36yp")]
 top_level = true
 position = Vector2(1174, 461)

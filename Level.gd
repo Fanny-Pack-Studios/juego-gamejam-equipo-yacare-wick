@@ -9,6 +9,7 @@ const BossMusic = preload("res://media/music/hard-prey-boss-music.mp3")
 const PilotSelectionScreen = preload("res://Characters/Levels/PilotsSelectionScreen.tscn")
 var boss_music_on = false
 
+@export var next_level_scene: PackedScene
 @export var is_last_level: bool = false
 @export var beginning: Node2D
 @export var end: Node2D
@@ -16,6 +17,7 @@ var boss_music_on = false
 @onready var music = $Music
 
 func _ready():
+	$HUDLayer/ActualLevelDebug.text = name
 	$Travel/Beginning.top_level = true
 	$Travel/End.top_level = true
 	[$Walls, $Walls2, $Walls3, $Walls4].map(func (wall): wall.top_level = true)
@@ -61,6 +63,8 @@ func end_point() -> Vector2:
 	return (beginning.global_position - end.global_position + Vector2(0, ProjectSettings.get_setting("display/window/size/viewport_height")))
 
 func next_level():
+	Party.current_level = Party.next_level
+	Party.next_level = next_level_scene
 	var tween = create_tween()
 	tween.tween_property($CanvasLayer/FadeOut, "modulate", Color(0,0,0,1), 1)
 	tween.tween_callback(func():

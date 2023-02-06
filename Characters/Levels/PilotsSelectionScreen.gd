@@ -6,7 +6,6 @@ func calculate_available_pilots(previous_pilots):
 	var pilots = previous_pilots.duplicate()
 	for i in range(0, 3):
 		var new_pilot = Pilot.random()
-		new_pilot.has_piloted_before = true
 		new_pilot.instructors = Party.past_instructors
 		pilots.push_back(new_pilot)
 	return pilots
@@ -24,7 +23,7 @@ func _ready():
 	var cards = $CanvasLayer/VBoxContainer/HBoxContainer/GridContainer.get_children()
 	
 	for i in range(1, cards.size()):
-		cards[i].pilot = available_pilots[i]
+		cards[i].set_pilot(available_pilots[i])
 	
 	for i in range(cards.size()):
 		var card = cards[i]
@@ -35,6 +34,8 @@ func _ready():
 		card.gui_input.connect(func(input):
 			if input.is_action_pressed("primary_action") or input.is_action_pressed("ui_accept"):
 				choose_pilot(card.pilot)
+				var next_pilot_idx = cards.size()
+				cards[(i + 1) % next_pilot_idx].grab_focus()
 			elif input.is_action_pressed("secondary_action"):
 				deselect_pilot()
 		)
@@ -65,7 +66,7 @@ func choose_pilot(pilot):
 		next_level()
 
 func next_level():
-	get_tree().change_scene_to_packed(load("res://Characters/Levels/Nivel1.tscn"))
+	get_tree().change_scene_to_packed(Party.next_level)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

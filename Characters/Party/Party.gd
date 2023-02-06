@@ -1,11 +1,14 @@
 extends Node
 
 const Pilot = preload("res://Characters/Pilot/Pilot.gd")
+const FirstLevel = preload("res://Characters/Levels/Nivel1.tscn")
 
 var pilot: Pilot
 var copilot: Pilot
 var instructor: Pilot
 var past_instructors: Array	
+var next_level: PackedScene
+var current_level: PackedScene
 
 func pop_pilots():
 	var pilots = [pilot, copilot]
@@ -34,6 +37,8 @@ func is_empty():
 	return null == pilot
 
 func _ready():
+	next_level = FirstLevel
+	current_level = next_level
 	pilot = Pilot.random()
 	copilot = Pilot.random()
 	instructor = Pilot.random()

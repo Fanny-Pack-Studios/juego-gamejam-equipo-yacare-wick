@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccbjqmid3ir40"]
+[gd_scene load_steps=12 format=3 uid="uid://dgbpuhjsi7wq2"]
 
 [ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_6idvi"]
-[ext_resource type="PackedScene" path="res://Characters/Enemies/asteroids_spawner.tscn" id="2_4v803"]
+[ext_resource type="PackedScene" uid="uid://rcggwxx4n7gy" path="res://Characters/Enemies/asteroids_spawner.tscn" id="2_4v803"]
+[ext_resource type="PackedScene" uid="uid://dooyxxx4jea1e" path="res://Characters/Levels/Nivel4.tscn" id="2_t655p"]
 [ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="3_7khaw"]
 [ext_resource type="PackedScene" uid="uid://c7j67qq323h2d" path="res://Characters/Enemies/mecha_locust_spawner.tscn" id="4_2hppt"]
 [ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="5_3w0fo"]
 [ext_resource type="Script" path="res://Characters/Levels/BossInfo.gd" id="6_qcgf1"]
 
-[sub_resource type="Resource" id="Resource_x4sdd"]
+[sub_resource type="Resource" id="Resource_wtsc4"]
 resource_local_to_scene = true
 script = ExtResource("3_7khaw")
 speed_bounds = Vector2(-40, 300)
@@ -15,7 +16,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.5)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_vn1sj"]
+[sub_resource type="Resource" id="Resource_4g32a"]
 resource_local_to_scene = true
 script = ExtResource("3_7khaw")
 speed_bounds = Vector2(-40, 500)
@@ -23,7 +24,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.7)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_nqk21"]
+[sub_resource type="Resource" id="Resource_ynq5c"]
 resource_local_to_scene = true
 script = ExtResource("3_7khaw")
 speed_bounds = Vector2(-40, 600)
@@ -36,6 +37,7 @@ width = 1920
 height = 1080
 
 [node name="Nivel3" instance=ExtResource("1_6idvi")]
+next_level_scene = ExtResource("2_t655p")
 travel_speed = 200.0
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="1"]
@@ -56,7 +58,7 @@ position = Vector2(-300, 1500)
 rotation = 0.616101
 time_between_spawns_bounds = Vector2(0.2, 0.4)
 max_asteroid_points_in_screen = 7.0
-asteroid_config = SubResource("Resource_x4sdd")
+asteroid_config = SubResource("Resource_wtsc4")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner1" index="0"]
 rotation = -0.628319
@@ -65,7 +67,7 @@ rotation = -0.628319
 position = Vector2(-378.974, 2200)
 rotation = 0.523599
 max_asteroid_points_in_screen = 4.0
-asteroid_config = SubResource("Resource_vn1sj")
+asteroid_config = SubResource("Resource_4g32a")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner2" index="0"]
 position = Vector2(0, -679)
@@ -74,7 +76,7 @@ rotation = -0.523599
 [node name="AsteroidsSpawner6" parent="Travel" index="5" instance=ExtResource("2_4v803")]
 position = Vector2(-379, 3364)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_nqk21")
+asteroid_config = SubResource("Resource_ynq5c")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner6" index="0"]
 position = Vector2(0, -679)
@@ -136,10 +138,10 @@ offset_right = 40.0
 offset_bottom = 711.0
 script = ExtResource("6_qcgf1")
 
-[node name="AsteroidsInfo" parent="HUDLayer" index="4"]
+[node name="AsteroidsInfo" parent="HUDLayer" index="5"]
 visible = false
 
-[node name="ParallaxInfo" parent="HUDLayer" index="5"]
+[node name="ParallaxInfo" parent="HUDLayer" index="6"]
 visible = false
 
 [editable path="Travel/AsteroidsSpawner1"]

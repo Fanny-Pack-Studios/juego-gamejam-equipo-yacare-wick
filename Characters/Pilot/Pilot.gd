@@ -98,7 +98,7 @@ func inherited_stats_description():
 func stats_description():
 	var description = str("Age: ", _age, "\n")
 
-	if(true):
+	if(has_piloted_before):
 		description += "[wave amp=50 freq=2][color=green]Veteran of the previous trip.[/color]\n[/wave][color=gray]This will be their last trip before retiring.[/color]\n"
 	if(defense() > 0.0):
 		description += bonus_text(str("Ship defense: +", String.num(defense(), 2)))

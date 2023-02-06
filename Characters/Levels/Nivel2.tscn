@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://pjo7upvu03oo"]
+[gd_scene load_steps=4 format=3 uid="uid://pjo7upvu03oo"]
 
 [ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_wk357"]
+[ext_resource type="PackedScene" uid="uid://dgbpuhjsi7wq2" path="res://Characters/Levels/Nivel3.tscn" id="2_6bcfg"]
 [ext_resource type="PackedScene" uid="uid://db27boe1yhctc" path="res://Characters/Enemies/DummyEnemy.tscn" id="2_retg0"]
 
 [node name="Nivel2" instance=ExtResource("1_wk357")]
+next_level_scene = ExtResource("2_6bcfg")
 
 [node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
 metadata/_edit_lock_ = true

@@ -13,7 +13,6 @@ func set_pilot(new_pilot):
 	$HBoxContainer/Stats.text = pilot.stats_description()
 
 func _ready():
-	set_pilot(pilot)
 	focus_entered.connect(func():
 		self.increase_size()	
 	)

@@ -11,4 +11,4 @@ func _process(delta):
 	if (Input.is_action_pressed("ui_accept")):
 			var tween = create_tween()
 			tween.tween_property($CanvasLayer/FadeOut, "modulate", Color(0,0,0,1), 1)
-			tween.tween_callback(func(): get_tree().change_scene_to_packed(Nivel1))
+			tween.tween_callback(func(): get_tree().change_scene_to_packed(Party.current_level))
