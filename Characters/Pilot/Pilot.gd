@@ -45,7 +45,7 @@ static func random():
 	var photo_path = PILOTS_PHOTO_DIR + (
 		Array(DirAccess.open(PILOTS_PHOTO_DIR)\
 			.get_files())\
-			.filter(func(filepath: String): return filepath.replace(".import", ""))\
+			.map(func(filepath: String): return filepath.replace(".import", ""))\
 			.pick_random()
 	)
 	pilot.photo = load(photo_path)
