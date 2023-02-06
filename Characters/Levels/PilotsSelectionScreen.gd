@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Party.clean()
+	Party.update()
 	$CanvasLayer/Copilot.scale = Vector2(0,0)
 	$CanvasLayer/Pilot.scale = Vector2(0,0)
 	$CanvasLayer/Instructor.scale = Vector2(0,0)

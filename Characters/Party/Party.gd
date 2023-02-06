@@ -6,6 +6,18 @@ var pilot: Pilot
 var copilot: Pilot
 var instructor: Pilot
 
+func update():
+	if(is_empty()):
+		pilot = Pilot.random()
+		copilot = Pilot.random()
+		instructor = Pilot.random()
+	else:
+		pilot.has_piloted_before = true
+		copilot.has_piloted_before = true
+
+func is_empty():
+	return null == pilot
+
 func _ready():
 	pilot = Pilot.random()
 	copilot = Pilot.random()
