@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://brtq3hxtv4xeg"
+uid="uid://bwlagn4gngjvf"
 path="res://.godot/imported/spaceship.gltf-87f3af1cd2fa0b1837b7851a61f25893.scn"
 
 [deps]
@@ -27,5 +27,32 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"dome": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/dome.tres"
+},
+"engines": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/engines.tres"
+},
+"shield": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/shield.tres"
+},
+"spaceship": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/spaceship.tres"
+},
+"tree": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/tree.tres"
+},
+"tree_leaves": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/tree_leaves.tres"
+}
+}
+}
 meshes/handle_gltf_embedded_images=1

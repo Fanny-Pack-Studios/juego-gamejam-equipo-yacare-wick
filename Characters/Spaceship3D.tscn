@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://l8klhop3fmd7"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship3D.gd" id="1_koy4l"]
-[ext_resource type="PackedScene" uid="uid://brtq3hxtv4xeg" path="res://assets/spaceship.gltf" id="1_qvd55"]
+[ext_resource type="PackedScene" uid="uid://bwlagn4gngjvf" path="res://assets/spaceship.gltf" id="1_qvd55"]
 [ext_resource type="Texture2D" uid="uid://8wtvveltit5k" path="res://assets/photon_defense.png" id="3_t5w6k"]
 [ext_resource type="PackedScene" uid="uid://dfclkc6jhmslj" path="res://assets/shield.gltf" id="4_4ek6d"]
 [ext_resource type="Shader" uid="uid://dnxrcak1dldn3" path="res://Characters/Spaceship3D_shield_shader.tres" id="4_jhm05"]

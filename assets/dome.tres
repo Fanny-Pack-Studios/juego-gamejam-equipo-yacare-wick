@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cb1j8mdenydj8"]
+
+[ext_resource type="Texture2D" uid="uid://6n05pdsr4e8f" path="res://assets/dome.png" id="1_rfc1g"]
+
+[resource]
+resource_name = "dome"
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.677273)
+albedo_texture = ExtResource("1_rfc1g")
+roughness = 0.5
