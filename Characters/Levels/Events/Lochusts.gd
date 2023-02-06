@@ -11,4 +11,6 @@ func start(level: Node2D):
 		lochust_spawner.global_transform.origin = Vector2(
 			ProjectSettings.get_setting("display/window/size/viewport_width") * randf_range(0.3, 0.7),
 			ProjectSettings.get_setting("display/window/size/viewport_height")) - Vector2(0, level.global_transform.origin.y)
-	).set_delay(2.0)
+		lochust_spawner.spawn_swarm()
+		lochust_spawner.queue_free()
+	)

@@ -14,7 +14,7 @@ func spawn_lochust(relative_position):
 	var lochust = MechaLocust.instantiate()
 	lochust.transform.origin = global_transform.origin + relative_position
 	lochust.target = target_spaceship
-	call_deferred("add_child", lochust)
+	get_parent().call_deferred("add_child", lochust)
 
 
 func _on_area_2d_body_entered(body):
