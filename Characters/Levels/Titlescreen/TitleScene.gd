@@ -1,22 +1,33 @@
 extends Node2D
 
 const IntroScene = preload("res://Characters/Levels/Intro/IntroScene.tscn")
+
+signal next
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$LogoAnimation.play("FannyFade")
-	await get_tree().create_timer(5.0).timeout
-	$AnimationPlayer.play("Blackout")
+	var fanny_fade_timeout = get_tree().create_timer(5.0).timeout
+	fanny_fade_timeout.connect(self.show_next)
+	await self.next
+	fanny_fade_timeout.disconnect(self.show_next)
+	$FannypackLogo.visible = false
+	$SpikaGamesLogo.visible = true
 	$LogoAnimation.play("SpikaFade")
-	await get_tree().create_timer(4.0).timeout
+	$AnimationPlayer.play("Blackout")
+	var spika_fade_timeout = get_tree().create_timer(4.0).timeout
+	spika_fade_timeout.connect(self.show_next)
+	await self.next
+	spika_fade_timeout.disconnect(self.show_next)	
+	$SpikaGamesLogo.visible = false
 	$AnimationPlayer.play("Fade Out")
-	#await get_tree().create_timer(4.0).timeout
-	#$AnimationPlayer.play("Fade In")
-	
-	
+	await self.next
+	get_tree().change_scene_to_packed(IntroScene)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if (Input.is_action_just_released("ui_accept")):
-		var tween_screen = create_tween()
-		tween_screen.tween_callback(func(): get_tree().change_scene_to_packed(IntroScene))
+func _input(event):
+	if(event.is_action_pressed("ui_accept")):
+		get_viewport().set_input_as_handled()
+		show_next()
+
+func show_next():
+	next.emit()

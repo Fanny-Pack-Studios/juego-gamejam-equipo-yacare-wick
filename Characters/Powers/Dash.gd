@@ -1,17 +1,28 @@
 extends Power
 
 @export var dash_time: float = 0.5
-@export var cooldown_time: float = 2.0
-@export var speed_bonus: float = 500
-@export var damage: float = 50
-@export var uses: int = 3
+@export var _cooldown_time: float = 2.0
+@export var _speed_bonus: float = 400
+@export var _damage: float = 50
+@export var _uses: int = 1
 var internal_cooldown_between_uses = dash_time / 1.8
-var uses_left: int = uses
+var uses_left: int
 
+func cooldown_time():
+	return _cooldown_time * (1.5 - pilot.reflexes())
+
+func speed_bonus():
+	return _speed_bonus + 300 * pilot.driving_skill()
+
+func damage():
+	return _damage * (5 * pilot.driving_skill())
+
+func uses():
+	return _uses + round(3 * pilot.reflexes())
 
 func _ready():
 	internal_cooldown_between_uses = dash_time / 1.8
-	uses_left = uses
+	uses_left = uses()
 	$DashTime.wait_time = dash_time
 	$InternalCooldown.wait_time = internal_cooldown_between_uses
 	$Area.body_entered.connect(func(body):
@@ -28,12 +39,12 @@ func _physics_process(delta):
 		target.protections.push_back(self)
 		$DashTime.start()
 		$InternalCooldown.start()
-		create_tween().tween_callback(self.recover_use).set_delay(cooldown_time)
+		create_tween().tween_callback(self.recover_use).set_delay(cooldown_time())
 		var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		create_tween().tween_property(
 			target,
 			"velocity",
-			direction * (target.max_speed() + speed_bonus),
+			direction * (target.max_speed() + speed_bonus()),
 			dash_time / 2
 		).set_trans(Tween.TRANS_BACK)
 		var shadow_count = $Shadows.get_children().size()
@@ -57,4 +68,9 @@ func place_shadow():
 		shadow.visible = true
 		await create_tween().tween_property(shadow, "modulate:a", 0, 0.2).finished
 		shadow.visible = false
-		
+
+func bb_text():
+	return "Dash speed: " + String.num(speed_bonus(), 0) + "\n" +\
+			"Cooldown: " + String.num(cooldown_time(), 2) + "\n" +\
+			"Dash damage: " + String.num(damage(), 2) + "\n" +\
+			"Uses in a row: " + str(uses())

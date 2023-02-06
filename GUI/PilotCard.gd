@@ -15,6 +15,7 @@ func _ready():
 	focus_exited.connect(func():
 		self.decrease_size()
 	)
+	$HBoxContainer/Stats.text = pilot.stats_description()
 
 func increase_size():
 	if(previous_position == null):

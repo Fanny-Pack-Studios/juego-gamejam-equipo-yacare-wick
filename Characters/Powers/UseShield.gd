@@ -1,11 +1,17 @@
 extends Power
 
-@export var shield_time: float = 5.0
-@export var cooldown_time: float = 10.0
+@export var _shield_time: float = 5.0
+@export var _cooldown_time: float = 10.0
+
+func shield_time():
+	return 1.0 + _shield_time * (pilot.defense() / 5.0)
+
+func cooldown_time():
+	return _cooldown_time - 5 * pilot.reflexes()
 
 func _ready():
-	$ShieldTime.wait_time = shield_time
-	$Cooldown.wait_time = cooldown_time
+	$ShieldTime.wait_time = shield_time()
+	$Cooldown.wait_time = cooldown_time()
 	$ShieldTime.timeout.connect(func():
 		target.protections.erase(self)
 	)
@@ -23,3 +29,7 @@ func _physics_process(delta):
 
 	$Area.monitoring = is_active
 	target.find_child("Spaceship3D", true).using_shield = is_active
+
+func bb_text():
+	return "Shield time: " + String.num(shield_time(), 2)+ "s\n" +\
+			"Cooldown: " + String.num(cooldown_time(), 2) + "s\n"

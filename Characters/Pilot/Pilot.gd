@@ -5,6 +5,8 @@ const Weapon = preload("res://Characters/Weapons/Weapon.tscn")
 
 var _defense: float
 var _driving_skill: float
+var _reflexes: float
+var _age: int
 var photo: Texture2D
 var name: String
 var biography: String
@@ -14,6 +16,7 @@ var _power
 func power():
 	if(not is_instance_valid(_power)):
 		_power = power_scene.instantiate()
+		_power.be_configured_by_pilot(self)
 	return _power
 
 static func random():
@@ -52,20 +55,34 @@ static func random():
 	var random_pilot_idx = randi_range(0, possible_names.size() - 1)
 	pilot.name = possible_names[random_pilot_idx]
 	pilot.biography = possible_biographies[random_pilot_idx]
+	pilot._defense = randf_range(0.0, 5.0)
+	pilot._driving_skill = randf_range(0.0, 1.0)
+	pilot._reflexes = randf_range(0.0, 1.0)
+	pilot._age = randi_range(18, 40)
 #	pilot.weapon = pilot.weapon_from_config(possible_configs.pick_random())
 
 	return pilot
 
+func bonus_text(str: String):
+	return str("[color=green]", str, "[/color]\n")
+
+func stats_description():
+	var description = str("Age: ", _age, "\n\n")
+	if(defense() > 0.0):
+		description += bonus_text(str("Ship defense: +", String.num(defense(), 2)))
+	if(driving_skill() > 0.1):
+		description += bonus_text(str("Ship speed: +", round(driving_skill() * 100.0)))
+	description += power().bb_text()
+	return description
 
 func defense():
-	return defense
+	return _defense
 
 func driving_skill():
 	return _driving_skill
 
-func _init():
-	_defense = randf_range(0.0, 5.0)
-	_driving_skill = randf_range(0.0, 1.0)
+func reflexes():
+	return _reflexes
 
 # TODO: esto por ahora es random pero la idea seria que al generarse el piloto
 # se definan que armas va a usar
