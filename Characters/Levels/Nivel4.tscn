@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg3ed6j78ak5l"]
+[gd_scene load_steps=3 format=3 uid="uid://cmlmbs2im3o56"]
 
 [ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_l0t7l"]
 [ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="4_l37wd"]
 
 [node name="Level" instance=ExtResource("1_l0t7l")]
+is_last_level = true
 
 [node name="LevelConfig" parent="Travel" index="0"]
 length = 8001.0
