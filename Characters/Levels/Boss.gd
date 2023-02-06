@@ -78,7 +78,7 @@ func sprites():
 	return []
 
 func _process(delta):
-	if(fight_status == FightStatus.Started):
+	if(fight_status == FightStatus.Started or fight_status == FightStatus.Finished):
 		boss_health.value = current_health
 
 func _killed():
