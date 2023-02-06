@@ -1,14 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkta5sosp64xf"]
+[gd_scene load_steps=9 format=3 uid="uid://bkta5sosp64xf"]
 
 [ext_resource type="Script" path="res://Characters/Spaceship.gd" id="1_j78yr"]
 [ext_resource type="World3D" uid="uid://cobqimndk6hh0" path="res://assets/World3D.tres" id="2_cc64f"]
 [ext_resource type="PackedScene" uid="uid://l8klhop3fmd7" path="res://Characters/Spaceship3D.tscn" id="3_nya1u"]
 [ext_resource type="AudioStream" uid="uid://biaxwr4c5siad" path="res://media/sound/glass_damage.wav" id="6_2ryac"]
-[ext_resource type="PackedScene" uid="uid://badxydoe4kfx5" path="res://Characters/Powers/Shield.tscn" id="6_p82xm"]
-[ext_resource type="PackedScene" uid="uid://yk4ed0tjnlqn" path="res://Characters/Powers/Dash.tscn" id="7_i4ym5"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="7_ldcpf"]
-[ext_resource type="PackedScene" uid="uid://diy86exb3j6oc" path="res://Characters/Weapons/Weapon.tscn" id="8_h368o"]
-[ext_resource type="Resource" uid="uid://dtv2v75wrfn2r" path="res://Parameters/Weapons/regular_shoot.tres" id="9_628es"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohwe6"]
 
@@ -95,20 +91,10 @@ position = Vector2(20, 39)
 [node name="Powers" type="Node2D" parent="."]
 
 [node name="Primary" type="Node2D" parent="Powers"]
-
-[node name="Shield" parent="Powers/Primary" instance=ExtResource("6_p82xm")]
+position = Vector2(-19, 38)
 
 [node name="Secondary" type="Node2D" parent="Powers"]
-
-[node name="Dash" parent="Powers/Secondary" instance=ExtResource("7_i4ym5")]
-
-[node name="Weapon" parent="." instance=ExtResource("8_h368o")]
-position = Vector2(-20, 41)
-weapon_config = ExtResource("9_628es")
-
-[node name="Weapon2" parent="." instance=ExtResource("8_h368o")]
-position = Vector2(21, 43)
-weapon_config = ExtResource("9_628es")
+position = Vector2(22, 38)
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

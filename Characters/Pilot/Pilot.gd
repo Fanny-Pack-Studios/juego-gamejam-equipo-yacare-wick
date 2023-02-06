@@ -36,7 +36,10 @@ static func random():
 	var pilot = Pilot.new()
 	var possible_powers = [
 		load("res://Characters/Powers/Shield.tscn"),
-		load("res://Characters/Powers/Dash.tscn")
+		load("res://Characters/Powers/Dash.tscn"),
+		load("res://Characters/Powers/LaserWeapon.tscn"),
+		load("res://Characters/Powers/RegularWeapon.tscn"),
+		load("res://Characters/Powers/BombWeapon.tscn")
 	]
 	pilot.power_scene = possible_powers.pick_random()
 	var possible_configs = [

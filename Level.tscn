@@ -301,6 +301,17 @@ offset_bottom = 85.0
 texture = ExtResource("10_iiwh6")
 expand_mode = 3
 
+[node name="ProgressBar" type="ProgressBar" parent="HUDLayer/Powers/PrimaryPower"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 2
+show_percentage = false
+
 [node name="PrimaryKey" type="TextureRect" parent="HUDLayer/Powers"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
@@ -317,19 +328,30 @@ path = "primary_action"
 [node name="SecondaryPower" type="TextureRect" parent="HUDLayer/Powers"]
 layout_mode = 0
 offset_left = 88.0
-offset_top = 8.0
+offset_top = 15.0
 offset_right = 158.0
-offset_bottom = 78.0
+offset_bottom = 85.0
 texture = ExtResource("13_arfcv")
 expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HUDLayer/Powers/SecondaryPower"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 2
+show_percentage = false
 
 [node name="SecondaryKey" type="TextureRect" parent="HUDLayer/Powers"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
 offset_left = 71.0
-offset_top = 50.0
+offset_top = 52.0
 offset_right = 171.0
-offset_bottom = 150.0
+offset_bottom = 152.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_he17g")
 expand_mode = 1
@@ -429,6 +451,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="AsteroidsInfo" type="Label" parent="HUDLayer"]
+visible = false
 z_index = 10
 offset_left = 20.0
 offset_top = 738.0
@@ -437,6 +460,7 @@ offset_bottom = 761.0
 script = ExtResource("10_1fb2l")
 
 [node name="ParallaxInfo" type="Label" parent="HUDLayer"]
+visible = false
 z_index = 10
 offset_left = 20.0
 offset_top = 828.0

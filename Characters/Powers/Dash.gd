@@ -26,15 +26,25 @@ func _ready():
 	$DashTime.wait_time = dash_time
 	$InternalCooldown.wait_time = internal_cooldown_between_uses
 	$Area.body_entered.connect(func(body):
-		body.be_damaged(damage)
+		if(body):
+			body.be_damaged(damage())
 	)
 
 func recover_use():
-	uses_left = min(uses_left + 1, uses)
+	uses_left = min(uses_left + 1, uses())
+
+func cooldown_wait_time():
+	return cooldown_time()
+
+func time_left_to_cooldown():
+	if(uses_left > 0):
+		return 0
+	else:
+		return cooldown_wait_time()
 
 func _physics_process(delta):
 	var is_active = not $DashTime.is_stopped()
-	if(uses_left > 0 and player_is_using_it and $InternalCooldown.is_stopped()):
+	if(uses_left > 0 and player_used_it and $InternalCooldown.is_stopped()):
 		uses_left -= 1
 		target.protections.push_back(self)
 		$DashTime.start()

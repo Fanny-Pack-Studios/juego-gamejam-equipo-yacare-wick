@@ -30,3 +30,7 @@ autostart = true
 [node name="ShootDirection" type="RayCast2D" parent="."]
 collision_mask = 0
 collide_with_bodies = false
+
+[node name="SpecialAbilityCooldown" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

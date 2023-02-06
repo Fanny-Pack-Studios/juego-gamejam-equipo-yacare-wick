@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7qht0xvf8vvv"]
+
+[ext_resource type="PackedScene" uid="uid://diy86exb3j6oc" path="res://Characters/Weapons/Weapon.tscn" id="1_7lfqa"]
+[ext_resource type="Resource" uid="uid://dwpmxubx6tdmv" path="res://Parameters/Weapons/bomb_shoot.tres" id="2_0nork"]
+[ext_resource type="Texture2D" uid="uid://630julgsa2b0" path="res://assets/Powers/unlit-bomb.png" id="3_rwf07"]
+
+[node name="Weapon" instance=ExtResource("1_7lfqa")]
+weapon_config = ExtResource("2_0nork")
+power_name = "Bomb"
+icon = ExtResource("3_rwf07")

@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="WeaponConfig" load_steps=3 format=3 uid="uid://dwpmxubx6tdmv"]
 
 [ext_resource type="Script" path="res://Characters/Weapons/weapon_config.gd" id="1_0l4qp"]
-[ext_resource type="Texture2D" uid="uid://cb7gfcvxifu1i" path="res://assets/fireshoot.png" id="2_6i60k"]
+[ext_resource type="Texture2D" uid="uid://bcrgly1gs8tdd" path="res://assets/fireshoot.png" id="2_6i60k"]
 
 [resource]
 script = ExtResource("1_0l4qp")
 shoots_per_second = 0.75
-shoot_speed = 200.0
+shoot_speed = 250.0
 shoot_time_to_live_in_seconds = 0.0
-shoot_goes_through_enemies = false
+shoot_goes_through_enemies = true
 fire_power = 1000.0
 sprite = ExtResource("2_6i60k")
-range_in_meters = 700.0
+range_in_meters = 1000.0
 is_attached_to_parent = false

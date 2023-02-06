@@ -3,6 +3,13 @@ extends Power
 @export var _shield_time: float = 5.0
 @export var _cooldown_time: float = 10.0
 
+func cooldown_wait_time():
+	return $Cooldown.wait_time
+
+func time_left_to_cooldown():
+	return $Cooldown.time_left
+
+
 func shield_time():
 	return 1.0 + _shield_time * (pilot.defense() / 5.0)
 
@@ -22,7 +29,7 @@ func shield_from(body):
 
 func _physics_process(delta):
 	var is_active = not $ShieldTime.is_stopped()
-	if(not is_active and player_is_using_it and $Cooldown.is_stopped()):
+	if(not is_active and player_used_it and $Cooldown.is_stopped()):
 		target.protections.push_back(self)
 		$ShieldTime.start()
 		$Cooldown.start()

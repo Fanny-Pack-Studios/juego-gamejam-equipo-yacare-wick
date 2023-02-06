@@ -15,7 +15,7 @@ func _ready():
 	top_level = true
 
 func sprites():
-	return [$Polygon2D]
+	return []
 
 func _physics_process(delta):
 	if(null == target):

@@ -106,12 +106,12 @@ func _physics_process(delta):
 		target_speed,
 		(drift_desacceleration() if(target_speed.is_zero_approx()) else acceleration())
 	)
-	var using_primary_power := Input.is_action_pressed("primary_action")
+	var using_primary_power := Input.is_action_just_pressed("primary_action")
 	if(not $Powers/Primary.get_children().is_empty()):
-		$Powers/Primary.get_children().front().player_is_using_it = using_primary_power
-	var using_secondary_power := Input.is_action_pressed("secondary_action")
+		$Powers/Primary.get_children().front().player_used_it = using_primary_power
+	var using_secondary_power := Input.is_action_just_pressed("secondary_action")
 	if(not $Powers/Secondary.get_children().is_empty()):
-		$Powers/Secondary.get_children().front().player_is_using_it = using_secondary_power
+		$Powers/Secondary.get_children().front().player_used_it = using_secondary_power
 	
 	$Hitbox.monitoring = protections.is_empty()
 
