@@ -1,66 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg3ed6j78ak5l"]
+[gd_scene load_steps=3 format=3 uid="uid://cmlmbs2im3o56"]
 
 [ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_l0t7l"]
-[ext_resource type="PackedScene" uid="uid://rcggwxx4n7gy" path="res://Characters/Enemies/asteroids_spawner.tscn" id="2_kfppk"]
-[ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="3_0oe83"]
 [ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="4_l37wd"]
 
-[sub_resource type="Resource" id="Resource_ycgu7"]
-resource_local_to_scene = true
-script = ExtResource("3_0oe83")
-speed_bounds = Vector2(100, 600)
-angle_bounds_degrees = Vector2(0, 45)
-scale_bounds = Vector2(0.2, 1)
-origin_bounds = Vector2(0.6, 0.6)
-
 [node name="Level" instance=ExtResource("1_l0t7l")]
+is_last_level = true
 
 [node name="LevelConfig" parent="Travel" index="0"]
 length = 8001.0
 travel_speed = 115.0
-events_description = "1,asteroids,50
+events_description = "1,asteroids,20
 5,squirrels,15
 7,lochusts,8
 10,squirrels,15
 15,squirrels,10
 16,squirrels,3
 17,squirrels,3
-15,asteroid,50
+15,asteroids,50
 19,lochust,5
-22,squirrels,10"
+22,squirrels,3"
 
-[node name="AsteroidsSpawner" parent="Travel" index="2" instance=ExtResource("2_kfppk")]
-position = Vector2(35.9446, 2706.58)
-asteroid_config = SubResource("Resource_ycgu7")
-
-[node name="mecha_squirrel" parent="Travel" index="3" instance=ExtResource("4_l37wd")]
+[node name="mecha_squirrel" parent="Travel" index="2" instance=ExtResource("4_l37wd")]
 position = Vector2(386.072, 1175.63)
 
-[node name="mecha_squirrel2" parent="Travel" index="4" instance=ExtResource("4_l37wd")]
+[node name="mecha_squirrel2" parent="Travel" index="3" instance=ExtResource("4_l37wd")]
 position = Vector2(1499.55, 1166.65)
 
-[node name="mecha_squirrel3" parent="Travel" index="5" instance=ExtResource("4_l37wd")]
+[node name="mecha_squirrel3" parent="Travel" index="4" instance=ExtResource("4_l37wd")]
 position = Vector2(502.808, 1454)
 
-[node name="mecha_squirrel4" parent="Travel" index="6" instance=ExtResource("4_l37wd")]
+[node name="mecha_squirrel4" parent="Travel" index="5" instance=ExtResource("4_l37wd")]
 position = Vector2(1346.9, 1471.96)
 
-[node name="mecha_squirrel5" parent="Travel" index="7" instance=ExtResource("4_l37wd")]
+[node name="mecha_squirrel5" parent="Travel" index="6" instance=ExtResource("4_l37wd")]
 position = Vector2(664.443, 1750.33)
 
-[node name="mecha_squirrel6" parent="Travel" index="8" instance=ExtResource("4_l37wd")]
+[node name="mecha_squirrel6" parent="Travel" index="7" instance=ExtResource("4_l37wd")]
 position = Vector2(1104.45, 1795.23)
 
-[node name="mecha_squirrel7" parent="Travel" index="9" instance=ExtResource("4_l37wd")]
+[node name="mecha_squirrel7" parent="Travel" index="8" instance=ExtResource("4_l37wd")]
 position = Vector2(1245.21, 3912.48)
 wander_speed = 150.0
 
-[node name="AsteroidsSpawner2" parent="Travel" index="10" instance=ExtResource("2_kfppk")]
-position = Vector2(-17.9336, 3604.55)
-max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_ycgu7")
-
-[node name="mega_squirrel1" parent="Travel" index="11" instance=ExtResource("4_l37wd")]
+[node name="mega_squirrel1" parent="Travel" index="9" instance=ExtResource("4_l37wd")]
 modulate = Color(0.921569, 0, 0, 1)
 position = Vector2(1014.1, 2215.89)
 scale = Vector2(4, 4)
@@ -68,7 +50,7 @@ max_speed = 700.0
 wander_speed = 50.0
 max_health = 5000.0
 
-[node name="mega_squirrel2" parent="Travel" index="12" instance=ExtResource("4_l37wd")]
+[node name="mega_squirrel2" parent="Travel" index="10" instance=ExtResource("4_l37wd")]
 modulate = Color(0.678431, 0.654902, 0, 1)
 position = Vector2(914.443, 2434.43)
 scale = Vector2(4, 4)
@@ -76,21 +58,21 @@ max_speed = 700.0
 wander_speed = 50.0
 max_health = 5000.0
 
-[node name="mega_squirrel3" parent="Travel" index="13" instance=ExtResource("4_l37wd")]
+[node name="mega_squirrel3" parent="Travel" index="11" instance=ExtResource("4_l37wd")]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(992.721, 3053.33)
 scale = Vector2(10, 10)
 max_speed = 700.0
 max_health = 10000.0
 
-[node name="mega_squirrel4" parent="Travel" index="14" instance=ExtResource("4_l37wd")]
+[node name="mega_squirrel4" parent="Travel" index="12" instance=ExtResource("4_l37wd")]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(897.637, 3281.28)
 scale = Vector2(10, 10)
 max_speed = 700.0
 max_health = 10000.0
 
-[node name="mega_squirrel5" parent="Travel" index="15" instance=ExtResource("4_l37wd")]
+[node name="mega_squirrel5" parent="Travel" index="13" instance=ExtResource("4_l37wd")]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(1005.39, 3986.19)
 scale = Vector2(10, 10)
