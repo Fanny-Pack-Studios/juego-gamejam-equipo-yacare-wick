@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://btrro60kficv0"]
+[gd_scene load_steps=45 format=3 uid="uid://btrro60kficv0"]
 
 [ext_resource type="Script" path="res://Level.gd" id="1_lwjfv"]
 [ext_resource type="AudioStream" uid="uid://bitvwxswx5uxw" path="res://media/music/dream-locations.mp3" id="2_knfd6"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://addons/controller_icons/objects/TextureRect.gd" id="12_5ex0g"]
 [ext_resource type="Texture2D" uid="uid://nil8w83cyn1m" path="res://addons/controller_icons/assets/key/x.png" id="12_he17g"]
 [ext_resource type="Texture2D" uid="uid://b0nbtgo6k6bpr" path="res://assets/Powers/afterburn.png" id="13_arfcv"]
+[ext_resource type="PackedScene" uid="uid://cgy3brxetutru" path="res://Effects/explosion.tscn" id="26_v36yp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uf2fa"]
 shader = ExtResource("4_4gupt")
@@ -233,8 +234,8 @@ polygon = PackedVector2Array(-13, -20.9999, -13, -21, 299, -26, 299, -26, 299, -
 
 [node name="LevelConfig" type="Node2D" parent="Travel"]
 script = ExtResource("6_lm4k7")
-length = 3000.0
-travel_speed = 2000.0
+length = 5000.0
+travel_speed = 100.0
 events_description = "0.1,squirrels,5
 1,asteroids,10
 2,squirrels,5
@@ -613,6 +614,10 @@ offset_top = 828.0
 offset_right = 60.0
 offset_bottom = 851.0
 script = ExtResource("10_naqm6")
+
+[node name="explosion" parent="." instance=ExtResource("26_v36yp")]
+top_level = true
+position = Vector2(1174, 461)
 
 [connection signal="body_entered" from="Walls/VanishAsteroids" to="Walls/VanishAsteroids" method="_on_body_entered"]
 [connection signal="body_entered" from="Walls2/VanishAsteroids2" to="Walls2/VanishAsteroids2" method="_on_body_entered"]

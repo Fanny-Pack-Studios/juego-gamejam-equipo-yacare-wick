@@ -12,6 +12,8 @@ var name: String
 var biography: String
 var power_scene
 var _power
+var instructors = []
+var has_piloted_before = false
 
 func power():
 	if(not is_instance_valid(_power)):
@@ -66,12 +68,26 @@ static func random():
 
 	return pilot
 
+func bonus_from_instructors(stat):
+	return instructors.map(func(instructor): instructor.bonus_stat("defense")).reduce(add, 0)
+
+func add(a, b):
+	return a + b
+
+func bonus_stat(stat):
+	if(stat == best_skill().back()):
+		return best_skill().front() * 0.15
+	else:
+		return 0.0
+
 func bonus_text(str: String):
 	return str("[color=green]", str, "[/color]\n")
 
+func best_skill() -> Array:
+	return [[_defense / 5.0, "defense"], [_driving_skill, "driving_skill"], [_reflexes,"reflexes"]].max()
+
 func inherited_stats_description():
-	var best_skill = [[_defense / 5.0, "defense"], [_driving_skill, "driving_skill"], [_reflexes,"reflexes"]].max().back()
-	match best_skill:
+	match best_skill().back():
 		"defense":
 			return str("Next recruits will have ", bonus_text("+%" + String.num(_defense / 5.0 * 10.0, 2)), " ship defenses")
 	match best_skill:
@@ -79,7 +95,7 @@ func inherited_stats_description():
 			return str("Next recruits will have ", bonus_text("+%" + String.num(_driving_skill * 10.0, 2)), " ship speed")
 	match best_skill:
 		"reflexes":
-			return str("Next recruits will have, ", bonus_text("less cooldown on abilities"))
+			return str("Next recruits will have ", bonus_text("less cooldown on abilities"))
 
 func stats_description():
 	var description = str("Age: ", _age, "\n\n")
@@ -90,14 +106,17 @@ func stats_description():
 	description += power().bb_text()
 	return description
 
+func bonus_from_experience():
+	return 1.5 if has_piloted_before else 1.0
+
 func defense():
-	return _defense
+	return (_defense + bonus_from_instructors("defense")) * bonus_from_experience()
 
 func driving_skill():
-	return _driving_skill
+	return (_driving_skill + bonus_from_instructors("driving_skill")) * bonus_from_experience()
 
 func reflexes():
-	return _reflexes
+	return (_reflexes + bonus_from_instructors("reflexes")) * bonus_from_experience()
 
 # TODO: esto por ahora es random pero la idea seria que al generarse el piloto
 # se definan que armas va a usar

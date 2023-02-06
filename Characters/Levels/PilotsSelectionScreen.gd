@@ -2,13 +2,28 @@ extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
+func calculate_available_pilots(previous_pilots):
+	var pilots = previous_pilots.duplicate()
+	for i in range(0, 3):
+		var new_pilot = Pilot.random()
+		new_pilot.instructors = Party.past_instructors
+		pilots.push_back(new_pilot)
+	return pilots
+
 func _ready():
-	Party.clean()
+	Party.update()
+	var pilots = Party.pop_pilots()
+	var available_pilots = calculate_available_pilots(pilots)
+	
 	$CanvasLayer/Copilot.scale = Vector2(0,0)
 	$CanvasLayer/Pilot.scale = Vector2(0,0)
 	$CanvasLayer/Instructor.scale = Vector2(0,0)
 	await get_tree().process_frame
 	var cards = $CanvasLayer/VBoxContainer/HBoxContainer/GridContainer.get_children()
+	
+	for i in range(1, cards.size()):
+		cards[i].pilot = available_pilots[i]
+	
 	for i in range(cards.size()):
 		var card = cards[i]
 		if(i < cards.size() - 1):

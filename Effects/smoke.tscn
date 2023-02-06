@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqlots1qv358a"]
+[gd_scene load_steps=5 format=3 uid="uid://bt26wipk43ycs"]
 
 [ext_resource type="Texture2D" uid="uid://iuyd6kvfg27c" path="res://Effects/Smoke1_FX.png" id="1_mhnn8"]
+[ext_resource type="Script" path="res://Effects/smoke.gd" id="1_q422k"]
 [ext_resource type="Texture2D" uid="uid://cqdcvby60eyoh" path="res://Effects/Smoke2_FX.png" id="2_mpmuj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_di3an"]
@@ -18,8 +19,10 @@ animations = [{
 }]
 
 [node name="smoke" type="Node2D"]
+script = ExtResource("1_q422k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_di3an")
 animation = &"smoke"
+autoplay = "smoke"
 speed_scale = 2.0
