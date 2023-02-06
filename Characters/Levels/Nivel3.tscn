@@ -1,0 +1,149 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccbjqmid3ir40"]
+
+[ext_resource type="PackedScene" uid="uid://btrro60kficv0" path="res://Level.tscn" id="1_6idvi"]
+[ext_resource type="PackedScene" path="res://Characters/Enemies/asteroids_spawner.tscn" id="2_4v803"]
+[ext_resource type="Script" path="res://Characters/AsteroidConfig.gd" id="3_7khaw"]
+[ext_resource type="PackedScene" uid="uid://c7j67qq323h2d" path="res://Characters/Enemies/mecha_locust_spawner.tscn" id="4_2hppt"]
+[ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="5_3w0fo"]
+[ext_resource type="Script" path="res://Characters/Levels/BossInfo.gd" id="6_qcgf1"]
+
+[sub_resource type="Resource" id="Resource_8xqqh"]
+resource_local_to_scene = true
+script = ExtResource("3_7khaw")
+speed_bounds = Vector2(-40, 300)
+angle_bounds_degrees = Vector2(-30, 30)
+scale_bounds = Vector2(0.2, 0.5)
+origin_bounds = Vector2(0.1, 0.9)
+
+[sub_resource type="Resource" id="Resource_5kcqf"]
+resource_local_to_scene = true
+script = ExtResource("3_7khaw")
+speed_bounds = Vector2(-40, 500)
+angle_bounds_degrees = Vector2(-30, 30)
+scale_bounds = Vector2(0.2, 0.7)
+origin_bounds = Vector2(0.1, 0.9)
+
+[sub_resource type="Resource" id="Resource_rerom"]
+resource_local_to_scene = true
+script = ExtResource("3_7khaw")
+speed_bounds = Vector2(-40, 600)
+angle_bounds_degrees = Vector2(-30, 30)
+scale_bounds = Vector2(0.5, 1)
+origin_bounds = Vector2(0.1, 0.9)
+
+[sub_resource type="Resource" id="Resource_xqhvw"]
+resource_local_to_scene = true
+script = ExtResource("3_7khaw")
+speed_bounds = Vector2(0, 600)
+angle_bounds_degrees = Vector2(-30, 30)
+scale_bounds = Vector2(0.5, 1.5)
+origin_bounds = Vector2(0.1, 0.9)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2e5tv"]
+width = 1920
+height = 1080
+
+[node name="Nivel1" instance=ExtResource("1_6idvi")]
+travel_speed = 200.0
+
+[node name="ParallaxLayer" parent="ParallaxBackground" index="1"]
+modulate = Color(1, 1, 1, 0.392157)
+
+[node name="AsteroidsSpawner1" parent="Travel" index="3" instance=ExtResource("2_4v803")]
+position = Vector2(-379, 1983)
+time_between_spawns_bounds = Vector2(0.2, 0.4)
+max_asteroid_points_in_screen = 5.0
+asteroid_config = SubResource("Resource_8xqqh")
+
+[node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner1" index="0"]
+position = Vector2(0, -679)
+
+[node name="AsteroidsSpawner2" parent="Travel" index="4" instance=ExtResource("2_4v803")]
+position = Vector2(-379, 2782)
+max_asteroid_points_in_screen = 4.0
+asteroid_config = SubResource("Resource_5kcqf")
+
+[node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner2" index="0"]
+position = Vector2(0, -679)
+
+[node name="AsteroidsSpawner6" parent="Travel" index="5" instance=ExtResource("2_4v803")]
+position = Vector2(-379, 3364)
+max_asteroid_points_in_screen = 5.0
+asteroid_config = SubResource("Resource_rerom")
+
+[node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner6" index="0"]
+position = Vector2(0, -679)
+
+[node name="AsteroidsSpawner7" parent="Travel" index="6" instance=ExtResource("2_4v803")]
+position = Vector2(-363, 3744)
+time_between_spawns_bounds = Vector2(0.1, 0.25)
+max_asteroid_points_in_screen = 10.0
+asteroid_config = SubResource("Resource_xqhvw")
+
+[node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner7" index="0"]
+position = Vector2(0, -679)
+
+[node name="MechaLocustSpawner" parent="Travel" index="7" node_paths=PackedStringArray("target_spaceship") instance=ExtResource("4_2hppt")]
+position = Vector2(943, 1449)
+target_spaceship = NodePath("../../Spaceship")
+
+[node name="MechaLocustSpawner2" parent="Travel" index="8" node_paths=PackedStringArray("target_spaceship") instance=ExtResource("4_2hppt")]
+position = Vector2(414, 2431)
+rotation = 0.354186
+target_spaceship = NodePath("../../Spaceship")
+
+[node name="MechaLocustSpawner3" parent="Travel" index="9" node_paths=PackedStringArray("target_spaceship") instance=ExtResource("4_2hppt")]
+position = Vector2(1436, 2799)
+rotation = -0.547964
+target_spaceship = NodePath("../../Spaceship")
+
+[node name="mecha_squirrel" parent="Travel" index="10" instance=ExtResource("5_3w0fo")]
+position = Vector2(647, 3024)
+
+[node name="mecha_squirrel2" parent="Travel" index="11" instance=ExtResource("5_3w0fo")]
+position = Vector2(1441, 2559)
+rotation = -0.431142
+
+[node name="mecha_squirrel3" parent="Travel" index="12" instance=ExtResource("5_3w0fo")]
+position = Vector2(1320, 3120)
+rotation = -0.431142
+
+[node name="mecha_squirrel4" parent="Travel" index="13" instance=ExtResource("5_3w0fo")]
+position = Vector2(1305, 960)
+rotation = -0.00904059
+
+[node name="End" parent="Travel" index="14"]
+position = Vector2(0, 10000)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+layer = 0
+
+[node name="FadeOut" type="Sprite2D" parent="CanvasLayer" index="0"]
+modulate = Color(0, 0, 0, 0)
+z_index = 4096
+z_as_relative = false
+texture = SubResource("NoiseTexture2D_2e5tv")
+centered = false
+
+[node name="TestCamera" type="Camera2D" parent="." index="8"]
+anchor_mode = 0
+zoom = Vector2(0.2, 0.2)
+
+[node name="BossInfo" type="Label" parent="HUDLayer" index="3"]
+visible = false
+offset_top = 688.0
+offset_right = 40.0
+offset_bottom = 711.0
+script = ExtResource("6_qcgf1")
+
+[node name="AsteroidsInfo" parent="HUDLayer" index="4"]
+visible = false
+
+[node name="ParallaxInfo" parent="HUDLayer" index="5"]
+visible = false
+
+[editable path="Travel/AsteroidsSpawner1"]
+[editable path="Travel/AsteroidsSpawner2"]
+[editable path="Travel/AsteroidsSpawner6"]
+[editable path="Travel/AsteroidsSpawner7"]
+[editable path="Spaceship"]

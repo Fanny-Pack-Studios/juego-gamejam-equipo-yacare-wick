@@ -5,6 +5,9 @@ extends Node2D
 @export var travel_speed: float
 @export_multiline var events_description: String = ""
 
+const AsteroidShower = preload("res://Characters/Levels/Events/AsteroidShower.gd")
+const Squirrels = preload("res://Characters/Levels/Events/Squirrels.gd")
+const Lochusts = preload("res://Characters/Levels/Events/Lochusts.gd")
 var events: Array[Event] = []
 var timer: Timer
 var next_event: Event

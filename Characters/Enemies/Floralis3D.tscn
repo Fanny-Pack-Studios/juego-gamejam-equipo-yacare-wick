@@ -7,7 +7,7 @@
 background_color = Color(1, 1, 1, 1)
 glow_enabled = true
 
-[node name="Squirrel3D" type="Node3D"]
+[node name="Floralis3D" type="Node3D"]
 script = ExtResource("1_6rbej")
 
 [node name="Camera3D" type="Camera3D" parent="."]
