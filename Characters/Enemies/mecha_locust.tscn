@@ -6,10 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://b58g1cx6vruol" path="res://media/sound/locust_buzzed.wav" id="3_py6tj"]
 [ext_resource type="Script" path="res://Effects/destroyed_effect.gd" id="4_yc6dw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ly03"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5ijh"]
 radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q3b56"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_s32ei"]
 radius = 12.0
 
 [node name="MechaLocust" type="CharacterBody2D"]
@@ -30,7 +30,7 @@ texture = ExtResource("2_tmfhp")
 stretch_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4ly03")
+shape = SubResource("CircleShape2D_i5ijh")
 
 [node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("2_lt26w")
@@ -57,4 +57,4 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -2)
-shape = SubResource("CircleShape2D_q3b56")
+shape = SubResource("CircleShape2D_s32ei")

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Effects/smoke.gd" id="1_q422k"]
 [ext_resource type="Texture2D" uid="uid://cqdcvby60eyoh" path="res://Effects/Smoke2_FX.png" id="2_mpmuj"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_di3an"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_resdn"]
 animations = [{
 "frames": [{
 "duration": 6.0,
@@ -22,7 +22,7 @@ animations = [{
 script = ExtResource("1_q422k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_di3an")
+sprite_frames = SubResource("SpriteFrames_resdn")
 animation = &"smoke"
 autoplay = "smoke"
 speed_scale = 2.0

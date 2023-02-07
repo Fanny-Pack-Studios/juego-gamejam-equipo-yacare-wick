@@ -69,7 +69,7 @@ static func random():
 	return pilot
 
 func bonus_from_instructors(stat):
-	return instructors.map(func(instructor): instructor.bonus_stat("defense")).reduce(add, 0)
+	return instructors.map(func(instructor): return instructor.bonus_stat("defense")).reduce(add, 0)
 
 func add(a, b):
 	return a + b

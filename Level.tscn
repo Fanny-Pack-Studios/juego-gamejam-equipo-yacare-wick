@@ -325,7 +325,6 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Boss/DamageArea"]
 position = Vector2(14.547, -163.968)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_f6owc")
 
 [node name="Shields" type="Area2D" parent="Travel/Boss"]
@@ -336,13 +335,11 @@ script = ExtResource("10_nd5so")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Travel/Boss/Shields"]
 position = Vector2(-195.827, -249.537)
 rotation = -0.342554
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_eehka")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Travel/Boss/Shields"]
 position = Vector2(230.334, -245.594)
 rotation = 0.323979
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7upug")
 
 [node name="Spaceship" parent="." instance=ExtResource("4_1ljfk")]

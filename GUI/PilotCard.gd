@@ -3,9 +3,7 @@ extends MarginContainer
 var previous_position = null
 var pilot
 
-func set_pilot(new_pilot):
-	pilot = Pilot.random()
-
+func set_pilot(pilot):
 	$HBoxContainer/Name.text = pilot.name
 	$HBoxContainer/Images/Photo.texture = pilot.photo
 	$HBoxContainer/Images/Power.texture = pilot.power().icon
@@ -13,6 +11,7 @@ func set_pilot(new_pilot):
 	$HBoxContainer/Stats.text = pilot.stats_description()
 
 func _ready():
+	set_pilot(pilot)
 	focus_entered.connect(func():
 		self.increase_size()	
 	)

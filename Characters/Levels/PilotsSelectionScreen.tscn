@@ -1,7 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://csnlpihnnaj6p"]
+[gd_scene load_steps=31 format=3 uid="uid://csnlpihnnaj6p"]
 
 [ext_resource type="Script" path="res://Characters/Levels/PilotsSelectionScreen.gd" id="1_f2lpj"]
-[ext_resource type="PackedScene" uid="uid://dvpbjlm7dlgte" path="res://GUI/PilotCard.tscn" id="1_hooiw"]
 [ext_resource type="Texture2D" uid="uid://ci5mbjevmtqd1" path="res://assets/Pilotos/candidate002.png" id="2_57qww"]
 [ext_resource type="Script" path="res://GUI/SelectedPilot.gd" id="2_dl4eh"]
 [ext_resource type="PackedScene" uid="uid://l8klhop3fmd7" path="res://Characters/Spaceship3D.tscn" id="2_hauoc"]
@@ -10,10 +9,10 @@
 [ext_resource type="Script" path="res://GUI/InstructionsSelectionScreen.gd" id="7_mj637"]
 [ext_resource type="AudioStream" uid="uid://bliiq2m5xwy47" path="res://media/music/are-you-ready-for-adventures.mp3" id="9_gvrrx"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_k046n"]
+[sub_resource type="LabelSettings" id="LabelSettings_6i8mq"]
 font_size = 30
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84o52"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxjqa"]
 bg_color = Color(0.901961, 0.580392, 0.894118, 0.32549)
 border_width_left = 10
 border_width_top = 10
@@ -25,80 +24,80 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_bgh65"]
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_sn1wj"]
 constant = Color(0.6, 0.29, 0, 1)
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_lc6ly"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_qca50"]
 output_port_for_preview = 0
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_don0p"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_c83t1"]
 input_name = "front_facing"
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_x8yev"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_16b73"]
 output_port_for_preview = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_8xoip"]
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_ndbm6"]
 output_port_for_preview = 0
 default_input_values = [0, Quaternion(0, 0, 0, 0)]
 op_type = 2
 
-[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_hasuq"]
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_ck3jp"]
 output_port_for_preview = 0
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_r8in6"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_5m8tg"]
 operator = 2
 
-[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_o5gu7"]
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_c5ok4"]
 constant = Color(1, 0, 0.433333, 1)
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_dniba"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_id1k4"]
 input_name = "front_facing"
 
-[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_4qbia"]
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_ck3eo"]
 default_input_values = [0, false, 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0, 0, 0, 0)]
 op_type = 5
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1nxej"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bd7yq"]
 load_path = "res://.godot/imported/shield.png-46d74908b0ac118b50397d7021ae31f8.s3tc.ctex"
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_omxmi"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kbn12"]
 output_port_for_preview = 0
 expanded_output_ports = [0]
-texture = SubResource("CompressedTexture2D_1nxej")
+texture = SubResource("CompressedTexture2D_bd7yq")
 
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_njq1r"]
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_lenkl"]
 default_input_values = [0, 0.0, 1, 3.0]
 operator = 2
 
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_x1a6c"]
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_e2neh"]
 default_input_values = [0, 1.0, 1, 3.0]
 operator = 2
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_qvkfw"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ud4gr"]
 parameter_name = "shield_alpha"
 hint = 1
 default_value_enabled = true
 
-[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_hl4ef"]
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_gqxas"]
 expanded_output_ports = [0]
 constant = Color(0.2275, 0.65, 0.488042, 1)
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_nwwrf"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_bua4u"]
 output_port_for_preview = 0
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
 operator = 2
 
-[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_lytt0"]
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_4k0ey"]
 output_port_for_preview = 0
 default_input_values = [0, false, 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0, 0, 0, 0)]
 op_type = 5
 
-[sub_resource type="VisualShader" id="VisualShader_g3det"]
+[sub_resource type="VisualShader" id="VisualShader_s5rxo"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_disabled;
@@ -218,46 +217,46 @@ graph_offset = Vector2(79.1333, -119.439)
 modes/cull = 2
 varyings/alpha = "0,0"
 nodes/fragment/0/position = Vector2(2200, -400)
-nodes/fragment/4/node = SubResource("VisualShaderNodeColorConstant_hl4ef")
+nodes/fragment/4/node = SubResource("VisualShaderNodeColorConstant_gqxas")
 nodes/fragment/4/position = Vector2(140, -420)
-nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_nwwrf")
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_bua4u")
 nodes/fragment/6/position = Vector2(460, -240)
-nodes/fragment/9/node = SubResource("VisualShaderNodeSwitch_lytt0")
+nodes/fragment/9/node = SubResource("VisualShaderNodeSwitch_4k0ey")
 nodes/fragment/9/position = Vector2(840, -500)
-nodes/fragment/10/node = SubResource("VisualShaderNodeColorConstant_bgh65")
+nodes/fragment/10/node = SubResource("VisualShaderNodeColorConstant_sn1wj")
 nodes/fragment/10/position = Vector2(120, 220)
-nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_lc6ly")
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_qca50")
 nodes/fragment/11/position = Vector2(460, 80)
-nodes/fragment/12/node = SubResource("VisualShaderNodeInput_don0p")
+nodes/fragment/12/node = SubResource("VisualShaderNodeInput_c83t1")
 nodes/fragment/12/position = Vector2(360, -500)
-nodes/fragment/13/node = SubResource("VisualShaderNodeVectorOp_x8yev")
+nodes/fragment/13/node = SubResource("VisualShaderNodeVectorOp_16b73")
 nodes/fragment/13/position = Vector2(800, -20)
-nodes/fragment/14/node = SubResource("VisualShaderNodeVectorDecompose_8xoip")
+nodes/fragment/14/node = SubResource("VisualShaderNodeVectorDecompose_ndbm6")
 nodes/fragment/14/position = Vector2(1320, -300)
-nodes/fragment/15/node = SubResource("VisualShaderNodeFresnel_hasuq")
+nodes/fragment/15/node = SubResource("VisualShaderNodeFresnel_ck3jp")
 nodes/fragment/15/position = Vector2(900, 600)
-nodes/fragment/16/node = SubResource("VisualShaderNodeVectorOp_r8in6")
+nodes/fragment/16/node = SubResource("VisualShaderNodeVectorOp_5m8tg")
 nodes/fragment/16/position = Vector2(1220, 420)
-nodes/fragment/17/node = SubResource("VisualShaderNodeColorConstant_o5gu7")
+nodes/fragment/17/node = SubResource("VisualShaderNodeColorConstant_c5ok4")
 nodes/fragment/17/position = Vector2(960, 400)
-nodes/fragment/18/node = SubResource("VisualShaderNodeInput_dniba")
+nodes/fragment/18/node = SubResource("VisualShaderNodeInput_id1k4")
 nodes/fragment/18/position = Vector2(1520, 340)
-nodes/fragment/19/node = SubResource("VisualShaderNodeSwitch_4qbia")
+nodes/fragment/19/node = SubResource("VisualShaderNodeSwitch_ck3eo")
 nodes/fragment/19/position = Vector2(1800, 400)
-nodes/fragment/20/node = SubResource("VisualShaderNodeTexture_omxmi")
+nodes/fragment/20/node = SubResource("VisualShaderNodeTexture_kbn12")
 nodes/fragment/20/position = Vector2(-100, -240)
-nodes/fragment/21/node = SubResource("VisualShaderNodeFloatOp_njq1r")
+nodes/fragment/21/node = SubResource("VisualShaderNodeFloatOp_lenkl")
 nodes/fragment/21/position = Vector2(1900, -300)
-nodes/fragment/23/node = SubResource("VisualShaderNodeFloatOp_x1a6c")
+nodes/fragment/23/node = SubResource("VisualShaderNodeFloatOp_e2neh")
 nodes/fragment/23/position = Vector2(1880, -40)
-nodes/fragment/24/node = SubResource("VisualShaderNodeFloatParameter_qvkfw")
+nodes/fragment/24/node = SubResource("VisualShaderNodeFloatParameter_ud4gr")
 nodes/fragment/24/position = Vector2(1260, -20)
 nodes/fragment/connections = PackedInt32Array(15, 0, 16, 1, 17, 0, 16, 0, 10, 0, 11, 1, 20, 0, 6, 1, 20, 0, 11, 0, 9, 0, 0, 0, 6, 0, 9, 1, 11, 0, 9, 2, 6, 0, 13, 0, 11, 0, 13, 1, 4, 0, 6, 0, 16, 0, 19, 1, 11, 0, 19, 2, 19, 0, 0, 5, 18, 0, 19, 0, 12, 0, 9, 0, 13, 0, 14, 0, 21, 0, 0, 1, 14, 0, 21, 0, 23, 0, 21, 1, 24, 0, 23, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nf3j1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6f4id"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("VisualShader_g3det")
+shader = SubResource("VisualShader_s5rxo")
 shader_parameter/shield_alpha = 1.0
 
 [node name="PilotsSelectionScreen" type="Node2D"]
@@ -286,7 +285,7 @@ offset_top = -9.0
 offset_right = 225.0
 offset_bottom = 36.0
 text = "Instructor"
-label_settings = SubResource("LabelSettings_k046n")
+label_settings = SubResource("LabelSettings_6i8mq")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Instructor"]
 layout_mode = 0
@@ -294,7 +293,7 @@ offset_left = 89.0
 offset_top = 46.0
 offset_right = 189.0
 offset_bottom = 146.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_84o52")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gxjqa")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Instructor/Panel"]
 layout_mode = 1
@@ -351,7 +350,7 @@ offset_left = 89.0
 offset_top = 46.0
 offset_right = 189.0
 offset_bottom = 146.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_84o52")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gxjqa")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Pilot/Panel"]
 layout_mode = 1
@@ -387,7 +386,7 @@ offset_left = 89.0
 offset_top = 46.0
 offset_right = 189.0
 offset_bottom = 146.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_84o52")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gxjqa")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Copilot/Panel"]
 layout_mode = 1
@@ -429,27 +428,12 @@ transform = Transform3D(0.920882, -0.0319066, -0.388533, 0.307771, 0.671221, 0.6
 visible = false
 
 [node name="shield2" parent="CanvasLayer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport/Node3D/Test_FX/shield" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_nf3j1")
+surface_material_override/0 = SubResource("ShaderMaterial_6f4id")
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/v_separation = 0
-
-[node name="PilotCard" parent="CanvasLayer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hooiw")]
-layout_mode = 2
-
-[node name="PilotCard2" parent="CanvasLayer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hooiw")]
-layout_mode = 2
-
-[node name="PilotCard3" parent="CanvasLayer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hooiw")]
-layout_mode = 2
-
-[node name="PilotCard4" parent="CanvasLayer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hooiw")]
-layout_mode = 2
-
-[node name="PilotCard5" parent="CanvasLayer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hooiw")]
-layout_mode = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2

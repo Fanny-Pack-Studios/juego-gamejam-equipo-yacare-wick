@@ -10,6 +10,11 @@ var past_instructors: Array
 var next_level: PackedScene
 var current_level: PackedScene
 
+func generate_new_pilots():
+	var new_pilots = [Pilot.random(), Pilot.random(), Pilot.random()]
+	new_pilots.map(func(p): p.instructors = past_instructors)
+	return [pilot, copilot].map(func(p): return p if p != null else Pilot.random()) + new_pilots
+
 func pop_pilots():
 	var pilots = [pilot, copilot]
 	pilot = null
@@ -29,8 +34,14 @@ func update():
 	else:
 		var time_skip = randi_range(40, 50)
 		[pilot, copilot, instructor].map(func(p): p._age += time_skip)
-		pilot.has_piloted_before = true
-		copilot.has_piloted_before = true
+		if(pilot.has_piloted_before):
+			pilot = null
+		else:
+			pilot.has_piloted_before = true
+		if(copilot.has_piloted_before):
+			copilot = null
+		else:
+			copilot.has_piloted_before = true
 		past_instructors.push_back(instructor)
 
 func is_empty():

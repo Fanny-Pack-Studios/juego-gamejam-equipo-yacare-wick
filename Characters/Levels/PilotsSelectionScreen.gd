@@ -1,29 +1,25 @@
 extends Node2D
 
-
-# Called when the node enters the scene tree for the first time.
-func calculate_available_pilots(previous_pilots):
-	var pilots = previous_pilots.duplicate()
-	for i in range(0, 3):
-		var new_pilot = Pilot.random()
-		new_pilot.instructors = Party.past_instructors
-		pilots.push_back(new_pilot)
-	return pilots
+const PilotCard = preload("res://GUI/PilotCard.tscn")
 
 func _ready():
-	Party.update()
-	var pilots = Party.pop_pilots()
+	var new_pilots = Party.generate_new_pilots()
 	Party.clean()
-	var available_pilots = calculate_available_pilots(pilots)
 	
 	$CanvasLayer/Copilot.scale = Vector2(0,0)
 	$CanvasLayer/Pilot.scale = Vector2(0,0)
 	$CanvasLayer/Instructor.scale = Vector2(0,0)
 	await get_tree().process_frame
+
+	new_pilots.map(func(pilot):
+		var pilot_card = PilotCard.instantiate()
+		pilot_card.pilot = pilot
+		$CanvasLayer/VBoxContainer/HBoxContainer/GridContainer.add_child(pilot_card)
+	)
 	var cards = $CanvasLayer/VBoxContainer/HBoxContainer/GridContainer.get_children()
 	
-	for i in range(0, cards.size()):
-		cards[i].set_pilot(available_pilots[i])
+#	for i in range(0, cards.size()):
+#		cards[i].set_pilot(available_pilots[i])
 	
 	for i in range(cards.size()):
 		var card = cards[i]

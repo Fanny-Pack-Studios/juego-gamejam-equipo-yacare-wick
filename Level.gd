@@ -63,13 +63,14 @@ func end_point() -> Vector2:
 	return (beginning.global_position - end.global_position + Vector2(0, ProjectSettings.get_setting("display/window/size/viewport_height")))
 
 func next_level():
-	Party.current_level = Party.next_level
-	Party.next_level = next_level_scene
 	var tween = create_tween()
 	tween.tween_property($CanvasLayer/FadeOut, "modulate", Color(0,0,0,1), 1)
 	tween.tween_callback(func():
 		if is_last_level:
 			get_tree().change_scene_to_packed(OutroScreen)
 		else:
+			Party.update()
+			Party.current_level = Party.next_level
+			Party.next_level = next_level_scene
 			get_tree().change_scene_to_packed(PilotSelectionScreen)
 		)
