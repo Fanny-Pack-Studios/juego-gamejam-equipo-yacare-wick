@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bvlu84wbojp4k" path="res://Effects/Explosion1_FX.png" id="1_xl3qy"]
 [ext_resource type="Texture2D" uid="uid://rldwxh2wulo7" path="res://Effects/Explosion2_FX.png" id="2_iy7a4"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lt0g6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_s2cgb"]
 animations = [{
 "frames": [{
 "duration": 3.0,
@@ -22,7 +22,7 @@ animations = [{
 script = ExtResource("1_26f6u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_lt0g6")
+sprite_frames = SubResource("SpriteFrames_s2cgb")
 animation = &"explosion"
 autoplay = "explosion"
 speed_scale = 2.5

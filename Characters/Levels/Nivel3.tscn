@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bd6uqjn1mckrm" path="res://Characters/Enemies/mecha_squirrel.tscn" id="5_3w0fo"]
 [ext_resource type="Script" path="res://Characters/Levels/BossInfo.gd" id="6_qcgf1"]
 
-[sub_resource type="Resource" id="Resource_0fqjl"]
+[sub_resource type="Resource" id="Resource_3tw0a"]
 resource_local_to_scene = true
 script = ExtResource("3_7khaw")
 speed_bounds = Vector2(-40, 300)
@@ -16,7 +16,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.5)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_7hmyk"]
+[sub_resource type="Resource" id="Resource_4802q"]
 resource_local_to_scene = true
 script = ExtResource("3_7khaw")
 speed_bounds = Vector2(-40, 500)
@@ -24,7 +24,7 @@ angle_bounds_degrees = Vector2(-30, 30)
 scale_bounds = Vector2(0.2, 0.7)
 origin_bounds = Vector2(0.1, 0.9)
 
-[sub_resource type="Resource" id="Resource_68vdo"]
+[sub_resource type="Resource" id="Resource_jwunn"]
 resource_local_to_scene = true
 script = ExtResource("3_7khaw")
 speed_bounds = Vector2(-40, 600)
@@ -58,7 +58,7 @@ position = Vector2(-300, 1500)
 rotation = 0.616101
 time_between_spawns_bounds = Vector2(0.2, 0.4)
 max_asteroid_points_in_screen = 7.0
-asteroid_config = SubResource("Resource_0fqjl")
+asteroid_config = SubResource("Resource_3tw0a")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner1" index="0"]
 rotation = -0.628319
@@ -67,7 +67,7 @@ rotation = -0.628319
 position = Vector2(-378.974, 2200)
 rotation = 0.523599
 max_asteroid_points_in_screen = 4.0
-asteroid_config = SubResource("Resource_7hmyk")
+asteroid_config = SubResource("Resource_4802q")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner2" index="0"]
 position = Vector2(0, -679)
@@ -76,7 +76,7 @@ rotation = -0.523599
 [node name="AsteroidsSpawner6" parent="Travel" index="5" instance=ExtResource("2_4v803")]
 position = Vector2(-379, 3364)
 max_asteroid_points_in_screen = 5.0
-asteroid_config = SubResource("Resource_68vdo")
+asteroid_config = SubResource("Resource_jwunn")
 
 [node name="VisibleOnScreenEnabler2D" parent="Travel/AsteroidsSpawner6" index="0"]
 position = Vector2(0, -679)
